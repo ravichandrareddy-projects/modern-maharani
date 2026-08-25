@@ -4,6 +4,9 @@ import { getStoreData } from '@/lib/db';
 import ProductCard from '@/components/ProductCard';
 import { MapPin, Phone, MessageCircle, Clock, ArrowRight, Star, Sparkles, CheckCircle2, ShoppingBag } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function HomePage() {
   const store = getStoreData();
   const { siteSettings, categories, collections, products, reviews, storeInfo, banners } = store;

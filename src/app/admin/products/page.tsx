@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { StoreData, Product, AvailabilityStatus } from '@/lib/types';
-import { Plus, Edit, Trash2, Copy, Eye, X, Check, Search, Sparkles } from 'lucide-react';
+import { Plus, Edit, Trash2, Copy, Eye, X, Check, Search, Sparkles, Upload } from 'lucide-react';
 
 export default function AdminProductsPage() {
   const [storeData, setStoreData] = useState<StoreData | null>(null);
@@ -23,7 +23,7 @@ export default function AdminProductsPage() {
   const [colors, setColors] = useState<string[]>(['Maroon']);
   const [images, setImages] = useState<string[]>(['/images/hero_banner.jpg']);
   const [imageInput, setImageInput] = useState('');
-  const [availability, setAvailability] = useState<AvailabilityStatus>('Check Availability');
+  const [availability, setAvailability] = useState<AvailabilityStatus>('Available');
   const [isNewArrival, setIsNewArrival] = useState(true);
   const [isFeatured, setIsFeatured] = useState(false);
   const [tags, setTags] = useState<string[]>(['Elegant']);
@@ -57,7 +57,7 @@ export default function AdminProductsPage() {
     setSizes(['S', 'M', 'L', 'XL']);
     setColors(['Maroon']);
     setImages(['/images/hero_banner.jpg']);
-    setAvailability('Check Availability');
+    setAvailability('Available');
     setIsNewArrival(true);
     setIsFeatured(false);
     setTags(['Contemporary', 'Elegant']);
@@ -83,14 +83,26 @@ export default function AdminProductsPage() {
     setModalOpen(true);
   };
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result === 'string') {
+          setImages([reader.result, ...images]);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!storeData || !name.trim()) return;
 
     setSaving(true);
-    const slug = editingProduct
-      ? editingProduct.slug
-      : name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const computedSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `outfit-${Date.now()}`;
+    const slug = editingProduct ? editingProduct.slug : computedSlug;
 
     const newProd: Product = {
       id: editingProduct ? editingProduct.id : `prod-${Date.now()}`,
@@ -137,6 +149,7 @@ export default function AdminProductsPage() {
       });
       setStoreData(newStoreData);
       setModalOpen(false);
+      loadStore();
     } catch (err) {
       console.error(err);
     } finally {
@@ -197,13 +210,13 @@ export default function AdminProductsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E7E5E4]">
         <div>
           <h1 className="font-serif text-3xl font-bold text-[#1C1917]">Product Catalog Management</h1>
-          <p className="text-xs text-[#78716C]">Add, edit, reorder or adjust product availability statuses for Modern Maharani.</p>
+          <p className="text-xs text-[#78716C]">Add, edit, reorder or upload new outfits for Modern Maharani.</p>
         </div>
         <button
           onClick={handleOpenAdd}
-          className="bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-5 py-3 font-semibold flex items-center gap-1.5 transition-colors self-start"
+          className="bg-brand hover:opacity-90 text-white text-xs uppercase tracking-widest px-5 py-3 font-bold flex items-center gap-1.5 transition-colors self-start shadow"
         >
-          <Plus size={16} /> Add Product
+          <Plus size={16} /> Add New Outfit
         </button>
       </div>
 
@@ -246,22 +259,22 @@ export default function AdminProductsPage() {
                   <span className="text-[10px] text-[#78716C]">Slug: {product.slug}</span>
                 </td>
                 <td className="py-3 px-4 font-medium">{product.category}</td>
-                <td className="py-3 px-4 font-semibold">
+                <td className="py-3 px-4 font-semibold text-brand">
                   {product.price ? `₹${product.price.toLocaleString('en-IN')}` : 'Enquire'}
                 </td>
                 <td className="py-3 px-4">
-                  <span className="bg-[#7A1C30]/10 text-[#7A1C30] text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider">
+                  <span className="bg-brand/10 text-brand text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider">
                     {product.availability}
                   </span>
                 </td>
                 <td className="py-3 px-4 space-x-1">
                   {product.isNewArrival && <span className="bg-black text-white text-[9px] px-1.5 py-0.5 uppercase font-bold">New</span>}
-                  {product.isFeatured && <span className="bg-[#7A1C30] text-white text-[9px] px-1.5 py-0.5 uppercase font-bold">Featured</span>}
+                  {product.isFeatured && <span className="bg-brand text-white text-[9px] px-1.5 py-0.5 uppercase font-bold">Featured</span>}
                 </td>
                 <td className="py-3 px-4 text-right space-x-2">
                   <button
                     onClick={() => handleOpenEdit(product)}
-                    className="p-1.5 text-[#1C1917] hover:text-[#7A1C30] border border-[#E7E5E4]"
+                    className="p-1.5 text-[#1C1917] hover:text-brand border border-[#E7E5E4]"
                     title="Edit Product"
                   >
                     <Edit size={14} />
@@ -301,9 +314,10 @@ export default function AdminProductsPage() {
                 <input
                   type="text"
                   required
+                  placeholder="e.g. Royal Blue Embroidered Anarkali"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4] focus:outline-none focus:border-[#7A1C30]"
+                  className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4] focus:outline-none focus:border-brand font-bold text-sm"
                 />
               </div>
 
@@ -364,7 +378,6 @@ export default function AdminProductsPage() {
                   onChange={(e) => setAvailability(e.target.value as AvailabilityStatus)}
                   className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
                 >
-                  <option value="Check Availability">Check Availability (Default)</option>
                   <option value="Available">Available (In Store)</option>
                   <option value="Limited Stock">Limited Stock</option>
                   <option value="Out of Stock">Out of Stock</option>
@@ -400,7 +413,7 @@ export default function AdminProductsPage() {
                     type="checkbox"
                     checked={isNewArrival}
                     onChange={(e) => setIsNewArrival(e.target.checked)}
-                    className="accent-[#7A1C30]"
+                    className="accent-brand"
                   />
                   <span className="font-semibold uppercase">Mark as New Arrival</span>
                 </label>
@@ -409,19 +422,32 @@ export default function AdminProductsPage() {
                     type="checkbox"
                     checked={isFeatured}
                     onChange={(e) => setIsFeatured(e.target.checked)}
-                    className="accent-[#7A1C30]"
+                    className="accent-brand"
                   />
                   <span className="font-semibold uppercase">Mark as Featured</span>
                 </label>
               </div>
 
-              {/* Image URLs */}
-              <div className="space-y-2 pt-2 border-t border-[#E7E5E4]">
-                <label className="block font-semibold uppercase text-[#1C1917]">Product Image URLs</label>
+              {/* Device Image Upload & URLs */}
+              <div className="space-y-3 pt-2 border-t border-[#E7E5E4]">
+                <label className="block font-semibold uppercase text-[#1C1917]">Outfit Image Upload</label>
+                
+                <div className="p-3 bg-[#FAF8F5] border border-[#E7E5E4] space-y-2">
+                  <label className="text-[11px] font-bold uppercase text-[#1C1917] flex items-center gap-1.5">
+                    <Upload size={14} className="text-brand" /> Upload Outfit Image From Device:
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    className="block w-full text-xs text-[#78716C] file:mr-3 file:py-1.5 file:px-3 file:border-0 file:text-[10px] file:font-bold file:uppercase file:bg-brand file:text-white cursor-pointer bg-white border border-[#E7E5E4] p-1"
+                  />
+                </div>
+
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Enter image URL..."
+                    placeholder="Or enter direct image URL..."
                     value={imageInput}
                     onChange={(e) => setImageInput(e.target.value)}
                     className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
@@ -431,7 +457,7 @@ export default function AdminProductsPage() {
                     onClick={handleAddImage}
                     className="bg-[#1C1917] text-white px-4 py-2.5 uppercase text-[10px] font-bold shrink-0"
                   >
-                    Add Image
+                    Add URL
                   </button>
                 </div>
 
@@ -462,9 +488,9 @@ export default function AdminProductsPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="bg-[#7A1C30] hover:bg-[#5F1524] text-white px-6 py-2.5 text-xs uppercase font-semibold transition-colors"
+                  className="bg-brand hover:opacity-90 text-white px-6 py-2.5 text-xs uppercase font-bold transition-all shadow"
                 >
-                  {saving ? 'Saving...' : 'Save Outfit'}
+                  {saving ? 'Saving Outfit...' : 'Save Outfit to Catalog'}
                 </button>
               </div>
             </form>
