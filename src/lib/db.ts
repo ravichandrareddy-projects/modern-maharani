@@ -35,6 +35,9 @@ const INITIAL_STORE_DATA: StoreData = {
     metaDescription: "Shop contemporary Kurtis, dresses, and occasion wear at Modern Maharani in KPHB Phase 1, Kukatpally, Hyderabad. Order online or visit our showroom.",
     primaryColor: "#7A1C30",
     accentColor: "#C5A059",
+    backgroundColor: "#FAF8F5",
+    cardBackgroundColor: "#FFFFFF",
+    textColor: "#1C1917",
     adminPasswordHash: "maharani2026"
   },
   offers: [
@@ -368,10 +371,12 @@ export function getStoreData(): StoreData {
   try {
     const raw = fs.readFileSync(DATA_FILE, 'utf-8');
     const parsed = JSON.parse(raw) as StoreData;
-    // Fallback defaults for newly added features
     if (!parsed.orders) parsed.orders = INITIAL_STORE_DATA.orders;
     if (!parsed.offers) parsed.offers = INITIAL_STORE_DATA.offers;
     if (!parsed.siteSettings.primaryColor) parsed.siteSettings.primaryColor = "#7A1C30";
+    if (!parsed.siteSettings.backgroundColor) parsed.siteSettings.backgroundColor = "#FAF8F5";
+    if (!parsed.siteSettings.cardBackgroundColor) parsed.siteSettings.cardBackgroundColor = "#FFFFFF";
+    if (!parsed.siteSettings.textColor) parsed.siteSettings.textColor = "#1C1917";
     if (!parsed.siteSettings.adminPasswordHash) parsed.siteSettings.adminPasswordHash = "maharani2026";
     return parsed;
   } catch (err) {

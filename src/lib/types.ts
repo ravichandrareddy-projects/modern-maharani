@@ -109,7 +109,7 @@ export interface OrderItem {
 
 export interface Order {
   id: string;
-  orderNumber: string; // e.g. "MM-1001"
+  orderNumber: string;
   customerName: string;
   phone: string;
   email?: string;
@@ -175,7 +175,10 @@ export interface SiteSettings {
   metaDescription: string;
   primaryColor: string;
   accentColor: string;
-  adminPasswordHash: string; // Default password
+  backgroundColor?: string;
+  cardBackgroundColor?: string;
+  textColor?: string;
+  adminPasswordHash: string;
 }
 
 export interface AnalyticsSummary {
