@@ -11,9 +11,14 @@ export const metadata: Metadata = {
   description: "Shop contemporary Women's Fashion, Kurtis, Dresses & Occasion Wear at Modern Maharani in KPHB Phase 1, Kukatpally, Hyderabad. Direct online ordering available.",
   keywords: ["Women's fashion store in KPHB", "Kurtis in KPHB", "Dresses in Kukatpally", "Women's clothing Hyderabad", "Modern Maharani KPHB"],
   icons: {
-    icon: "/icon.png",
-    shortcut: "/favicon.ico",
-    apple: "/icon.png",
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' }
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/apple-icon.png' }
+    ]
   },
   openGraph: {
     title: "Modern Maharani — Premium Digital Showroom",
@@ -33,8 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

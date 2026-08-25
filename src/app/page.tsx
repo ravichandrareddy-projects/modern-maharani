@@ -24,53 +24,53 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-16 pb-16">
-      {/* 1. VIBRANT HERO SECTION */}
-      <section className="relative min-h-[82vh] flex items-center justify-center bg-[#1C1917] text-white overflow-hidden">
-        {/* Background Image with Overlay */}
+      {/* 1. FULL-SCREEN LUXURY HERO SECTION */}
+      <section className="relative min-h-[92vh] lg:min-h-[95vh] flex items-center justify-center bg-[#1C1917] text-white overflow-hidden">
+        {/* Background Image with Crisp Overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-50 scale-105 transition-transform duration-1000"
+          className="absolute inset-0 bg-cover bg-center opacity-60 scale-105 transition-transform duration-1000"
           style={{ backgroundImage: `url('${heroImage}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/50 to-black/40" />
 
         {/* Hero Glassmorphic Card Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6 py-16">
-          <div className="inline-flex items-center gap-2 bg-[#7A1C30]/90 text-white text-xs uppercase tracking-[0.25em] px-4 py-1.5 backdrop-blur-md shadow-md">
-            <Sparkles size={13} className="text-amber-300" /> KPHB Phase 1 • Kukatpally • Hyderabad
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8 py-20 sm:py-28 lg:py-36">
+          <div className="inline-flex items-center gap-2 bg-brand/90 text-white text-[11px] sm:text-xs uppercase tracking-[0.25em] px-5 py-2 backdrop-blur-md shadow-lg border border-white/20">
+            <Sparkles size={14} className="text-amber-300 animate-pulse" /> KPHB Phase 1 • Kukatpally • Hyderabad
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none drop-shadow-md">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight drop-shadow-2xl">
             {siteSettings.heroHeadline || "Style That Feels Like You."}
           </h1>
 
-          <p className="text-base sm:text-xl text-[#FAF8F5] font-light max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
+          <p className="text-base sm:text-xl md:text-2xl text-[#FAF8F5] font-light max-w-3xl mx-auto leading-relaxed drop-shadow-md">
             {siteSettings.heroSupportingText || "Explore contemporary women's fashion at Modern Maharani, KPHB."}
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
             <Link
               href="/shop"
-              className="w-full sm:w-auto bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-8 py-4 font-bold transition-all shadow-xl flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-brand hover:opacity-95 text-white text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold transition-all shadow-2xl flex items-center justify-center gap-2 border border-white/20"
             >
-              <ShoppingBag size={16} /> {siteSettings.heroPrimaryCtaText || "Shop Collection"}
+              <ShoppingBag size={18} /> {siteSettings.heroPrimaryCtaText || "Shop Collection"}
             </Link>
             <Link
               href="/visit-us"
-              className="w-full sm:w-auto bg-white/90 hover:bg-white text-[#1C1917] text-xs uppercase tracking-widest px-8 py-4 font-bold transition-all backdrop-blur-md shadow-xl flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-white/90 hover:bg-white text-[#1C1917] text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold transition-all backdrop-blur-md shadow-2xl flex items-center justify-center gap-2"
             >
-              <MapPin size={16} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
+              <MapPin size={18} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
             </Link>
           </div>
         </div>
       </section>
 
       {/* 2. QUICK BRAND INTRO */}
-      <section className="max-w-4xl mx-auto px-4 text-center space-y-4">
-        <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">
+      <section className="max-w-4xl mx-auto px-4 text-center space-y-4 pt-4">
+        <h2 className="font-serif text-3xl sm:text-5xl text-[#1C1917]">
           {siteSettings.introHeading || "Modern Fashion. Your Style."}
         </h2>
-        <div className="w-16 h-1 bg-[#7A1C30] mx-auto rounded-full" />
-        <p className="text-base sm:text-lg text-[#78716C] font-light leading-relaxed">
+        <div className="w-20 h-1 bg-brand mx-auto rounded-full" />
+        <p className="text-base sm:text-xl text-[#78716C] font-light leading-relaxed">
           {siteSettings.introCopy || "Modern Maharani brings together contemporary women's fashion for women who want to feel confident, stylish and effortlessly themselves."}
         </p>
       </section>
@@ -79,10 +79,10 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#E7E5E4] pb-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Curated Collections</span>
-            <h2 className="font-serif text-3xl text-[#1C1917]">Explore By Category</h2>
+            <span className="text-xs uppercase tracking-widest text-brand font-bold">Curated Collections</span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Explore By Category</h2>
           </div>
-          <Link href="/shop" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-bold flex items-center gap-1 mt-2 md:mt-0">
+          <Link href="/shop" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-brand font-bold flex items-center gap-1 mt-2 md:mt-0">
             View All Categories <ArrowRight size={14} />
           </Link>
         </div>
@@ -116,10 +116,10 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#E7E5E4] pb-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Fresh Showroom Racks</span>
-            <h2 className="font-serif text-3xl text-[#1C1917]">Just In — New Arrivals</h2>
+            <span className="text-xs uppercase tracking-widest text-brand font-bold">Fresh Showroom Racks</span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Just In — New Arrivals</h2>
           </div>
-          <Link href="/new-arrivals" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-bold flex items-center gap-1 mt-2 md:mt-0">
+          <Link href="/new-arrivals" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-brand font-bold flex items-center gap-1 mt-2 md:mt-0">
             View All New Arrivals <ArrowRight size={14} />
           </Link>
         </div>
@@ -135,7 +135,7 @@ export default async function HomePage() {
       <section className="bg-white border-y border-[#E7E5E4] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Style Filter</span>
+            <span className="text-xs uppercase tracking-widest text-brand font-bold">Style Filter</span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Find Your Look</h2>
             <p className="text-xs text-[#78716C] max-w-xl mx-auto">
               Filter outfits based on your personal style preference, mood, and occasion.
@@ -171,7 +171,7 @@ export default async function HomePage() {
         <div className="bg-[#1C1917] text-white p-8 sm:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <span className="text-xs uppercase tracking-[0.25em] text-[#E2D4C3] font-bold flex items-center gap-2">
-              <MapPin size={14} className="text-[#7A1C30]" /> KPHB Phase 1 • Kukatpally Showroom
+              <MapPin size={14} className="text-brand" /> KPHB Phase 1 • Kukatpally Showroom
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold leading-tight">
               {siteSettings.storeSectionHeading || "Come See It. Feel It. Try It."}
@@ -184,7 +184,7 @@ export default async function HomePage() {
               <p className="font-semibold text-white">Showroom Address:</p>
               <p>{storeInfo.addressLine}, {storeInfo.landmark}, {storeInfo.area}, {storeInfo.city} {storeInfo.pincode}</p>
               <p className="text-[#A8A29E] flex items-center gap-1.5 pt-1">
-                <Clock size={14} className="text-[#7A1C30]" /> {storeInfo.openingHours}
+                <Clock size={14} className="text-brand" /> {storeInfo.openingHours}
               </p>
             </div>
 
@@ -193,7 +193,7 @@ export default async function HomePage() {
                 href={storeInfo.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-bold transition-colors flex items-center gap-2"
+                className="bg-brand hover:opacity-90 text-white text-xs uppercase tracking-widest px-6 py-3.5 font-bold transition-colors flex items-center gap-2"
               >
                 <MapPin size={16} /> Get Directions
               </a>
@@ -227,7 +227,7 @@ export default async function HomePage() {
         <section className="bg-[#FAF8F5] border-t border-[#E7E5E4] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2">
-              <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Verified Feedback</span>
+              <span className="text-xs uppercase tracking-widest text-brand font-bold">Verified Feedback</span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Loved By Our Customers</h2>
             </div>
 
