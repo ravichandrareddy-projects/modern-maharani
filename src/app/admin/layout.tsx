@@ -72,12 +72,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-full md:w-64 bg-[#1C1917] text-white flex-shrink-0 flex flex-col justify-between p-6">
         <div className="space-y-8">
           {/* Admin Header */}
-          <div className="space-y-1 pb-6 border-b border-[#292524]">
-            <div className="flex items-center gap-2 text-brand font-semibold text-xs uppercase tracking-wider">
-              <ShieldCheck size={16} /> Store Control CMS
+          <div className="space-y-2 pb-6 border-b border-[#292524]">
+            <div className="flex items-center gap-3">
+              <img src="/images/logo.png" alt="Modern Maharani Logo" className="h-10 w-auto object-contain" />
+              <div>
+                <div className="flex items-center gap-1.5 text-brand font-semibold text-[10px] uppercase tracking-wider">
+                  <ShieldCheck size={14} /> Store CMS
+                </div>
+                <h2 className="font-serif text-lg font-bold tracking-wider text-white leading-none">MODERN MAHARANI</h2>
+              </div>
             </div>
-            <h2 className="font-serif text-xl font-bold tracking-wider text-white">MODERN MAHARANI</h2>
-            <p className="text-[10px] text-[#A8A29E] uppercase tracking-widest">KPHB Showroom Management</p>
+            <p className="text-[10px] text-[#A8A29E] uppercase tracking-widest pt-1">KPHB Showroom Management</p>
           </div>
 
           {/* Navigation Links */}

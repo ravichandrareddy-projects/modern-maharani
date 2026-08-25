@@ -66,28 +66,35 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-md py-2.5 border-b border-[#E7E5E4]'
-            : 'bg-white/80 backdrop-blur-sm py-3 border-b border-[#E7E5E4]'
+            ? 'bg-white/90 backdrop-blur-md shadow-md py-2 border-b border-[#E7E5E4]'
+            : 'bg-white/80 backdrop-blur-sm py-2.5 border-b border-[#E7E5E4]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Left: Mobile Hamburger & Inline Brand Logo */}
+          {/* Left: Mobile Hamburger & Official Brand Logo */}
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden text-[#1C1917] p-1.5 hover:text-[#7A1C30] transition-colors"
+              className="lg:hidden text-[#1C1917] p-1.5 hover:text-brand transition-colors"
               aria-label="Open Navigation Menu"
             >
               <Menu size={22} />
             </button>
 
-            <Link href="/" className="flex items-center space-x-2 group">
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-[#1C1917] group-hover:text-[#7A1C30] transition-colors">
-                MODERN MAHARANI
-              </span>
-              <span className="hidden sm:inline-block text-[9px] uppercase tracking-widest text-[#78716C] border-l border-[#E7E5E4] pl-2 font-medium">
-                KPHB
-              </span>
+            <Link href="/" className="flex items-center space-x-2.5 group">
+              <img
+                src="/images/logo.png"
+                alt="Modern Maharani Logo"
+                className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-lg sm:text-xl font-bold tracking-wider text-[#1C1917] group-hover:text-brand transition-colors leading-none">
+                  MODERN MAHARANI
+                </span>
+                <span className="text-[9px] uppercase tracking-widest text-[#78716C] font-semibold pt-0.5">
+                  KPHB Kukatpally
+                </span>
+              </div>
             </Link>
           </div>
 
@@ -99,10 +106,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-xs uppercase tracking-widest font-medium transition-all py-1 ${
+                  className={`text-xs uppercase tracking-widest font-semibold transition-all py-1 ${
                     isActive
-                      ? 'text-[#7A1C30] font-bold border-b-2 border-[#7A1C30]'
-                      : 'text-[#1C1917] hover:text-[#7A1C30]'
+                      ? 'text-brand font-bold border-b-2 border-brand'
+                      : 'text-[#1C1917] hover:text-brand'
                   }`}
                 >
                   {link.name}
@@ -115,7 +122,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-3 sm:space-x-4">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors"
+              className="text-[#1C1917] hover:text-brand p-1.5 transition-colors"
               aria-label="Search Collection"
             >
               <Search size={19} />
@@ -123,12 +130,12 @@ export default function Navbar() {
 
             <Link
               href="/shop?wishlist=true"
-              className="relative text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors"
+              className="relative text-[#1C1917] hover:text-brand p-1.5 transition-colors"
               aria-label="View Wishlist"
             >
               <Heart size={19} />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#7A1C30] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <span className="absolute -top-1 -right-1 bg-brand text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {wishlistCount}
                 </span>
               )}
@@ -137,12 +144,12 @@ export default function Navbar() {
             {/* Shopping Cart Drawer Trigger */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors flex items-center gap-1"
+              className="relative text-[#1C1917] hover:text-brand p-1.5 transition-colors flex items-center gap-1"
               aria-label="Shopping Cart"
             >
               <ShoppingBag size={20} />
               {cartCount > 0 && (
-                <span className="bg-[#7A1C30] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <span className="bg-brand text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {cartCount}
                 </span>
               )}
@@ -151,7 +158,7 @@ export default function Navbar() {
             {/* Admin CMS Access */}
             <Link
               href="/admin/login"
-              className="hidden sm:flex items-center gap-1 text-[11px] font-semibold text-[#78716C] hover:text-[#7A1C30] transition-colors border border-[#E7E5E4] px-2.5 py-1"
+              className="hidden sm:flex items-center gap-1 text-[11px] font-semibold text-[#78716C] hover:text-brand transition-colors border border-[#E7E5E4] px-2.5 py-1"
               title="Admin Panel"
             >
               <ShieldCheck size={14} />
@@ -175,7 +182,7 @@ export default function Navbar() {
               />
               <button
                 type="submit"
-                className="bg-[#1C1917] text-white text-xs uppercase tracking-wider px-4 py-1.5 font-medium hover:bg-[#7A1C30] transition-colors"
+                className="bg-[#1C1917] text-white text-xs uppercase tracking-wider px-4 py-1.5 font-medium hover:bg-brand transition-colors"
               >
                 Search
               </button>
@@ -201,9 +208,12 @@ export default function Navbar() {
           <div className="relative w-4/5 max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col justify-between p-6">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#E7E5E4]">
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-[#1C1917]">MODERN MAHARANI</h2>
-                  <p className="text-[10px] uppercase tracking-widest text-[#78716C]">KPHB Kukatpally</p>
+                <div className="flex items-center gap-2">
+                  <img src="/images/logo.png" alt="Logo" className="h-8 w-auto" />
+                  <div>
+                    <h2 className="font-serif text-lg font-bold text-[#1C1917]">MODERN MAHARANI</h2>
+                    <p className="text-[10px] uppercase tracking-widest text-[#78716C]">KPHB Kukatpally</p>
+                  </div>
                 </div>
                 <button onClick={() => setMobileMenuOpen(false)} className="p-1 text-[#1C1917]">
                   <X size={22} />
@@ -217,7 +227,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`text-xs uppercase tracking-widest font-semibold py-1.5 transition-colors ${
-                      pathname === link.href ? 'text-[#7A1C30] font-bold' : 'text-[#1C1917] hover:text-[#7A1C30]'
+                      pathname === link.href ? 'text-brand font-bold' : 'text-[#1C1917] hover:text-brand'
                     }`}
                   >
                     {link.name}
@@ -232,7 +242,7 @@ export default function Navbar() {
                   setMobileMenuOpen(false);
                   setIsCartOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2 bg-[#7A1C30] text-white py-3 text-xs uppercase tracking-widest font-bold"
+                className="w-full flex items-center justify-center gap-2 bg-brand text-white py-3 text-xs uppercase tracking-widest font-bold"
               >
                 <ShoppingBag size={16} /> View Shopping Cart ({cartCount})
               </button>
