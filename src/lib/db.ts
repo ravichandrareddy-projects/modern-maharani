@@ -1,0 +1,368 @@
+import fs from 'fs';
+import path from 'path';
+import { StoreData, Product, CustomerEnquiry, WhatsAppLead, Banner, Review, VideoItem, Category, Collection, StoreInfo, SiteSettings } from './types';
+
+const DATA_DIR = path.join(process.cwd(), 'src', 'data');
+const DATA_FILE = path.join(DATA_DIR, 'store.json');
+
+const INITIAL_STORE_DATA: StoreData = {
+  storeInfo: {
+    name: "Modern Maharani",
+    tagline: "Contemporary Women's Fashion Showroom",
+    addressLine: "Flat-101, MIG-37, Road Number 1",
+    landmark: "opposite Global Eye Hospital, beside Swiss Castle Line",
+    area: "KPHB Phase 1, Kukatpally",
+    city: "Hyderabad, Telangana",
+    pincode: "500072",
+    phone: "+91 98765 43210",
+    whatsappNumber: "919876543210",
+    email: "enquire@modernmaharani.com",
+    googleMapsUrl: "https://maps.google.com/?q=Modern+Maharani+KPHB+Phase+1+Kukatpally+Hyderabad",
+    googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.289417849646!2d78.397082!3d17.488921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb917d0a28a385%3A0x86b039474776b38c!2sKPHB%20Phase%201%2C%20Kukatpally%2C%20Hyderabad%2C%20Telangana%20500072!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    openingHours: "Mon - Sun: 10:30 AM - 9:00 PM"
+  },
+  siteSettings: {
+    heroHeadline: "Style That Feels Like You.",
+    heroAlternativeHeadline: "Discover Your Modern Maharani.",
+    heroSupportingText: "Explore contemporary women's fashion at Modern Maharani, KPHB.",
+    heroPrimaryCtaText: "Explore Collection",
+    heroSecondaryCtaText: "Visit Our Store",
+    introHeading: "Modern Fashion. Your Style.",
+    introCopy: "Modern Maharani brings together contemporary women's fashion for women who want to feel confident, stylish and effortlessly themselves.",
+    storeSectionHeading: "Come See It. Feel It. Try It.",
+    storeSectionCopy: "Some outfits just look better when you see them in person. Visit Modern Maharani at KPHB and explore the collection for yourself.",
+    metaTitle: "Modern Maharani | Women's Fashion Showroom in KPHB, Kukatpally, Hyderabad",
+    metaDescription: "Discover contemporary women's fashion, Kurtis, dresses, and occasion wear at Modern Maharani in KPHB, Kukatpally, Hyderabad. Visit our digital showroom today."
+  },
+  categories: [
+    {
+      id: "cat-1",
+      slug: "kurtis",
+      name: "Kurtis",
+      description: "Contemporary and everyday styles crafted with effortless elegance.",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-2",
+      slug: "dresses",
+      name: "Dresses",
+      description: "Modern silhouettes and chic cuts for every occasion.",
+      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-3",
+      slug: "occasion-wear",
+      name: "Occasion Wear",
+      description: "Statement looks crafted for celebrations and unforgettable moments.",
+      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-4",
+      slug: "new-arrivals",
+      name: "New Arrivals",
+      description: "Fresh styles and seasonal edits hot off our showroom racks.",
+      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+    }
+  ],
+  collections: [
+    {
+      id: "col-1",
+      slug: "festive-edit-2026",
+      title: "Festive Edit",
+      description: "Vibrant hues, intricate embellishments, and graceful drapes for upcoming celebrations.",
+      heroImage: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
+      isFeatured: true,
+      isPublished: true,
+      startDate: "2026-01-01"
+    },
+    {
+      id: "col-2",
+      slug: "everyday-elegance",
+      title: "Everyday Edit",
+      description: "Breathable fabrics, tailored silhouettes, and understated elegance for daily wear.",
+      heroImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
+      isFeatured: true,
+      isPublished: true,
+      startDate: "2026-02-01"
+    },
+    {
+      id: "col-3",
+      slug: "occasion-edit",
+      title: "Occasion Edit",
+      description: "Sophisticated ensembles designed to make every evening memorable.",
+      heroImage: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop",
+      isFeatured: true,
+      isPublished: true,
+      startDate: "2026-02-15"
+    }
+  ],
+  products: [
+    {
+      id: "prod-1",
+      slug: "wine-embroidery-kurti-set",
+      name: "Wine Embroidered Tunic & Trouser Set",
+      category: "Kurtis",
+      collectionSlug: "festive-edit-2026",
+      price: 3490,
+      salePrice: 2990,
+      description: "A gorgeous deep wine tunic set with delicate golden threadwork and straight-cut trousers. Perfect for festive gatherings and intimate celebrations at Modern Maharani KPHB.",
+      fabric: "Silk Blend",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      colors: ["Wine", "Burgundy"],
+      images: [
+        "/images/hero_banner.jpg",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Available",
+      isNewArrival: true,
+      isFeatured: true,
+      tags: ["Elegant", "Festive", "Statement"],
+      seoTitle: "Wine Embroidered Kurti Set | Modern Maharani KPHB",
+      seoDescription: "Shop deep wine embroidered kurti set at Modern Maharani showroom in KPHB Phase 1 Kukatpally.",
+      createdAt: "2026-08-10"
+    },
+    {
+      id: "prod-2",
+      slug: "rose-chanderi-straight-kurti",
+      name: "Rose Pink Chanderi Straight Kurti",
+      category: "Kurtis",
+      collectionSlug: "everyday-elegance",
+      price: 2450,
+      description: "Lightweight rose pink Chanderi kurti with delicate neck embroidery. Ideal for effortless day-to-evening dressing.",
+      fabric: "Chanderi Cotton",
+      sizes: ["M", "L", "XL"],
+      colors: ["Rose Pink", "Soft Blush"],
+      images: [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Check Availability",
+      isNewArrival: true,
+      isFeatured: false,
+      tags: ["Minimal", "Contemporary", "Elegant"],
+      seoTitle: "Rose Pink Chanderi Kurti | Modern Maharani KPHB",
+      seoDescription: "Discover Rose Pink Chanderi Kurti in KPHB Kukatpally at Modern Maharani fashion showroom.",
+      createdAt: "2026-08-12"
+    },
+    {
+      id: "prod-3",
+      slug: "champagne-tiered-anarkali-dress",
+      name: "Champagne Tiered Anarkali Indo-Western Dress",
+      category: "Dresses",
+      collectionSlug: "occasion-edit",
+      price: 4990,
+      salePrice: 4490,
+      description: "Modern tiered silhouette in champagne tone featuring subtle sequin highlight and breathable flowy fabric.",
+      fabric: "Georgette",
+      sizes: ["S", "M", "L", "XL"],
+      colors: ["Champagne", "Soft Gold"],
+      images: [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Limited Stock",
+      isNewArrival: true,
+      isFeatured: true,
+      tags: ["Contemporary", "Statement", "Festive"],
+      seoTitle: "Champagne Tiered Indo-Western Dress | Modern Maharani KPHB",
+      seoDescription: "Shop Champagne Tiered Anarkali Dress at Modern Maharani fashion showroom in KPHB Kukatpally Hyderabad.",
+      createdAt: "2026-08-14"
+    },
+    {
+      id: "prod-4",
+      slug: "emerald-velvet-occasion-suit",
+      name: "Emerald Green Zari Embroidered Velvet Suit",
+      category: "Occasion Wear",
+      collectionSlug: "festive-edit-2026",
+      price: 7200,
+      description: "Royal emerald green velvet ensemble with gold zari neckline and scalloped dupatta.",
+      fabric: "Micro Velvet & Organza",
+      sizes: ["M", "L", "XL"],
+      colors: ["Emerald Green"],
+      images: [
+        "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Check Availability",
+      isNewArrival: false,
+      isFeatured: true,
+      tags: ["Statement", "Festive", "Elegant"],
+      seoTitle: "Emerald Velvet Occasion Suit | Modern Maharani KPHB",
+      seoDescription: "Royal Emerald Velvet Suit at Modern Maharani Hyderabad Kukatpally.",
+      createdAt: "2026-08-01"
+    },
+    {
+      id: "prod-5",
+      slug: "mustard-floral-fusion-dress",
+      name: "Mustard Floral Print Fusion Dress",
+      category: "Dresses",
+      collectionSlug: "everyday-elegance",
+      price: 3200,
+      description: "Chic contemporary fusion dress with subtle gathers and belt detail for modern women.",
+      fabric: "Crepe Silk",
+      sizes: ["S", "M", "L"],
+      colors: ["Mustard Yellow", "Warm Ochre"],
+      images: [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Available",
+      isNewArrival: true,
+      isFeatured: false,
+      tags: ["Minimal", "Contemporary"],
+      seoTitle: "Mustard Fusion Dress | Modern Maharani Kukatpally",
+      seoDescription: "Contemporary Mustard Floral Fusion Dress available at Modern Maharani KPHB Hyderabad.",
+      createdAt: "2026-08-16"
+    },
+    {
+      id: "prod-6",
+      slug: "powder-blue-georgette-flared-kurti",
+      name: "Powder Blue Flared Georgette Kurti with Dupatta",
+      category: "Kurtis",
+      collectionSlug: "everyday-elegance",
+      price: 2990,
+      description: "Soft powder blue flared kurti set accented with subtle mirror embroidery and lightweight organza dupatta.",
+      fabric: "Georgette & Organza",
+      sizes: ["M", "L", "XL", "XXL"],
+      colors: ["Powder Blue"],
+      images: [
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Check Availability",
+      isNewArrival: true,
+      isFeatured: true,
+      tags: ["Elegant", "Minimal", "Contemporary"],
+      seoTitle: "Powder Blue Georgette Kurti | Modern Maharani KPHB",
+      seoDescription: "Flared Powder Blue Georgette Kurti set at Modern Maharani fashion store Kukatpally.",
+      createdAt: "2026-08-17"
+    }
+  ],
+  banners: [
+    {
+      id: "ban-1",
+      headline: "Style That Feels Like You.",
+      subheadline: "Explore contemporary women's fashion at Modern Maharani, KPHB.",
+      image: "/images/hero_banner.jpg",
+      ctaText: "Explore Collection",
+      ctaDestination: "/shop",
+      active: true
+    }
+  ],
+  enquiries: [
+    {
+      id: "enq-1",
+      customerName: "Radhika K.",
+      phone: "+91 98490 12345",
+      email: "radhika@example.com",
+      productName: "Wine Embroidered Tunic & Trouser Set",
+      productSlug: "wine-embroidery-kurti-set",
+      categoryInterested: "Kurtis",
+      message: "Hi Modern Maharani, I want to check availability for size XL in your KPHB store.",
+      status: "Visit Planned",
+      adminNotes: "Customer planning store visit on Saturday 4 PM.",
+      createdAt: "2026-08-18 11:30"
+    },
+    {
+      id: "enq-2",
+      customerName: "Sravanthi M.",
+      phone: "+91 97001 88990",
+      email: "sravanthi@example.com",
+      productName: "Champagne Tiered Anarkali Indo-Western Dress",
+      productSlug: "champagne-tiered-anarkali-dress",
+      categoryInterested: "Dresses",
+      message: "Could you share the price and size chart for the Champagne dress?",
+      status: "Contacted",
+      adminNotes: "Sent size details via WhatsApp.",
+      createdAt: "2026-08-18 14:15"
+    }
+  ],
+  whatsAppLeads: [
+    {
+      id: "lead-1",
+      productName: "Wine Embroidered Tunic & Trouser Set",
+      productSlug: "wine-embroidery-kurti-set",
+      sourcePage: "Product Detail",
+      ctaClicked: "Enquire on WhatsApp Button",
+      timestamp: "2026-08-18 11:32"
+    },
+    {
+      id: "lead-2",
+      productName: "Rose Pink Chanderi Straight Kurti",
+      productSlug: "rose-chanderi-straight-kurti",
+      sourcePage: "Catalog",
+      ctaClicked: "Quick WhatsApp CTA",
+      timestamp: "2026-08-18 16:45"
+    }
+  ],
+  reviews: [
+    {
+      id: "rev-1",
+      customerName: "Ananya Reddy",
+      rating: 5,
+      reviewText: "Modern Maharani at KPHB has the best contemporary Kurti and Dress collections! The fabrics feel so premium and comfortable.",
+      date: "2026-08-05",
+      approved: true
+    },
+    {
+      id: "rev-2",
+      customerName: "Priya Sharma",
+      rating: 5,
+      reviewText: "Visited the store opposite Global Eye Hospital last week. Beautiful ambiance and lovely occasion wear! Enquired on WhatsApp first and they kept it ready for me to try.",
+      date: "2026-08-11",
+      approved: true
+    },
+    {
+      id: "rev-3",
+      customerName: "Sneha Rao",
+      rating: 5,
+      reviewText: "Super stylish dresses and daily wear Kurtis. Loved the showroom shopping experience in Kukatpally.",
+      date: "2026-08-15",
+      approved: true
+    }
+  ],
+  videos: [
+    {
+      id: "vid-1",
+      title: "Festive Edit 2026 — Modern Maharani Showroom Walkthrough",
+      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      embedId: "dQw4w9WgXcQ",
+      thumbnail: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
+      featured: true
+    }
+  ],
+  analytics: {
+    totalProducts: 6,
+    newArrivalsCount: 5,
+    enquiriesCount: 2,
+    whatsAppLeadsCount: 2,
+    pageViews: 1420,
+    topCategory: "Kurtis",
+    topProduct: "Wine Embroidered Tunic & Trouser Set"
+  }
+};
+
+function ensureDataFile() {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(DATA_FILE)) {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(INITIAL_STORE_DATA, null, 2), 'utf-8');
+  }
+}
+
+export function getStoreData(): StoreData {
+  ensureDataFile();
+  try {
+    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+    return JSON.parse(raw) as StoreData;
+  } catch (err) {
+    console.error("Error reading store data, returning default:", err);
+    return INITIAL_STORE_DATA;
+  }
+}
+
+export function saveStoreData(data: StoreData): void {
+  ensureDataFile();
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+}
