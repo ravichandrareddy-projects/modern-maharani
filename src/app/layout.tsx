@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import ThemeInjector from "@/components/ThemeInjector";
 import { CartProvider } from "@/lib/cartContext";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
         <LocalBusinessSchema />
       </head>
       <body className="min-h-screen flex flex-col antialiased selection:bg-[#7A1C30] selection:text-white">
+        <ThemeInjector />
         <CartProvider>
           <Navbar />
           <main className="flex-grow">{children}</main>

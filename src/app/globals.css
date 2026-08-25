@@ -10,6 +10,7 @@
     --text-charcoal: #1C1917;
     --text-muted: #78716C;
     --accent-wine: #7A1C30;
+    --primary-brand: #7A1C30;
     --accent-wine-hover: #5F1524;
     --accent-champagne: #E2D4C3;
     --accent-gold: #C5A059;
@@ -30,6 +31,27 @@
   }
 }
 
+/* Dynamic Brand Theme Utility Classes */
+.bg-brand {
+  background-color: var(--primary-brand, #7A1C30) !important;
+}
+
+.text-brand {
+  color: var(--primary-brand, #7A1C30) !important;
+}
+
+.border-brand {
+  border-color: var(--primary-brand, #7A1C30) !important;
+}
+
+.hover-bg-brand:hover {
+  background-color: var(--primary-brand, #7A1C30) !important;
+}
+
+.hover-text-brand:hover {
+  color: var(--primary-brand, #7A1C30) !important;
+}
+
 /* Custom Editorial Animation & Styling Utilities */
 .editorial-hero-bg {
   background-position: center;
@@ -38,12 +60,12 @@
 }
 
 .luxury-card-shadow {
-  box-shadow: 0 10px 30px -10px rgba(28, 25, 23, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(28, 25, 23, 0.08);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .luxury-card-shadow:hover {
-  box-shadow: 0 20px 40px -15px rgba(122, 28, 48, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(122, 28, 48, 0.15);
   transform: translateY(-4px);
 }
 
@@ -71,5 +93,5 @@
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7A1C30;
+  background: var(--primary-brand, #7A1C30);
 }

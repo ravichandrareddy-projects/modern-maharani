@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { StoreData, Order, OrderStatus } from '@/lib/types';
-import { ShoppingBag, Clock, Phone, Mail, MapPin, Truck, Store, Check, Save } from 'lucide-react';
+import { PackageCheck, Clock, Phone, Mail, MapPin, Truck, Store, Check, Save, User, ShoppingBag } from 'lucide-react';
 
 export default function AdminOrdersPage() {
   const [storeData, setStoreData] = useState<StoreData | null>(null);
@@ -58,7 +58,7 @@ export default function AdminOrdersPage() {
   };
 
   if (loading || !storeData) {
-    return <div className="text-center py-20 text-xs uppercase tracking-widest text-[#78716C]">Loading Received Orders...</div>;
+    return <div className="text-center py-20 text-sm uppercase tracking-widest text-[#78716C]">Loading Store Orders...</div>;
   }
 
   const ordersList = storeData.orders || [];
@@ -77,30 +77,36 @@ export default function AdminOrdersPage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E7E5E4]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E7E5E4]">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-[#1C1917]">Store Orders Management</h1>
-          <p className="text-xs text-[#78716C]">View and manage incoming customer orders, delivery types, and payment statuses.</p>
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#1C1917]">Store Customer Orders</h1>
+          <p className="text-sm text-[#78716C] mt-1">
+            Manage incoming orders, delivery types, customer contacts, and size choices.
+          </p>
         </div>
 
         {/* Filter Status Tabs */}
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setSelectedStatus('All')}
-            className={`text-xs uppercase tracking-wider px-3 py-1.5 font-semibold border ${
-              selectedStatus === 'All' ? 'bg-[#7A1C30] text-white border-[#7A1C30]' : 'bg-white text-[#1C1917]'
+            className={`text-xs uppercase tracking-wider px-4 py-2 font-bold border transition-colors ${
+              selectedStatus === 'All'
+                ? 'bg-brand text-white border-transparent'
+                : 'bg-white text-[#1C1917] border-[#E7E5E4] hover:border-[#1C1917]'
             }`}
           >
-            All ({ordersList.length})
+            All Orders ({ordersList.length})
           </button>
           {orderStatuses.map((st) => (
             <button
               key={st}
               onClick={() => setSelectedStatus(st)}
-              className={`text-xs uppercase tracking-wider px-3 py-1.5 font-semibold border ${
-                selectedStatus === st ? 'bg-[#7A1C30] text-white border-[#7A1C30]' : 'bg-white text-[#1C1917]'
+              className={`text-xs uppercase tracking-wider px-4 py-2 font-bold border transition-colors ${
+                selectedStatus === st
+                  ? 'bg-brand text-white border-transparent'
+                  : 'bg-white text-[#1C1917] border-[#E7E5E4] hover:border-[#1C1917]'
               }`}
             >
               {st} ({ordersList.filter((o) => o.status === st).length})
@@ -111,46 +117,45 @@ export default function AdminOrdersPage() {
 
       {/* Orders List */}
       {filteredOrders.length === 0 ? (
-        <div className="bg-white p-12 text-center text-[#78716C] border border-[#E7E5E4]">
-          No customer orders found matching this status filter.
+        <div className="bg-white p-16 text-center text-[#78716C] border border-[#E7E5E4] shadow-sm">
+          <PackageCheck size={48} className="mx-auto text-stone-300 mb-3" />
+          <p className="font-serif text-xl text-[#1C1917]">No orders found for status "{selectedStatus}".</p>
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-8">
           {filteredOrders.map((ord) => (
-            <div key={ord.id} className="bg-white p-6 border border-[#E7E5E4] shadow-sm space-y-4">
-              {/* Order Top Summary */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E7E5E4]">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-serif text-xl font-bold text-[#7A1C30]">{ord.orderNumber}</span>
-                    <span className="bg-stone-100 text-[#1C1917] text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider border border-[#E7E5E4]">
+            <div
+              key={ord.id}
+              className="bg-white p-6 sm:p-8 border-2 border-[#E7E5E4] rounded-lg shadow-md space-y-6 transition-all hover:border-[#1C1917]"
+            >
+              {/* Top Banner: Prominent Order ID & Status */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b-2 border-[#FAF8F5]">
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-3">
+                    {/* Large Readable Order ID */}
+                    <span className="font-mono text-2xl sm:text-3xl font-black text-brand bg-brand/10 px-4 py-1.5 rounded border border-brand/20">
+                      {ord.orderNumber}
+                    </span>
+
+                    {/* Delivery Badge */}
+                    <span className="bg-[#1C1917] text-white text-xs font-bold px-3 py-1.5 uppercase tracking-wider rounded flex items-center gap-1.5">
+                      {ord.deliveryType.includes('Pickup') ? <Store size={14} /> : <Truck size={14} />}
                       {ord.deliveryType}
                     </span>
-                    <span className="text-[10px] text-[#78716C] flex items-center gap-1">
-                      <Clock size={12} /> {ord.createdAt}
-                    </span>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-[#78716C] pt-2">
-                    <span className="font-bold text-[#1C1917]">{ord.customerName}</span>
-                    <span className="flex items-center gap-1 font-semibold text-[#1C1917]">
-                      <Phone size={13} className="text-[#7A1C30]" />
-                      <a href={`tel:${ord.phone}`} className="hover:underline">{ord.phone}</a>
-                    </span>
-                    {ord.email && <span>Mail: {ord.email}</span>}
-                    <span className="bg-emerald-50 text-emerald-800 font-semibold px-2 py-0.5 border border-emerald-200">
-                      Payment: {ord.paymentMethod}
-                    </span>
-                  </div>
+                  <p className="text-xs text-[#78716C] flex items-center gap-1.5 pt-1">
+                    <Clock size={14} /> Order Placed On: <span className="font-semibold text-[#1C1917]">{ord.createdAt}</span>
+                  </p>
                 </div>
 
-                {/* Status Dropdown */}
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] uppercase font-bold text-[#78716C]">Order Status:</span>
+                {/* Status Dropdown Selector */}
+                <div className="flex items-center gap-3 bg-[#FAF8F5] p-3 border border-[#E7E5E4] rounded-md">
+                  <span className="text-xs uppercase font-bold text-[#1C1917]">Order Status:</span>
                   <select
                     value={ord.status}
                     onChange={(e) => handleUpdateOrder(ord.id, e.target.value as OrderStatus)}
-                    className="text-xs p-2 bg-[#FAF8F5] border border-[#E7E5E4] font-bold text-[#7A1C30]"
+                    className="text-sm font-bold p-2 bg-white border border-[#E7E5E4] text-brand focus:outline-none cursor-pointer"
                   >
                     {orderStatuses.map((st) => (
                       <option key={st} value={st}>{st}</option>
@@ -159,57 +164,115 @@ export default function AdminOrdersPage() {
                 </div>
               </div>
 
-              {/* Delivery Address (If Home Delivery) */}
-              {ord.deliveryType === 'Home Delivery' && ord.shippingAddress && (
-                <div className="p-3 bg-[#FAF8F5] border border-[#E7E5E4] text-xs space-y-1">
-                  <span className="font-bold uppercase text-[#7A1C30] flex items-center gap-1">
-                    <MapPin size={14} /> Shipping Address:
+              {/* Customer Contact Details Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#FAF8F5] p-5 border border-[#E7E5E4] rounded-md text-sm">
+                <div className="space-y-1">
+                  <span className="text-xs uppercase font-bold text-[#78716C] flex items-center gap-1">
+                    <User size={14} className="text-brand" /> Customer Name:
                   </span>
-                  <p className="text-[#1C1917]">{ord.shippingAddress}</p>
+                  <p className="font-serif text-lg font-bold text-[#1C1917]">{ord.customerName}</p>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-xs uppercase font-bold text-[#78716C] flex items-center gap-1">
+                    <Phone size={14} className="text-brand" /> Phone Number:
+                  </span>
+                  <p className="font-mono text-base font-bold text-[#1C1917]">
+                    <a href={`tel:${ord.phone}`} className="hover:text-brand hover:underline">{ord.phone}</a>
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-xs uppercase font-bold text-[#78716C]">Payment Method:</span>
+                  <p className="font-bold text-emerald-800 text-sm bg-emerald-100/80 px-2.5 py-1 inline-block border border-emerald-300 rounded">
+                    {ord.paymentMethod}
+                  </p>
+                </div>
+              </div>
+
+              {/* Shipping Address (If Delivery) */}
+              {ord.deliveryType === 'Home Delivery' && ord.shippingAddress && (
+                <div className="p-4 bg-[#FAF8F5] border border-[#E7E5E4] rounded-md text-sm space-y-1">
+                  <span className="font-bold uppercase text-xs text-brand flex items-center gap-1.5">
+                    <MapPin size={15} /> Delivery Shipping Address:
+                  </span>
+                  <p className="text-[#1C1917] font-medium text-base leading-relaxed">{ord.shippingAddress}</p>
                 </div>
               )}
 
-              {/* Items Table */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">Ordered Items:</h4>
-                <div className="space-y-2">
+              {/* Ordered Items Table */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-[#1C1917] flex items-center gap-2">
+                  <ShoppingBag size={16} className="text-brand" /> Ordered Items & Sizes ({ord.items.length}):
+                </h4>
+
+                <div className="space-y-3">
                   {ord.items.map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-2.5 bg-[#FAF8F5] border border-[#E7E5E4] text-xs">
-                      <div className="flex items-center gap-3">
-                        <img src={item.image} alt={item.productName} className="w-10 h-12 object-cover border border-[#E7E5E4]" />
-                        <div>
-                          <span className="font-bold text-[#1C1917] block">{item.productName}</span>
-                          <span className="text-[10px] text-[#78716C]">Size: {item.selectedSize} | Qty: {item.quantity}</span>
+                    <div
+                      key={idx}
+                      className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-[#FAF8F5] border border-[#E7E5E4] rounded-md gap-4"
+                    >
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={item.image}
+                          alt={item.productName}
+                          className="w-16 h-20 object-cover border border-[#E7E5E4] rounded shrink-0"
+                        />
+                        <div className="space-y-1">
+                          <h5 className="font-serif text-lg font-bold text-[#1C1917]">{item.productName}</h5>
+                          <div className="flex items-center gap-3 text-sm">
+                            <span className="bg-brand text-white font-bold px-3 py-1 text-xs uppercase tracking-wider rounded">
+                              Selected Size: {item.selectedSize}
+                            </span>
+                            <span className="font-bold text-[#1C1917]">Qty: {item.quantity}</span>
+                          </div>
                         </div>
                       </div>
-                      <span className="font-bold text-[#7A1C30]">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
+
+                      <div className="text-right shrink-0">
+                        <span className="text-xs text-[#78716C] block">Unit Price: ₹{item.price.toLocaleString('en-IN')}</span>
+                        <span className="font-bold text-xl text-brand block">
+                          Total: ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Amount Breakdown & Staff Notes */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-[#E7E5E4] text-xs">
-                <div className="flex-1 w-full">
-                  <input
-                    type="text"
-                    placeholder="Add internal staff note (e.g. Dispatched via Swiggy/Courier)..."
-                    defaultValue={ord.notes || ''}
-                    onBlur={(e) => handleUpdateOrder(ord.id, ord.status, e.target.value)}
-                    className="w-full text-xs p-2 bg-[#FAF8F5] border border-[#E7E5E4] text-[#1C1917]"
-                  />
-                  {savingId === ord.id && <span className="text-[10px] text-emerald-600 font-bold">Saved!</span>}
+              {/* Footer Notes & Total Summary */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t-2 border-[#FAF8F5]">
+                <div className="flex-1 w-full max-w-lg">
+                  <label className="block text-xs uppercase font-bold text-[#78716C] mb-1">
+                    Store Staff Internal Note:
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Add note e.g. Customer called, dispatched via courier..."
+                      defaultValue={ord.notes || ''}
+                      onBlur={(e) => handleUpdateOrder(ord.id, ord.status, e.target.value)}
+                      className="w-full text-sm p-3 bg-[#FAF8F5] border border-[#E7E5E4] text-[#1C1917] focus:outline-none focus:border-brand"
+                    />
+                  </div>
+                  {savingId === ord.id && <span className="text-xs text-emerald-600 font-bold mt-1 block">Saved!</span>}
                 </div>
 
-                <div className="text-right space-y-1 shrink-0">
+                <div className="text-right space-y-1 shrink-0 bg-[#FAF8F5] p-4 border border-[#E7E5E4] rounded-md min-w-[240px]">
+                  <div className="flex justify-between text-xs text-[#78716C]">
+                    <span>Subtotal:</span>
+                    <span>₹{ord.subtotal.toLocaleString('en-IN')}</span>
+                  </div>
                   {ord.discountAmount > 0 && (
-                    <span className="text-[11px] text-emerald-700 font-medium block">
-                      Coupon ({ord.appliedCoupon}): -₹{ord.discountAmount.toLocaleString('en-IN')}
-                    </span>
+                    <div className="flex justify-between text-xs text-emerald-700 font-semibold">
+                      <span>Discount ({ord.appliedCoupon}):</span>
+                      <span>-₹{ord.discountAmount.toLocaleString('en-IN')}</span>
+                    </div>
                   )}
-                  <span className="font-bold text-base text-[#7A1C30] block">
-                    Total: ₹{ord.totalAmount.toLocaleString('en-IN')}
-                  </span>
+                  <div className="flex justify-between text-lg font-bold text-brand pt-2 border-t border-[#E7E5E4]">
+                    <span>Order Total:</span>
+                    <span>₹{ord.totalAmount.toLocaleString('en-IN')}</span>
+                  </div>
                 </div>
               </div>
             </div>
