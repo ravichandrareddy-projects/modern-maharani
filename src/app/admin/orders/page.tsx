@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { StoreData, Order, OrderStatus } from '@/lib/types';
-import { PackageCheck, Clock, Phone, Mail, MapPin, Truck, Store, Check, Save, User, ShoppingBag } from 'lucide-react';
+import { PackageCheck, Clock, Phone, Mail, MapPin, Truck, Store, Check, Save, User, ShoppingBag, MessageCircle, Send } from 'lucide-react';
 
 export default function AdminOrdersPage() {
   const [storeData, setStoreData] = useState<StoreData | null>(null);
@@ -57,6 +57,19 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const getWhatsAppOrderLink = (ord: Order) => {
+    const rawPhone = ord.phone.replace(/[^0-9]/g, '');
+    const phoneWithCountry = rawPhone.length === 10 ? `91${rawPhone}` : rawPhone;
+    const firstItem = ord.items[0];
+    const itemSummary = firstItem
+      ? `${firstItem.productName} (Size: ${firstItem.selectedSize})`
+      : 'your outfits';
+
+    const text = `Hello ${ord.customerName}! 🌸\nThis is Modern Maharani Showroom, KPHB Kukatpally.\n\nWe have updated your Order *${ord.orderNumber}* (${itemSummary}).\n\n📌 *Order Status*: ${ord.status}\n📍 *Delivery/Pickup*: ${ord.deliveryType}\n💰 *Total Amount*: ₹${ord.totalAmount.toLocaleString('en-IN')}\n\nThank you for choosing Modern Maharani!`;
+
+    return `https://wa.me/${phoneWithCountry}?text=${encodeURIComponent(text)}`;
+  };
+
   if (loading || !storeData) {
     return <div className="text-center py-20 text-sm uppercase tracking-widest text-[#78716C]">Loading Store Orders...</div>;
   }
@@ -83,7 +96,7 @@ export default function AdminOrdersPage() {
         <div>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#1C1917]">Store Customer Orders</h1>
           <p className="text-sm text-[#78716C] mt-1">
-            Manage incoming orders, delivery types, customer contacts, and size choices.
+            Manage incoming orders, customer WhatsApp contacts, pickup dates, and delivery addresses.
           </p>
         </div>
 
@@ -145,22 +158,33 @@ export default function AdminOrdersPage() {
                   </div>
 
                   <p className="text-xs text-[#78716C] flex items-center gap-1.5 pt-1">
-                    <Clock size={14} /> Order Placed On: <span className="font-semibold text-[#1C1917]">{ord.createdAt}</span>
+                    <Clock size={14} /> Order Date: <span className="font-semibold text-[#1C1917]">{ord.createdAt}</span>
                   </p>
                 </div>
 
-                {/* Status Dropdown Selector */}
-                <div className="flex items-center gap-3 bg-[#FAF8F5] p-3 border border-[#E7E5E4] rounded-md">
-                  <span className="text-xs uppercase font-bold text-[#1C1917]">Order Status:</span>
-                  <select
-                    value={ord.status}
-                    onChange={(e) => handleUpdateOrder(ord.id, e.target.value as OrderStatus)}
-                    className="text-sm font-bold p-2 bg-white border border-[#E7E5E4] text-brand focus:outline-none cursor-pointer"
+                {/* Status Dropdown & 1-Click WhatsApp CTA */}
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex items-center gap-2 bg-[#FAF8F5] p-3 border border-[#E7E5E4] rounded-md">
+                    <span className="text-xs uppercase font-bold text-[#1C1917]">Status:</span>
+                    <select
+                      value={ord.status}
+                      onChange={(e) => handleUpdateOrder(ord.id, e.target.value as OrderStatus)}
+                      className="text-sm font-bold p-2 bg-white border border-[#E7E5E4] text-brand focus:outline-none cursor-pointer"
+                    >
+                      {orderStatuses.map((st) => (
+                        <option key={st} value={st}>{st}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <a
+                    href={getWhatsAppOrderLink(ord)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-3 rounded flex items-center gap-2 transition-colors shadow"
                   >
-                    {orderStatuses.map((st) => (
-                      <option key={st} value={st}>{st}</option>
-                    ))}
-                  </select>
+                    <MessageCircle size={16} /> WhatsApp Customer
+                  </a>
                 </div>
               </div>
 
@@ -177,13 +201,13 @@ export default function AdminOrdersPage() {
                   <span className="text-xs uppercase font-bold text-[#78716C] flex items-center gap-1">
                     <Phone size={14} className="text-brand" /> Phone Number:
                   </span>
-                  <p className="font-mono text-base font-bold text-[#1C1917]">
+                  <p className="font-mono text-base font-bold text-[#1C1917] flex items-center gap-2">
                     <a href={`tel:${ord.phone}`} className="hover:text-brand hover:underline">{ord.phone}</a>
                   </p>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-xs uppercase font-bold text-[#78716C]">Payment Method:</span>
+                  <span className="text-xs uppercase font-bold text-[#78716C]">Payment Choice:</span>
                   <p className="font-bold text-emerald-800 text-sm bg-emerald-100/80 px-2.5 py-1 inline-block border border-emerald-300 rounded">
                     {ord.paymentMethod}
                   </p>
@@ -203,7 +227,7 @@ export default function AdminOrdersPage() {
               {/* Ordered Items Table */}
               <div className="space-y-3">
                 <h4 className="text-sm font-bold uppercase tracking-wider text-[#1C1917] flex items-center gap-2">
-                  <ShoppingBag size={16} className="text-brand" /> Ordered Items & Sizes ({ord.items.length}):
+                  <ShoppingBag size={16} className="text-brand" /> Ordered Outfits & Sizes ({ord.items.length}):
                 </h4>
 
                 <div className="space-y-3">
@@ -244,12 +268,12 @@ export default function AdminOrdersPage() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t-2 border-[#FAF8F5]">
                 <div className="flex-1 w-full max-w-lg">
                   <label className="block text-xs uppercase font-bold text-[#78716C] mb-1">
-                    Store Staff Internal Note:
+                    Store Staff Internal Note (e.g. Pickup time / Courier Tracking):
                   </label>
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      placeholder="Add note e.g. Customer called, dispatched via courier..."
+                      placeholder="Add note e.g. Customer picking up at 5 PM / Sent via Swiggy..."
                       defaultValue={ord.notes || ''}
                       onBlur={(e) => handleUpdateOrder(ord.id, ord.status, e.target.value)}
                       className="w-full text-sm p-3 bg-[#FAF8F5] border border-[#E7E5E4] text-[#1C1917] focus:outline-none focus:border-brand"

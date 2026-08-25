@@ -2,8 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { StoreData, Product, CustomerEnquiry, Order, Offer, Banner, Review, Category, Collection, StoreInfo, SiteSettings } from './types';
 
+declare global {
+  var _mm_store_data: StoreData | undefined;
+}
+
 const DATA_DIR = path.join(process.cwd(), 'src', 'data');
 const DATA_FILE = path.join(DATA_DIR, 'store.json');
+const TMP_DATA_FILE = path.join('/tmp', 'modern_maharani_store.json');
 
 const INITIAL_STORE_DATA: StoreData = {
   storeInfo: {
@@ -357,35 +362,43 @@ const INITIAL_STORE_DATA: StoreData = {
   }
 };
 
-function ensureDataFile() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(DATA_FILE)) {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(INITIAL_STORE_DATA, null, 2), 'utf-8');
-  }
-}
-
 export function getStoreData(): StoreData {
-  ensureDataFile();
-  try {
-    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    const parsed = JSON.parse(raw) as StoreData;
-    if (!parsed.orders) parsed.orders = INITIAL_STORE_DATA.orders;
-    if (!parsed.offers) parsed.offers = INITIAL_STORE_DATA.offers;
-    if (!parsed.siteSettings.primaryColor) parsed.siteSettings.primaryColor = "#7A1C30";
-    if (!parsed.siteSettings.backgroundColor) parsed.siteSettings.backgroundColor = "#FAF8F5";
-    if (!parsed.siteSettings.cardBackgroundColor) parsed.siteSettings.cardBackgroundColor = "#FFFFFF";
-    if (!parsed.siteSettings.textColor) parsed.siteSettings.textColor = "#1C1917";
-    if (!parsed.siteSettings.adminPasswordHash) parsed.siteSettings.adminPasswordHash = "maharani2026";
-    return parsed;
-  } catch (err) {
-    console.error("Error reading store data, returning default:", err);
-    return INITIAL_STORE_DATA;
+  if (globalThis._mm_store_data) {
+    return globalThis._mm_store_data;
   }
+
+  // Check /tmp file first
+  try {
+    if (fs.existsSync(TMP_DATA_FILE)) {
+      const raw = fs.readFileSync(TMP_DATA_FILE, 'utf-8');
+      const parsed = JSON.parse(raw) as StoreData;
+      globalThis._mm_store_data = parsed;
+      return parsed;
+    }
+  } catch (e) {}
+
+  // Check workspace file
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+      const parsed = JSON.parse(raw) as StoreData;
+      globalThis._mm_store_data = parsed;
+      return parsed;
+    }
+  } catch (e) {}
+
+  globalThis._mm_store_data = INITIAL_STORE_DATA;
+  return INITIAL_STORE_DATA;
 }
 
 export function saveStoreData(data: StoreData): void {
-  ensureDataFile();
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  globalThis._mm_store_data = data;
+  try {
+    fs.writeFileSync(TMP_DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (e) {}
+  try {
+    if (fs.existsSync(DATA_DIR)) {
+      fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    }
+  } catch (e) {}
 }
