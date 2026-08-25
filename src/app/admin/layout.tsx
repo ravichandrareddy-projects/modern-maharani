@@ -26,7 +26,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // If user is on /admin/login, bypass check
     if (pathname === '/admin/login') {
       setAuthenticated(true);
       return;
@@ -74,7 +73,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="space-y-8">
           {/* Admin Header */}
           <div className="space-y-1 pb-6 border-b border-[#292524]">
-            <div className="flex items-center gap-2 text-[#7A1C30] font-semibold text-xs uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-brand font-semibold text-xs uppercase tracking-wider">
               <ShieldCheck size={16} /> Store Control CMS
             </div>
             <h2 className="font-serif text-xl font-bold tracking-wider text-white">MODERN MAHARANI</h2>
@@ -92,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   href={item.href}
                   className={`flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
                     isActive
-                      ? 'bg-[#7A1C30] text-white font-bold'
+                      ? 'bg-brand text-white font-bold'
                       : 'text-[#A8A29E] hover:bg-[#292524] hover:text-white'
                   }`}
                 >

@@ -6,7 +6,9 @@ import { MapPin, Phone, MessageCircle, Clock, ArrowRight, Star, Sparkles, CheckC
 
 export default async function HomePage() {
   const store = getStoreData();
-  const { siteSettings, categories, collections, products, reviews, storeInfo } = store;
+  const { siteSettings, categories, collections, products, reviews, storeInfo, banners } = store;
+
+  const heroImage = (banners && banners[0] && banners[0].image) ? banners[0].image : '/images/hero_banner.jpg';
 
   // Filter featured & new arrival products
   const featuredProducts = products.filter((p) => p.isFeatured || p.isNewArrival).slice(0, 4);
@@ -27,7 +29,7 @@ export default async function HomePage() {
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-50 scale-105 transition-transform duration-1000"
-          style={{ backgroundImage: `url('/images/hero_banner.jpg')` }}
+          style={{ backgroundImage: `url('${heroImage}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/40 to-transparent" />
 
