@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { StoreData, Product, CustomerEnquiry, WhatsAppLead, Banner, Review, VideoItem, Category, Collection, StoreInfo, SiteSettings } from './types';
+import { StoreData, Product, CustomerEnquiry, Order, Offer, Banner, Review, Category, Collection, StoreInfo, SiteSettings } from './types';
 
 const DATA_DIR = path.join(process.cwd(), 'src', 'data');
 const DATA_FILE = path.join(DATA_DIR, 'store.json');
@@ -25,15 +25,38 @@ const INITIAL_STORE_DATA: StoreData = {
     heroHeadline: "Style That Feels Like You.",
     heroAlternativeHeadline: "Discover Your Modern Maharani.",
     heroSupportingText: "Explore contemporary women's fashion at Modern Maharani, KPHB.",
-    heroPrimaryCtaText: "Explore Collection",
-    heroSecondaryCtaText: "Visit Our Store",
+    heroPrimaryCtaText: "Shop Collection",
+    heroSecondaryCtaText: "Visit Showroom",
     introHeading: "Modern Fashion. Your Style.",
     introCopy: "Modern Maharani brings together contemporary women's fashion for women who want to feel confident, stylish and effortlessly themselves.",
     storeSectionHeading: "Come See It. Feel It. Try It.",
     storeSectionCopy: "Some outfits just look better when you see them in person. Visit Modern Maharani at KPHB and explore the collection for yourself.",
-    metaTitle: "Modern Maharani | Women's Fashion Showroom in KPHB, Kukatpally, Hyderabad",
-    metaDescription: "Discover contemporary women's fashion, Kurtis, dresses, and occasion wear at Modern Maharani in KPHB, Kukatpally, Hyderabad. Visit our digital showroom today."
+    metaTitle: "Modern Maharani | Women's Fashion Store in KPHB, Kukatpally, Hyderabad",
+    metaDescription: "Shop contemporary Kurtis, dresses, and occasion wear at Modern Maharani in KPHB Phase 1, Kukatpally, Hyderabad. Order online or visit our showroom.",
+    primaryColor: "#7A1C30",
+    accentColor: "#C5A059",
+    adminPasswordHash: "maharani2026"
   },
+  offers: [
+    {
+      id: "off-1",
+      code: "FESTIVE15",
+      title: "Festive Season Special",
+      description: "Get 15% OFF on all Kurtis & Occasion Wear",
+      discountPercentage: 15,
+      active: true,
+      bannerText: "🎉 FESTIVE SALE: 15% OFF ON KURTIS & OCCASION WEAR — CODE: FESTIVE15"
+    },
+    {
+      id: "off-2",
+      code: "WELCOME10",
+      title: "First Order Offer",
+      description: "Get 10% OFF on your first showroom online order",
+      discountPercentage: 10,
+      active: true,
+      bannerText: "✨ WELCOME OFFER: 10% OFF YOUR FIRST ORDER — CODE: WELCOME10"
+    }
+  ],
   categories: [
     {
       id: "cat-1",
@@ -136,7 +159,7 @@ const INITIAL_STORE_DATA: StoreData = {
         "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
       ],
-      availability: "Check Availability",
+      availability: "Available",
       isNewArrival: true,
       isFeatured: false,
       tags: ["Minimal", "Contemporary", "Elegant"],
@@ -183,7 +206,7 @@ const INITIAL_STORE_DATA: StoreData = {
         "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
       ],
-      availability: "Check Availability",
+      availability: "Available",
       isNewArrival: false,
       isFeatured: true,
       tags: ["Statement", "Festive", "Elegant"],
@@ -229,7 +252,7 @@ const INITIAL_STORE_DATA: StoreData = {
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
       ],
-      availability: "Check Availability",
+      availability: "Available",
       isNewArrival: true,
       isFeatured: true,
       tags: ["Elegant", "Minimal", "Contemporary"],
@@ -244,55 +267,53 @@ const INITIAL_STORE_DATA: StoreData = {
       headline: "Style That Feels Like You.",
       subheadline: "Explore contemporary women's fashion at Modern Maharani, KPHB.",
       image: "/images/hero_banner.jpg",
-      ctaText: "Explore Collection",
+      ctaText: "Shop Collection",
       ctaDestination: "/shop",
       active: true
+    }
+  ],
+  orders: [
+    {
+      id: "ord-1",
+      orderNumber: "MM-1001",
+      customerName: "Radhika K.",
+      phone: "+91 98490 12345",
+      email: "radhika@example.com",
+      deliveryType: "Store Pickup at KPHB Showroom",
+      paymentMethod: "Pay at KPHB Showroom",
+      items: [
+        {
+          productId: "prod-1",
+          productName: "Wine Embroidered Tunic & Trouser Set",
+          productSlug: "wine-embroidery-kurti-set",
+          image: "/images/hero_banner.jpg",
+          selectedSize: "XL",
+          price: 2990,
+          quantity: 1
+        }
+      ],
+      subtotal: 2990,
+      discountAmount: 448.5,
+      appliedCoupon: "FESTIVE15",
+      totalAmount: 2541.5,
+      status: "Confirmed",
+      notes: "Customer will pick up on Saturday 4 PM.",
+      createdAt: "2026-08-25 11:30"
     }
   ],
   enquiries: [
     {
       id: "enq-1",
-      customerName: "Radhika K.",
-      phone: "+91 98490 12345",
-      email: "radhika@example.com",
-      productName: "Wine Embroidered Tunic & Trouser Set",
-      productSlug: "wine-embroidery-kurti-set",
-      categoryInterested: "Kurtis",
-      message: "Hi Modern Maharani, I want to check availability for size XL in your KPHB store.",
-      status: "Visit Planned",
-      adminNotes: "Customer planning store visit on Saturday 4 PM.",
-      createdAt: "2026-08-18 11:30"
-    },
-    {
-      id: "enq-2",
       customerName: "Sravanthi M.",
       phone: "+91 97001 88990",
       email: "sravanthi@example.com",
       productName: "Champagne Tiered Anarkali Indo-Western Dress",
       productSlug: "champagne-tiered-anarkali-dress",
       categoryInterested: "Dresses",
-      message: "Could you share the price and size chart for the Champagne dress?",
+      message: "Could you share the size chart for the Champagne dress?",
       status: "Contacted",
-      adminNotes: "Sent size details via WhatsApp.",
-      createdAt: "2026-08-18 14:15"
-    }
-  ],
-  whatsAppLeads: [
-    {
-      id: "lead-1",
-      productName: "Wine Embroidered Tunic & Trouser Set",
-      productSlug: "wine-embroidery-kurti-set",
-      sourcePage: "Product Detail",
-      ctaClicked: "Enquire on WhatsApp Button",
-      timestamp: "2026-08-18 11:32"
-    },
-    {
-      id: "lead-2",
-      productName: "Rose Pink Chanderi Straight Kurti",
-      productSlug: "rose-chanderi-straight-kurti",
-      sourcePage: "Catalog",
-      ctaClicked: "Quick WhatsApp CTA",
-      timestamp: "2026-08-18 16:45"
+      adminNotes: "Sent size details via SMS/Phone.",
+      createdAt: "2026-08-24 14:15"
     }
   ],
   reviews: [
@@ -300,7 +321,7 @@ const INITIAL_STORE_DATA: StoreData = {
       id: "rev-1",
       customerName: "Ananya Reddy",
       rating: 5,
-      reviewText: "Modern Maharani at KPHB has the best contemporary Kurti and Dress collections! The fabrics feel so premium and comfortable.",
+      reviewText: "Modern Maharani at KPHB has the best contemporary Kurti and Dress collections! Ordering online and picking up at the store was super smooth.",
       date: "2026-08-05",
       approved: true
     },
@@ -308,7 +329,7 @@ const INITIAL_STORE_DATA: StoreData = {
       id: "rev-2",
       customerName: "Priya Sharma",
       rating: 5,
-      reviewText: "Visited the store opposite Global Eye Hospital last week. Beautiful ambiance and lovely occasion wear! Enquired on WhatsApp first and they kept it ready for me to try.",
+      reviewText: "Visited the store opposite Global Eye Hospital last week. Beautiful ambiance and lovely occasion wear!",
       date: "2026-08-11",
       approved: true
     },
@@ -316,27 +337,18 @@ const INITIAL_STORE_DATA: StoreData = {
       id: "rev-3",
       customerName: "Sneha Rao",
       rating: 5,
-      reviewText: "Super stylish dresses and daily wear Kurtis. Loved the showroom shopping experience in Kukatpally.",
+      reviewText: "Super stylish dresses and daily wear Kurtis. Loved the online store experience.",
       date: "2026-08-15",
       approved: true
-    }
-  ],
-  videos: [
-    {
-      id: "vid-1",
-      title: "Festive Edit 2026 — Modern Maharani Showroom Walkthrough",
-      youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      embedId: "dQw4w9WgXcQ",
-      thumbnail: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
-      featured: true
     }
   ],
   analytics: {
     totalProducts: 6,
     newArrivalsCount: 5,
-    enquiriesCount: 2,
-    whatsAppLeadsCount: 2,
-    pageViews: 1420,
+    enquiriesCount: 1,
+    ordersCount: 1,
+    totalRevenue: 2541.5,
+    pageViews: 1850,
     topCategory: "Kurtis",
     topProduct: "Wine Embroidered Tunic & Trouser Set"
   }
@@ -355,7 +367,13 @@ export function getStoreData(): StoreData {
   ensureDataFile();
   try {
     const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(raw) as StoreData;
+    const parsed = JSON.parse(raw) as StoreData;
+    // Fallback defaults for newly added features
+    if (!parsed.orders) parsed.orders = INITIAL_STORE_DATA.orders;
+    if (!parsed.offers) parsed.offers = INITIAL_STORE_DATA.offers;
+    if (!parsed.siteSettings.primaryColor) parsed.siteSettings.primaryColor = "#7A1C30";
+    if (!parsed.siteSettings.adminPasswordHash) parsed.siteSettings.adminPasswordHash = "maharani2026";
+    return parsed;
   } catch (err) {
     console.error("Error reading store data, returning default:", err);
     return INITIAL_STORE_DATA;

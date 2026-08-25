@@ -3,10 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Heart, Menu, X, PhoneCall, MessageCircle, MapPin, ShieldCheck } from 'lucide-react';
+import { useCart } from '@/lib/cartContext';
+import CartDrawer from './CartDrawer';
+import OfferBanner from './OfferBanner';
+import { Search, Heart, ShoppingBag, Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { cartCount, setIsCartOpen } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -15,11 +19,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Read wishlist count from localStorage
     const updateWishlist = () => {
       try {
         const saved = JSON.parse(localStorage.getItem('mm_wishlist') || '[]');
@@ -47,11 +50,6 @@ export default function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi Modern Maharani, I'm exploring your digital showroom website and would like to enquire about your contemporary fashion collection.");
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
-  };
-
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -61,54 +59,49 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Banner Announcement */}
-      <div className="bg-[#7A1C30] text-white py-2 px-4 text-xs tracking-widest text-center uppercase font-medium flex justify-between items-center max-w-full">
-        <span className="hidden md:inline-block">KPHB Phase 1, Kukatpally, Hyderabad</span>
-        <span className="mx-auto md:mx-0">Contemporary Women's Fashion Showroom • Enquire via WhatsApp</span>
-        <a href="tel:+919876543210" className="hidden md:flex items-center gap-1 hover:underline">
-          <PhoneCall size={12} /> +91 98765 43210
-        </a>
-      </div>
+      {/* Dynamic Promo Announcement Banner */}
+      <OfferBanner />
 
-      {/* Main Header */}
+      {/* COMPACT SINGLE-LINE GLASSMORPHIC HEADER */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FAF8F5]/95 backdrop-blur-md shadow-sm py-3 border-b border-[#E7E5E4]'
-            : 'bg-[#FAF8F5] py-5 border-b border-[#E7E5E4]'
+            ? 'bg-white/90 backdrop-blur-md shadow-md py-2.5 border-b border-[#E7E5E4]'
+            : 'bg-white/80 backdrop-blur-sm py-3 border-b border-[#E7E5E4]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Mobile Hamburger Button */}
-          <button
-            onClick={() => setMobileMenuOpen(true)}
-            className="lg:hidden text-[#1C1917] p-2 hover:text-[#7A1C30] transition-colors"
-            aria-label="Open Navigation Menu"
-          >
-            <Menu size={24} />
-          </button>
+          {/* Left: Mobile Hamburger & Inline Brand Logo */}
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:hidden text-[#1C1917] p-1.5 hover:text-[#7A1C30] transition-colors"
+              aria-label="Open Navigation Menu"
+            >
+              <Menu size={22} />
+            </button>
 
-          {/* Brand Logo */}
-          <Link href="/" className="flex flex-col items-center group">
-            <span className="font-serif text-2xl sm:text-3xl tracking-wider font-semibold text-[#1C1917] group-hover:text-[#7A1C30] transition-colors">
-              MODERN MAHARANI
-            </span>
-            <span className="text-[10px] tracking-[0.25em] text-[#78716C] uppercase font-light">
-              KPHB • HYDERABAD
-            </span>
-          </Link>
+            <Link href="/" className="flex items-center space-x-2 group">
+              <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-[#1C1917] group-hover:text-[#7A1C30] transition-colors">
+                MODERN MAHARANI
+              </span>
+              <span className="hidden sm:inline-block text-[9px] uppercase tracking-widest text-[#78716C] border-l border-[#E7E5E4] pl-2 font-medium">
+                KPHB
+              </span>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Center: Inline 1-Line Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-7">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-xs uppercase tracking-widest font-medium transition-all relative py-1 ${
+                  className={`text-xs uppercase tracking-widest font-medium transition-all py-1 ${
                     isActive
-                      ? 'text-[#7A1C30] font-semibold border-b-2 border-[#7A1C30]'
+                      ? 'text-[#7A1C30] font-bold border-b-2 border-[#7A1C30]'
                       : 'text-[#1C1917] hover:text-[#7A1C30]'
                   }`}
                 >
@@ -118,45 +111,48 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action Icons */}
-          <div className="flex items-center space-x-3 sm:space-x-5">
-            {/* Search Toggle */}
+          {/* Right: Search, Wishlist, Cart Drawer & Admin Action Icons */}
+          <div className="flex items-center space-x-3 sm:space-x-4">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors"
               aria-label="Search Collection"
             >
-              <Search size={20} />
+              <Search size={19} />
             </button>
 
-            {/* Wishlist Link */}
             <Link
               href="/shop?wishlist=true"
               className="relative text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors"
               aria-label="View Wishlist"
             >
-              <Heart size={20} />
+              <Heart size={19} />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#7A1C30] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <span className="absolute -top-1 -right-1 bg-[#7A1C30] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {wishlistCount}
                 </span>
               )}
             </Link>
 
-            {/* WhatsApp Enquire Button */}
+            {/* Shopping Cart Drawer Trigger */}
             <button
-              onClick={handleWhatsAppClick}
-              className="hidden sm:flex items-center gap-2 bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-4 py-2 rounded-none font-medium transition-all shadow-sm"
+              onClick={() => setIsCartOpen(true)}
+              className="relative text-[#1C1917] hover:text-[#7A1C30] p-1.5 transition-colors flex items-center gap-1"
+              aria-label="Shopping Cart"
             >
-              <MessageCircle size={15} />
-              <span>Enquire</span>
+              <ShoppingBag size={20} />
+              {cartCount > 0 && (
+                <span className="bg-[#7A1C30] text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  {cartCount}
+                </span>
+              )}
             </button>
 
-            {/* Admin Dashboard Quick Access Button */}
+            {/* Admin CMS Access */}
             <Link
-              href="/admin"
-              className="hidden xl:flex items-center gap-1.5 text-xs text-[#78716C] hover:text-[#7A1C30] transition-colors border border-[#E7E5E4] px-2.5 py-1.5"
-              title="Admin Dashboard CMS"
+              href="/admin/login"
+              className="hidden sm:flex items-center gap-1 text-[11px] font-semibold text-[#78716C] hover:text-[#7A1C30] transition-colors border border-[#E7E5E4] px-2.5 py-1"
+              title="Admin Panel"
             >
               <ShieldCheck size={14} />
               <span>Admin</span>
@@ -164,17 +160,17 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Expandable Search Bar */}
+        {/* Expandable Search Drawer */}
         {searchOpen && (
           <div className="bg-white border-b border-[#E7E5E4] py-3 px-4 shadow-inner transition-all animate-fadeIn">
             <form onSubmit={handleSearchSubmit} className="max-w-3xl mx-auto flex items-center gap-2">
               <Search size={18} className="text-[#78716C]" />
               <input
                 type="text"
-                placeholder="Search Kurtis, Dresses, Occasion wear, fabrics..."
+                placeholder="Search Kurtis, Dresses, Occasion wear, fabric..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-sm bg-transparent border-none focus:outline-none text-[#1C1917] placeholder-[#78716C]"
+                className="w-full text-xs bg-transparent border-none focus:outline-none text-[#1C1917]"
                 autoFocus
               />
               <button
@@ -195,66 +191,65 @@ export default function Navbar() {
         )}
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex">
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="relative w-4/5 max-w-sm bg-[#FAF8F5] h-full shadow-2xl z-10 flex flex-col justify-between p-6">
+          <div className="relative w-4/5 max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col justify-between p-6">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#E7E5E4]">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E7E5E4]">
                 <div>
-                  <h2 className="font-serif text-xl font-semibold text-[#1C1917]">MODERN MAHARANI</h2>
+                  <h2 className="font-serif text-xl font-bold text-[#1C1917]">MODERN MAHARANI</h2>
                   <p className="text-[10px] uppercase tracking-widest text-[#78716C]">KPHB Kukatpally</p>
                 </div>
                 <button onClick={() => setMobileMenuOpen(false)} className="p-1 text-[#1C1917]">
-                  <X size={24} />
+                  <X size={22} />
                 </button>
               </div>
 
-              <div className="mt-8 flex flex-col space-y-5">
+              <div className="mt-6 flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-sm uppercase tracking-widest font-medium py-1 transition-colors ${
+                    className={`text-xs uppercase tracking-widest font-semibold py-1.5 transition-colors ${
                       pathname === link.href ? 'text-[#7A1C30] font-bold' : 'text-[#1C1917] hover:text-[#7A1C30]'
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs uppercase tracking-widest font-medium text-[#78716C] flex items-center gap-2 pt-4 border-t border-[#E7E5E4]"
-                >
-                  <ShieldCheck size={16} /> Admin CMS Panel
-                </Link>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-[#E7E5E4] space-y-3">
+            <div className="pt-4 border-t border-[#E7E5E4] space-y-3">
               <button
-                onClick={handleWhatsAppClick}
-                className="w-full flex items-center justify-center gap-2 bg-[#7A1C30] text-white py-3 text-xs uppercase tracking-widest font-medium"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setIsCartOpen(true);
+                }}
+                className="w-full flex items-center justify-center gap-2 bg-[#7A1C30] text-white py-3 text-xs uppercase tracking-widest font-bold"
               >
-                <MessageCircle size={18} /> Enquire on WhatsApp
+                <ShoppingBag size={16} /> View Shopping Cart ({cartCount})
               </button>
               <Link
-                href="/visit-us"
+                href="/admin/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 border border-[#1C1917] text-[#1C1917] py-2.5 text-xs uppercase tracking-widest font-medium"
+                className="w-full flex items-center justify-center gap-2 border border-[#1C1917] text-[#1C1917] py-2.5 text-xs uppercase tracking-widest font-semibold"
               >
-                <MapPin size={16} /> Visit Store KPHB
+                <ShieldCheck size={16} /> Admin CMS Login
               </Link>
             </div>
           </div>
         </div>
       )}
+
+      {/* Slide-out Cart Drawer */}
+      <CartDrawer />
     </>
   );
 }

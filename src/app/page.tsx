@@ -2,16 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import { getStoreData } from '@/lib/db';
 import ProductCard from '@/components/ProductCard';
-import { MapPin, Phone, MessageCircle, Clock, ArrowRight, Star, Sparkles, CheckCircle2, Play } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Clock, ArrowRight, Star, Sparkles, CheckCircle2, ShoppingBag } from 'lucide-react';
 
 export default async function HomePage() {
   const store = getStoreData();
-  const { siteSettings, categories, collections, products, reviews, videos, storeInfo } = store;
+  const { siteSettings, categories, collections, products, reviews, storeInfo } = store;
 
   // Filter featured & new arrival products
   const featuredProducts = products.filter((p) => p.isFeatured || p.isNewArrival).slice(0, 4);
   const approvedReviews = reviews.filter((r) => r.approved);
-  const featuredVideo = videos.find((v) => v.featured) || videos[0];
 
   const discoveryTags = [
     { name: 'Elegant', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop' },
@@ -22,42 +21,42 @@ export default async function HomePage() {
   ];
 
   return (
-    <div className="space-y-20 pb-16">
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-[#1C1917] text-white overflow-hidden">
+    <div className="space-y-16 pb-16">
+      {/* 1. VIBRANT HERO SECTION */}
+      <section className="relative min-h-[82vh] flex items-center justify-center bg-[#1C1917] text-white overflow-hidden">
         {/* Background Image with Overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-45 scale-105 transition-transform duration-1000"
+          className="absolute inset-0 bg-cover bg-center opacity-50 scale-105 transition-transform duration-1000"
           style={{ backgroundImage: `url('/images/hero_banner.jpg')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/40 to-transparent" />
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6 py-20">
-          <div className="inline-flex items-center gap-2 bg-[#7A1C30]/80 text-[#FAF8F5] text-xs uppercase tracking-[0.25em] px-4 py-1.5 backdrop-blur-md">
-            <Sparkles size={12} /> KPHB Phase 1 • Kukatpally • Hyderabad
+        {/* Hero Glassmorphic Card Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6 py-16">
+          <div className="inline-flex items-center gap-2 bg-[#7A1C30]/90 text-white text-xs uppercase tracking-[0.25em] px-4 py-1.5 backdrop-blur-md shadow-md">
+            <Sparkles size={13} className="text-amber-300" /> KPHB Phase 1 • Kukatpally • Hyderabad
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-none drop-shadow-md">
             {siteSettings.heroHeadline || "Style That Feels Like You."}
           </h1>
 
-          <p className="text-base sm:text-xl text-[#E7E5E4] font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-[#FAF8F5] font-light max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
             {siteSettings.heroSupportingText || "Explore contemporary women's fashion at Modern Maharani, KPHB."}
           </p>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/shop"
-              className="w-full sm:w-auto bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-8 py-4 font-semibold transition-all shadow-lg flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-8 py-4 font-bold transition-all shadow-xl flex items-center justify-center gap-2"
             >
-              {siteSettings.heroPrimaryCtaText || "Explore Collection"} <ArrowRight size={16} />
+              <ShoppingBag size={16} /> {siteSettings.heroPrimaryCtaText || "Shop Collection"}
             </Link>
             <Link
               href="/visit-us"
-              className="w-full sm:w-auto border border-white/80 hover:bg-white hover:text-[#1C1917] text-white text-xs uppercase tracking-widest px-8 py-4 font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-white/90 hover:bg-white text-[#1C1917] text-xs uppercase tracking-widest px-8 py-4 font-bold transition-all backdrop-blur-md shadow-xl flex items-center justify-center gap-2"
             >
-              <MapPin size={16} /> {siteSettings.heroSecondaryCtaText || "Visit Our Store"}
+              <MapPin size={16} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
             </Link>
           </div>
         </div>
@@ -68,7 +67,7 @@ export default async function HomePage() {
         <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">
           {siteSettings.introHeading || "Modern Fashion. Your Style."}
         </h2>
-        <div className="w-16 h-0.5 bg-[#7A1C30] mx-auto" />
+        <div className="w-16 h-1 bg-[#7A1C30] mx-auto rounded-full" />
         <p className="text-base sm:text-lg text-[#78716C] font-light leading-relaxed">
           {siteSettings.introCopy || "Modern Maharani brings together contemporary women's fashion for women who want to feel confident, stylish and effortlessly themselves."}
         </p>
@@ -78,10 +77,10 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#E7E5E4] pb-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-semibold">Curated Collections</span>
+            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Curated Collections</span>
             <h2 className="font-serif text-3xl text-[#1C1917]">Explore By Category</h2>
           </div>
-          <Link href="/shop" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-medium flex items-center gap-1 mt-2 md:mt-0">
+          <Link href="/shop" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-bold flex items-center gap-1 mt-2 md:mt-0">
             View All Categories <ArrowRight size={14} />
           </Link>
         </div>
@@ -100,9 +99,9 @@ export default async function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 space-y-2 text-white">
-                <h3 className="font-serif text-2xl font-semibold tracking-wide">{cat.name}</h3>
+                <h3 className="font-serif text-2xl font-bold tracking-wide">{cat.name}</h3>
                 <p className="text-xs text-[#E7E5E4] font-light line-clamp-2">{cat.description}</p>
-                <div className="pt-2 text-xs uppercase tracking-widest font-medium text-[#FAF8F5] group-hover:text-[#E2D4C3] flex items-center gap-1">
+                <div className="pt-2 text-xs uppercase tracking-widest font-bold text-white group-hover:text-amber-300 flex items-center gap-1 transition-colors">
                   Explore {cat.name} <ArrowRight size={13} />
                 </div>
               </div>
@@ -115,10 +114,10 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#E7E5E4] pb-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-semibold">Fresh From Showroom Racks</span>
+            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Fresh Showroom Racks</span>
             <h2 className="font-serif text-3xl text-[#1C1917]">Just In — New Arrivals</h2>
           </div>
-          <Link href="/new-arrivals" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-medium flex items-center gap-1 mt-2 md:mt-0">
+          <Link href="/new-arrivals" className="text-xs uppercase tracking-widest text-[#1C1917] hover:text-[#7A1C30] font-bold flex items-center gap-1 mt-2 md:mt-0">
             View All New Arrivals <ArrowRight size={14} />
           </Link>
         </div>
@@ -131,10 +130,10 @@ export default async function HomePage() {
       </section>
 
       {/* 5. FASHION DISCOVERY (FIND YOUR LOOK) */}
-      <section className="bg-[#FAF8F5] border-y border-[#E7E5E4] py-16">
+      <section className="bg-white border-y border-[#E7E5E4] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
           <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-semibold">Editorial Tagging</span>
+            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Style Filter</span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Find Your Look</h2>
             <p className="text-xs text-[#78716C] max-w-xl mx-auto">
               Filter outfits based on your personal style preference, mood, and occasion.
@@ -155,7 +154,7 @@ export default async function HomePage() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center p-3">
-                  <span className="font-serif text-xl font-semibold text-white tracking-wider border-b-2 border-transparent group-hover:border-white transition-all">
+                  <span className="font-serif text-xl font-bold text-white tracking-wider border-b-2 border-transparent group-hover:border-white transition-all">
                     {tag.name}
                   </span>
                 </div>
@@ -165,11 +164,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 6. STORE EXPERIENCE HIGHLIGHT (PHYSICAL SHOWROOM) */}
+      {/* 6. PHYSICAL SHOWROOM LOCATION HIGHLIGHT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#1C1917] text-white p-8 sm:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#E2D4C3] font-semibold flex items-center gap-2">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#E2D4C3] font-bold flex items-center gap-2">
               <MapPin size={14} className="text-[#7A1C30]" /> KPHB Phase 1 • Kukatpally Showroom
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold leading-tight">
@@ -180,7 +179,7 @@ export default async function HomePage() {
             </p>
 
             <div className="p-4 bg-[#292524] border border-[#44403C] space-y-2 text-xs text-[#E7E5E4]">
-              <p className="font-semibold text-white">Showroom Landmark:</p>
+              <p className="font-semibold text-white">Showroom Address:</p>
               <p>{storeInfo.addressLine}, {storeInfo.landmark}, {storeInfo.area}, {storeInfo.city} {storeInfo.pincode}</p>
               <p className="text-[#A8A29E] flex items-center gap-1.5 pt-1">
                 <Clock size={14} className="text-[#7A1C30]" /> {storeInfo.openingHours}
@@ -192,23 +191,15 @@ export default async function HomePage() {
                 href={storeInfo.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-semibold transition-colors flex items-center gap-2"
+                className="bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-bold transition-colors flex items-center gap-2"
               >
                 <MapPin size={16} /> Get Directions
               </a>
               <a
                 href={`tel:${storeInfo.phone}`}
-                className="border border-white/80 hover:bg-white hover:text-[#1C1917] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-semibold transition-colors flex items-center gap-2"
+                className="border border-white/80 hover:bg-white hover:text-[#1C1917] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-bold transition-colors flex items-center gap-2"
               >
                 <Phone size={16} /> Call Store
-              </a>
-              <a
-                href={`https://wa.me/${storeInfo.whatsappNumber}`}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs uppercase tracking-widest px-6 py-3.5 font-semibold transition-colors flex items-center gap-2"
-              >
-                <MessageCircle size={16} /> WhatsApp Us
               </a>
             </div>
           </div>
@@ -229,32 +220,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 7. VIDEO / YOUTUBE SECTION */}
-      {featuredVideo && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="text-center space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-semibold">Collection Showcase</span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">See The Collection In Motion</h2>
-          </div>
-
-          <div className="max-w-4xl mx-auto aspect-video bg-black overflow-hidden luxury-card-shadow relative border border-[#E7E5E4]">
-            <iframe
-              src={`https://www.youtube.com/embed/${featuredVideo.embedId}`}
-              title={featuredVideo.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            />
-          </div>
-        </section>
-      )}
-
-      {/* 8. CUSTOMER REVIEWS */}
+      {/* 7. CUSTOMER REVIEWS */}
       {approvedReviews.length > 0 && (
         <section className="bg-[#FAF8F5] border-t border-[#E7E5E4] py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center space-y-2">
-              <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-semibold">Verified Feedback</span>
+              <span className="text-xs uppercase tracking-widest text-[#7A1C30] font-bold">Verified Feedback</span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1917]">Loved By Our Customers</h2>
             </div>
 
@@ -270,24 +241,13 @@ export default async function HomePage() {
                     <p className="text-xs text-[#1C1917] italic leading-relaxed">"{rev.reviewText}"</p>
                   </div>
                   <div className="pt-4 border-t border-[#FAF8F5] flex items-center justify-between text-[11px] text-[#78716C]">
-                    <span className="font-semibold text-[#1C1917] flex items-center gap-1">
+                    <span className="font-bold text-[#1C1917] flex items-center gap-1">
                       <CheckCircle2 size={13} className="text-emerald-600" /> {rev.customerName}
                     </span>
                     <span>{rev.date}</span>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="text-center pt-4">
-              <a
-                href={storeInfo.googleMapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-[#1C1917] text-[#1C1917] hover:bg-[#1C1917] hover:text-white px-6 py-2.5 text-xs uppercase tracking-widest font-medium transition-colors"
-              >
-                Read More Reviews on Google Maps
-              </a>
             </div>
           </div>
         </section>

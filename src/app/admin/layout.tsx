@@ -1,38 +1,70 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   ShoppingBag,
-  Layers,
+  PackageCheck,
   Tag,
+  Layers,
   MessageSquare,
-  MessageCircle,
-  Image as ImageIcon,
+  ImageIcon,
   Star,
-  Video,
   Store,
   Settings,
   LogOut,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    // If user is on /admin/login, bypass check
+    if (pathname === '/admin/login') {
+      setAuthenticated(true);
+      return;
+    }
+
+    const auth = localStorage.getItem('mm_admin_auth');
+    if (!auth) {
+      router.push('/admin/login');
+    } else {
+      setAuthenticated(true);
+    }
+  }, [pathname, router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('mm_admin_auth');
+    router.push('/admin/login');
+  };
+
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
+
+  if (authenticated === null) {
+    return <div className="min-h-screen bg-[#1C1917] flex items-center justify-center text-white text-xs uppercase tracking-widest">Verifying Admin Session...</div>;
+  }
 
   const navItems = [
     { name: 'Overview', href: '/admin', icon: LayoutDashboard },
+    { name: 'Store Orders', href: '/admin/orders', icon: PackageCheck },
     { name: 'Products', href: '/admin/products', icon: ShoppingBag },
+    { name: 'Promotions & Offers', href: '/admin/offers', icon: Tag },
     { name: 'Collections', href: '/admin/collections', icon: Layers },
-    { name: 'Categories', href: '/admin/categories', icon: Tag },
+    { name: 'Categories', href: '/admin/categories', icon: Sparkles },
     { name: 'Enquiries', href: '/admin/enquiries', icon: MessageSquare },
-    { name: 'WhatsApp Leads', href: '/admin/leads', icon: MessageCircle },
-    { name: 'Homepage Banners', href: '/admin/banners', icon: ImageIcon },
-    { name: 'Reviews', href: '/admin/reviews', icon: Star },
-    { name: 'Store Content & Info', href: '/admin/store', icon: Store },
+    { name: 'Hero Banners', href: '/admin/banners', icon: ImageIcon },
+    { name: 'Customer Reviews', href: '/admin/reviews', icon: Star },
+    { name: 'Store Info & Copy', href: '/admin/store', icon: Store },
+    { name: 'Theme & Security', href: '/admin/settings', icon: Settings },
   ];
 
   return (
@@ -43,10 +75,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {/* Admin Header */}
           <div className="space-y-1 pb-6 border-b border-[#292524]">
             <div className="flex items-center gap-2 text-[#7A1C30] font-semibold text-xs uppercase tracking-wider">
-              <ShieldCheck size={16} /> CMS Dashboard
+              <ShieldCheck size={16} /> Store Control CMS
             </div>
             <h2 className="font-serif text-xl font-bold tracking-wider text-white">MODERN MAHARANI</h2>
-            <p className="text-[10px] text-[#A8A29E] uppercase tracking-widest">KPHB Showroom Control</p>
+            <p className="text-[10px] text-[#A8A29E] uppercase tracking-widest">KPHB Showroom Management</p>
           </div>
 
           {/* Navigation Links */}
@@ -58,7 +90,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-3 px-3.5 py-2.5 text-xs font-medium uppercase tracking-wider transition-colors ${
+                  className={`flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider transition-colors ${
                     isActive
                       ? 'bg-[#7A1C30] text-white font-bold'
                       : 'text-[#A8A29E] hover:bg-[#292524] hover:text-white'
@@ -81,6 +113,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             <ExternalLink size={14} /> View Live Website
           </Link>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 text-xs text-red-400 hover:text-red-300 transition-colors w-full text-left"
+          >
+            <LogOut size={14} /> Logout Session
+          </button>
         </div>
       </aside>
 

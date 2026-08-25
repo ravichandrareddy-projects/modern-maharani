@@ -14,23 +14,40 @@ export type EnquiryStatus =
   | 'Not Interested' 
   | 'Closed';
 
+export type OrderStatus = 
+  | 'Pending' 
+  | 'Confirmed' 
+  | 'Processing' 
+  | 'Ready for Pickup / Out for Delivery' 
+  | 'Completed' 
+  | 'Cancelled';
+
+export type PaymentMethod = 
+  | 'Cash on Delivery (COD)' 
+  | 'Pay at KPHB Showroom' 
+  | 'UPI / Online Payment';
+
+export type DeliveryType = 
+  | 'Home Delivery' 
+  | 'Store Pickup at KPHB Showroom';
+
 export interface Product {
   id: string;
   slug: string;
   name: string;
-  category: string; // e.g. "Kurtis", "Dresses", "Occasion Wear", "New Arrivals"
-  collectionSlug?: string; // e.g. "festive-edit-2026"
+  category: string;
+  collectionSlug?: string;
   price?: number;
   salePrice?: number;
   description: string;
   fabric?: string;
-  sizes: string[]; // e.g. ["S", "M", "L", "XL", "XXL"]
+  sizes: string[];
   colors: string[];
   images: string[];
   availability: AvailabilityStatus;
   isNewArrival: boolean;
   isFeatured: boolean;
-  tags: string[]; // e.g. ["Elegant", "Minimal", "Festive", "Contemporary", "Statement"]
+  tags: string[];
   seoTitle?: string;
   seoDescription?: string;
   createdAt: string;
@@ -80,31 +97,52 @@ export interface CustomerEnquiry {
   createdAt: string;
 }
 
-export interface WhatsAppLead {
+export interface OrderItem {
+  productId: string;
+  productName: string;
+  productSlug: string;
+  image: string;
+  selectedSize: string;
+  price: number;
+  quantity: number;
+}
+
+export interface Order {
   id: string;
-  productName?: string;
-  productSlug?: string;
-  sourcePage: string; // e.g. "Product Detail", "New Arrivals", "Catalog"
-  ctaClicked: string; // e.g. "WhatsApp Enquire Button", "Sticky Mobile CTA"
-  timestamp: string;
+  orderNumber: string; // e.g. "MM-1001"
+  customerName: string;
+  phone: string;
+  email?: string;
+  deliveryType: DeliveryType;
+  shippingAddress?: string;
+  paymentMethod: PaymentMethod;
+  items: OrderItem[];
+  subtotal: number;
+  discountAmount: number;
+  appliedCoupon?: string;
+  totalAmount: number;
+  status: OrderStatus;
+  notes?: string;
+  createdAt: string;
+}
+
+export interface Offer {
+  id: string;
+  code: string;
+  title: string;
+  description: string;
+  discountPercentage: number;
+  active: boolean;
+  bannerText: string;
 }
 
 export interface Review {
   id: string;
   customerName: string;
-  rating: number; // 1 to 5
+  rating: number;
   reviewText: string;
   date: string;
   approved: boolean;
-}
-
-export interface VideoItem {
-  id: string;
-  title: string;
-  youtubeUrl: string;
-  embedId: string;
-  thumbnail: string;
-  featured: boolean;
 }
 
 export interface StoreInfo {
@@ -135,13 +173,17 @@ export interface SiteSettings {
   storeSectionCopy: string;
   metaTitle: string;
   metaDescription: string;
+  primaryColor: string;
+  accentColor: string;
+  adminPasswordHash: string; // Default password
 }
 
 export interface AnalyticsSummary {
   totalProducts: number;
   newArrivalsCount: number;
   enquiriesCount: number;
-  whatsAppLeadsCount: number;
+  ordersCount: number;
+  totalRevenue: number;
   pageViews: number;
   topCategory: string;
   topProduct: string;
@@ -153,9 +195,9 @@ export interface StoreData {
   collections: Collection[];
   banners: Banner[];
   enquiries: CustomerEnquiry[];
-  whatsAppLeads: WhatsAppLead[];
+  orders: Order[];
+  offers: Offer[];
   reviews: Review[];
-  videos: VideoItem[];
   storeInfo: StoreInfo;
   siteSettings: SiteSettings;
   analytics: AnalyticsSummary;
