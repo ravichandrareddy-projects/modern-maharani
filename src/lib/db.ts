@@ -37,7 +37,7 @@ const INITIAL_STORE_DATA: StoreData = {
     storeSectionHeading: "Come See It. Feel It. Try It.",
     storeSectionCopy: "Some outfits just look better when you see them in person. Visit Modern Maharani at KPHB and explore the collection for yourself.",
     metaTitle: "Modern Maharani | Women's Fashion Store in KPHB, Kukatpally, Hyderabad",
-    metaDescription: "Shop contemporary Kurtis, dresses, and occasion wear at Modern Maharani in KPHB Phase 1, Kukatpally, Hyderabad. Order online or visit our showroom.",
+    metaDescription: "Shop contemporary Kurtis, dresses, shirts, and occasion wear at Modern Maharani in KPHB Phase 1, Kukatpally, Hyderabad. Order online or visit our showroom.",
     primaryColor: "#7A1C30",
     accentColor: "#C5A059",
     backgroundColor: "#FAF8F5",
@@ -89,6 +89,13 @@ const INITIAL_STORE_DATA: StoreData = {
     },
     {
       id: "cat-4",
+      slug: "shirts-tops",
+      name: "Shirts & Tops",
+      description: "Chic contemporary shirts, fusion tunics, and modern stylish tops.",
+      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-5",
       slug: "new-arrivals",
       name: "New Arrivals",
       description: "Fresh styles and seasonal edits hot off our showroom racks.",
@@ -267,6 +274,29 @@ const INITIAL_STORE_DATA: StoreData = {
       seoTitle: "Powder Blue Georgette Kurti | Modern Maharani KPHB",
       seoDescription: "Flared Powder Blue Georgette Kurti set at Modern Maharani fashion store Kukatpally.",
       createdAt: "2026-08-17"
+    },
+    {
+      id: "prod-7",
+      slug: "silk-button-down-contemporary-shirt",
+      name: "Contemporary Silk Button-Down Shirt",
+      category: "Shirts & Tops",
+      collectionSlug: "everyday-elegance",
+      price: 2190,
+      description: "Premium silk blend button-down shirt with mandarin collar. Designed for modern work and leisure styling.",
+      fabric: "Raw Silk Blend",
+      sizes: ["S", "M", "L", "XL"],
+      colors: ["Ivory White", "Rose Gold"],
+      images: [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      availability: "Available",
+      isNewArrival: true,
+      isFeatured: true,
+      tags: ["Contemporary", "Minimal"],
+      seoTitle: "Silk Button-Down Shirt | Modern Maharani KPHB",
+      seoDescription: "Shop contemporary Silk Button-Down Shirt at Modern Maharani KPHB Kukatpally Hyderabad.",
+      createdAt: "2026-08-25"
     }
   ],
   banners: [
@@ -351,8 +381,8 @@ const INITIAL_STORE_DATA: StoreData = {
     }
   ],
   analytics: {
-    totalProducts: 6,
-    newArrivalsCount: 5,
+    totalProducts: 7,
+    newArrivalsCount: 6,
     enquiriesCount: 1,
     ordersCount: 1,
     totalRevenue: 2541.5,
