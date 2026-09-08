@@ -65,41 +65,121 @@ const INITIAL_STORE_DATA: StoreData = {
       bannerText: "✨ WELCOME OFFER: 10% OFF YOUR FIRST ORDER — CODE: WELCOME10"
     }
   ],
-  categories: [
+    categories: [
+    // Root: Dress Materials (Unstitched)
     {
-      id: "cat-1",
-      slug: "kurtis",
-      name: "Kurtis",
-      description: "Contemporary and everyday styles crafted with effortless elegance.",
+      id: "cat-dm",
+      slug: "dress-materials-unstitched",
+      name: "Dress Materials (Unstitched)",
+      description: "Premium unstitched dress materials for customized styling.",
       image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "cat-2",
-      slug: "dresses",
-      name: "Dresses",
-      description: "Modern silhouettes and chic cuts for every occasion.",
+      id: "cat-dm-1",
+      parentSlug: "dress-materials-unstitched",
+      slug: "handloom-kota-cottons",
+      name: "Handloom Kota & Cottons",
+      description: "Breathable and authentic handloom kota and cottons.",
       image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "cat-3",
-      slug: "occasion-wear",
-      name: "Occasion Wear",
-      description: "Statement looks crafted for celebrations and unforgettable moments.",
+      id: "cat-dm-2",
+      parentSlug: "dress-materials-unstitched",
+      slug: "raw-silk-jute-silk",
+      name: "Raw Silk & Jute Silk",
+      description: "Elegant raw silk and jute silk unstitched materials.",
       image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "cat-4",
-      slug: "shirts-tops",
-      name: "Shirts & Tops",
-      description: "Chic contemporary shirts, fusion tunics, and modern stylish tops.",
+      id: "cat-dm-3",
+      parentSlug: "dress-materials-unstitched",
+      slug: "jamdani-weaves",
+      name: "Jamdani Weaves",
+      description: "Traditional Jamdani weaves with intricate motifs.",
       image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
     },
     {
-      id: "cat-5",
-      slug: "new-arrivals",
-      name: "New Arrivals",
-      description: "Fresh styles and seasonal edits hot off our showroom racks.",
+      id: "cat-dm-4",
+      parentSlug: "dress-materials-unstitched",
+      slug: "ajrakh-kalamkari-prints",
+      name: "Ajrakh & Kalamkari Prints",
+      description: "Richly detailed Ajrakh and Kalamkari printed fabrics.",
       image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+    },
+    
+    // Root: Readymade Wear
+    {
+      id: "cat-rw",
+      slug: "readymade-wear",
+      name: "Readymade Wear",
+      description: "Ready-to-wear contemporary fashion and ethnic silhouettes.",
+      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-rw-1",
+      parentSlug: "readymade-wear",
+      slug: "3-piece-kurti-sets",
+      name: "3-Piece Kurti Sets",
+      description: "Complete 3-piece kurti, pant, and dupatta sets.",
+      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-rw-2",
+      parentSlug: "readymade-wear",
+      slug: "partywear-long-frocks",
+      name: "Partywear & Long Frocks",
+      description: "Elegant long frocks and partywear for special occasions.",
+      image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-rw-3",
+      parentSlug: "readymade-wear",
+      slug: "daily-kurtis",
+      name: "Daily Kurtis",
+      description: "Comfortable and stylish kurtis for everyday wear.",
+      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-rw-4",
+      parentSlug: "readymade-wear",
+      slug: "coord-sets-western",
+      name: "Co-ord Sets & Western",
+      description: "Modern co-ord sets and western wear.",
+      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+    },
+
+    // Root: Sarees
+    {
+      id: "cat-s",
+      slug: "sarees",
+      name: "Sarees",
+      description: "Graceful and elegant sarees for every occasion.",
+      image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-s-1",
+      parentSlug: "sarees",
+      slug: "handloom-cotton-sarees",
+      name: "Handloom & Cotton Sarees",
+      description: "Breathable and authentic handloom cotton sarees.",
+      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cat-s-2",
+      parentSlug: "sarees",
+      slug: "pattu-silk-sarees",
+      name: "Pattu & Silk Sarees",
+      description: "Luxurious pure pattu and silk sarees.",
+      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    },
+
+    // Root: Offers & Budget Store
+    {
+      id: "cat-obs",
+      slug: "offers-budget-store",
+      name: "Offers & Budget Store",
+      description: "Amazing deals under ₹899 / ₹1199 and more.",
+      image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop"
     }
   ],
   collections: [
