@@ -71,22 +71,42 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Visit Showroom Location */}
+          {/* Visit Showroom Locations */}
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-semibold text-white mb-4">Physical Showroom</h4>
-            <div className="space-y-3 text-xs text-[#A8A29E]">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="text-[#7A1C30] shrink-0 mt-0.5" />
-                <span>
-                  Flat-101, MIG-37, Road Number 1,<br />
-                  opposite Global Eye Hospital,<br />
-                  beside Swiss Castle Line, KPHB Phase 1,<br />
-                  Kukatpally, Hyderabad, Telangana 500072
-                </span>
+            <h4 className="text-xs uppercase tracking-widest font-semibold text-white mb-4">Our Showrooms</h4>
+            <div className="space-y-6 text-xs text-[#A8A29E]">
+              {/* Store 1: KPHB */}
+              <div className="space-y-2">
+                <h5 className="text-white font-bold uppercase tracking-wider">📍 KPHB Branch</h5>
+                <div className="flex items-start gap-2.5">
+                  <MapPin size={16} className="text-[#7A1C30] shrink-0 mt-0.5" />
+                  <span>
+                    Flat-101, MIG-37, Road Number 1,<br />
+                    opposite Global Eye Hospital,<br />
+                    KPHB Phase 1, Kukatpally, Hyd 500072
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Clock size={16} className="text-[#7A1C30] shrink-0" />
+                  <span>Mon - Sun: 10:30 AM - 9:00 PM</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Clock size={16} className="text-[#7A1C30] shrink-0" />
-                <span>Mon - Sun: 10:30 AM - 9:00 PM</span>
+
+              {/* Store 2: Kothapet */}
+              <div className="space-y-2">
+                <h5 className="text-white font-bold uppercase tracking-wider">📍 Kothapet Branch</h5>
+                <div className="flex items-start gap-2.5">
+                  <MapPin size={16} className="text-[#7A1C30] shrink-0 mt-0.5" />
+                  <span>
+                    Near Fruit Market,<br />
+                    Kothapet, Hyderabad,<br />
+                    Telangana 500035
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Clock size={16} className="text-[#7A1C30] shrink-0" />
+                  <span>Mon - Sun: 10:30 AM - 9:00 PM</span>
+                </div>
               </div>
             </div>
           </div>

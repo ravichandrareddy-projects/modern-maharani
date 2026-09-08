@@ -139,7 +139,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Product Info */}
         <div className="p-4 space-y-2">
           <div className="flex items-center justify-between text-[11px] text-[#78716C] uppercase tracking-wider">
-            <span>{product.category}</span>
+            <span>{product.categories?.[0] || 'Uncategorized'}</span>
             {product.fabric && <span>{product.fabric}</span>}
           </div>
 

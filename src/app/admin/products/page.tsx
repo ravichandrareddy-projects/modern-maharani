@@ -13,7 +13,12 @@ export default function AdminProductsPage() {
 
   // Form State
   const [name, setName] = useState('');
-  const [category, setCategory] = useState('Kurtis');
+  const [categories, setCategories] = useState<string[]>(['Kurtis']);
+  const [stock, setStock] = useState<number>(10);
+  const [work, setWork] = useState('');
+  const [inclusions, setInclusions] = useState('');
+  const [isTrending, setIsTrending] = useState(false);
+  const [isFreeShippingEligible, setIsFreeShippingEligible] = useState(false);
   const [collectionSlug, setCollectionSlug] = useState('festive-edit-2026');
   const [price, setPrice] = useState<number | undefined>(2990);
   const [salePrice, setSalePrice] = useState<number | undefined>(undefined);
@@ -48,7 +53,12 @@ export default function AdminProductsPage() {
   const handleOpenAdd = () => {
     setEditingProduct(null);
     setName('');
-    setCategory('Kurtis');
+    setCategories(['Kurtis']);
+    setStock(10);
+    setWork('');
+    setInclusions('');
+    setIsTrending(false);
+    setIsFreeShippingEligible(false);
     setCollectionSlug('');
     setPrice(2990);
     setSalePrice(undefined);
@@ -67,7 +77,12 @@ export default function AdminProductsPage() {
   const handleOpenEdit = (p: Product) => {
     setEditingProduct(p);
     setName(p.name);
-    setCategory(p.category);
+    setCategories(p.categories || []);
+    setStock(p.stock !== undefined ? p.stock : 10);
+    setWork(p.work || '');
+    setInclusions(p.inclusions || '');
+    setIsTrending(p.isTrending || false);
+    setIsFreeShippingEligible(p.isFreeShippingEligible || false);
     setCollectionSlug(p.collectionSlug || '');
     setPrice(p.price);
     setSalePrice(p.salePrice);
@@ -84,15 +99,20 @@ export default function AdminProductsPage() {
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === 'string') {
-          setImages([reader.result, ...images]);
-        }
-      };
-      reader.readAsDataURL(file);
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      const readers = files.map(file => {
+        return new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            if (typeof reader.result === 'string') resolve(reader.result);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+      Promise.all(readers).then(newImages => {
+        setImages([...newImages, ...images]);
+      });
     }
   };
 
@@ -108,7 +128,12 @@ export default function AdminProductsPage() {
       id: editingProduct ? editingProduct.id : `prod-${Date.now()}`,
       slug,
       name,
-      category,
+      categories,
+      stock: Number(stock),
+      work,
+      inclusions,
+      isTrending,
+      isFreeShippingEligible,
       collectionSlug: collectionSlug || undefined,
       price: price ? Number(price) : undefined,
       salePrice: salePrice ? Number(salePrice) : undefined,
@@ -201,7 +226,7 @@ export default function AdminProductsPage() {
   const filteredProducts = storeData.products.filter(
     (p) =>
       p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchTerm.toLowerCase())
+      (p.categories?.join(' ') || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -239,7 +264,8 @@ export default function AdminProductsPage() {
             <tr>
               <th className="py-3 px-4">Outfit Image</th>
               <th className="py-3 px-4">Product Name</th>
-              <th className="py-3 px-4">Category</th>
+              <th className="py-3 px-4">Categories</th>
+              <th className="py-3 px-4">Stock</th>
               <th className="py-3 px-4">Price</th>
               <th className="py-3 px-4">Availability</th>
               <th className="py-3 px-4">Badges</th>
@@ -258,7 +284,10 @@ export default function AdminProductsPage() {
                   <span className="font-semibold text-sm block">{product.name}</span>
                   <span className="text-[10px] text-[#78716C]">Slug: {product.slug}</span>
                 </td>
-                <td className="py-3 px-4 font-medium">{product.category}</td>
+                <td className="py-3 px-4 font-medium">{product.categories?.join(', ')}</td>
+                <td className="py-3 px-4 font-bold {product.stock === 0 ? 'text-red-600' : 'text-[#1C1917]'}">
+                  {product.stock} {product.stock === 0 && <span className="text-[9px] block text-red-600">OUT OF STOCK</span>}
+                </td>
                 <td className="py-3 px-4 font-semibold text-brand">
                   {product.price ? `₹${product.price.toLocaleString('en-IN')}` : 'Enquire'}
                 </td>
@@ -323,17 +352,13 @@ export default function AdminProductsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold uppercase text-[#1C1917] mb-1">Category</label>
-                  <select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                  <label className="block font-semibold uppercase text-[#1C1917] mb-1">Categories (Comma separated)</label>
+                  <input
+                    type="text"
+                    value={categories.join(', ')}
+                    onChange={(e) => setCategories(e.target.value.split(',').map(s => s.trim()).filter(Boolean))}
                     className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
-                  >
-                    <option value="Kurtis">Kurtis</option>
-                    <option value="Dresses">Dresses</option>
-                    <option value="Occasion Wear">Occasion Wear</option>
-                    <option value="New Arrivals">New Arrivals</option>
-                  </select>
+                  />
                 </div>
                 <div>
                   <label className="block font-semibold uppercase text-[#1C1917] mb-1">Collection</label>
@@ -350,6 +375,37 @@ export default function AdminProductsPage() {
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block font-semibold uppercase text-[#1C1917] mb-1">Stock Quantity</label>
+                  <input
+                    type="number"
+                    value={stock}
+                    onChange={(e) => setStock(Number(e.target.value))}
+                    className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-semibold uppercase text-[#1C1917] mb-1">Craft / Work</label>
+                  <input
+                    type="text"
+                    value={work}
+                    onChange={(e) => setWork(e.target.value)}
+                    placeholder="e.g. Maggam Handwork, Zari"
+                    className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-semibold uppercase text-[#1C1917] mb-1">Inclusions</label>
+                  <input
+                    type="text"
+                    value={inclusions}
+                    onChange={(e) => setInclusions(e.target.value)}
+                    placeholder="e.g. Top: 2.5m, Bottom: 2m"
+                    className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
+                  />
+                </div>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block font-semibold uppercase text-[#1C1917] mb-1">Price (₹)</label>
@@ -415,7 +471,7 @@ export default function AdminProductsPage() {
                     onChange={(e) => setIsNewArrival(e.target.checked)}
                     className="accent-brand"
                   />
-                  <span className="font-semibold uppercase">Mark as New Arrival</span>
+                  <span className="font-semibold uppercase text-[10px]">New Arrival</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -424,7 +480,25 @@ export default function AdminProductsPage() {
                     onChange={(e) => setIsFeatured(e.target.checked)}
                     className="accent-brand"
                   />
-                  <span className="font-semibold uppercase">Mark as Featured</span>
+                  <span className="font-semibold uppercase text-[10px]">Featured</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={isTrending}
+                    onChange={(e) => setIsTrending(e.target.checked)}
+                    className="accent-brand"
+                  />
+                  <span className="font-semibold uppercase text-[10px]">Trending</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={isFreeShippingEligible}
+                    onChange={(e) => setIsFreeShippingEligible(e.target.checked)}
+                    className="accent-brand"
+                  />
+                  <span className="font-semibold uppercase text-[10px]">Free Shipping</span>
                 </label>
               </div>
 
@@ -438,7 +512,7 @@ export default function AdminProductsPage() {
                   </label>
                   <input
                     type="file"
-                    accept="image/*"
+                    accept="image/*" multiple capture="environment"
                     onChange={handleFileUpload}
                     className="block w-full text-xs text-[#78716C] file:mr-3 file:py-1.5 file:px-3 file:border-0 file:text-[10px] file:font-bold file:uppercase file:bg-brand file:text-white cursor-pointer bg-white border border-[#E7E5E4] p-1"
                   />

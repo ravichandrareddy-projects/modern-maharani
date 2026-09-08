@@ -16,6 +16,9 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [categories, setCategories] = useState<{name: string, slug: string}[]>([]);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +36,12 @@ export default function Navbar() {
     };
     updateWishlist();
     window.addEventListener('storage', updateWishlist);
+
+    fetch('/api/data').then(res => res.json()).then(data => {
+      if (data && data.categories) {
+        setCategories(data.categories.filter((c: any) => !c.parentSlug));
+      }
+    }).catch(console.error);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -99,21 +108,43 @@ export default function Navbar() {
           </div>
 
           {/* Center: Inline 1-Line Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          <nav className="hidden lg:flex items-center space-x-7 relative">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
+              const hasDropdown = link.name === 'Shop' || link.name === 'Collections';
               return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-xs uppercase tracking-widest font-semibold transition-all py-1 ${
-                    isActive
-                      ? 'text-brand font-bold border-b-2 border-brand'
-                      : 'text-[#1C1917] hover:text-brand'
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                <div key={link.name} className="relative group" onMouseEnter={() => hasDropdown && setActiveDropdown(link.name)} onMouseLeave={() => hasDropdown && setActiveDropdown(null)}>
+                  <Link
+                    href={link.href}
+                    className={`text-xs uppercase tracking-widest font-semibold transition-all py-1 ${
+                      isActive ? 'text-brand font-bold border-b-2 border-brand' : 'text-[#1C1917] hover:text-brand'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                  
+                  {/* Mega Menu Dropdown */}
+                  {hasDropdown && activeDropdown === link.name && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-50">
+                      <div className="bg-white border border-[#E7E5E4] shadow-xl p-6 grid grid-cols-2 gap-6">
+                        {link.name === 'Shop' && categories.map(cat => (
+                          <div key={cat.slug}>
+                            <Link href={`/shop?category=${cat.slug}`} className="font-serif text-lg font-bold text-[#1C1917] hover:text-brand block mb-2">{cat.name}</Link>
+                            <ul className="space-y-1">
+                                <li><Link href={`/shop?category=${cat.slug}`} className="text-xs text-[#78716C] hover:text-brand block">View All {cat.name}</Link></li>
+                            </ul>
+                          </div>
+                        ))}
+                        {link.name === 'Collections' && (
+                          <div className="col-span-2">
+                             <p className="text-xs text-[#78716C]">Explore curated seasonal collections.</p>
+                             <Link href="/collections" className="text-brand text-xs font-bold uppercase mt-2 inline-block">View All Collections</Link>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </nav>
@@ -220,19 +251,44 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <div className="mt-6 flex flex-col space-y-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`text-xs uppercase tracking-widest font-semibold py-1.5 transition-colors ${
-                      pathname === link.href ? 'text-brand font-bold' : 'text-[#1C1917] hover:text-brand'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+              <div className="mt-6 flex flex-col space-y-2">
+                {navLinks.map((link) => {
+                  const hasDropdown = link.name === 'Shop';
+                  return (
+                    <div key={link.name}>
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={link.href}
+                          onClick={() => !hasDropdown && setMobileMenuOpen(false)}
+                          className={`text-xs uppercase tracking-widest font-semibold py-2 transition-colors block flex-grow ${
+                            pathname === link.href ? 'text-brand font-bold' : 'text-[#1C1917]'
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                        {hasDropdown && (
+                          <button onClick={() => setExpandedMobileMenu(expandedMobileMenu === link.name ? null : link.name)} className="p-2">
+                            <span className="text-xl leading-none">{expandedMobileMenu === link.name ? '-' : '+'}</span>
+                          </button>
+                        )}
+                      </div>
+                      {hasDropdown && expandedMobileMenu === link.name && (
+                        <div className="pl-4 py-2 border-l-2 border-brand space-y-3">
+                          {categories.map(cat => (
+                            <Link 
+                              key={cat.slug} 
+                              href={`/shop?category=${cat.slug}`} 
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="block text-xs uppercase text-[#78716C] hover:text-brand"
+                            >
+                              {cat.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 

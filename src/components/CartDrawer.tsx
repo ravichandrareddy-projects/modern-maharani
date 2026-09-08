@@ -72,6 +72,23 @@ export default function CartDrawer() {
               </button>
             </div>
 
+            {/* Free Shipping Progress */}
+            {cart.length > 0 && (
+              <div className="pt-4 pb-2 border-b border-[#E7E5E4] space-y-2">
+                <p className="text-[11px] font-bold text-[#1C1917] text-center uppercase tracking-wider">
+                  {subtotal >= 1000 
+                    ? "✨ You've unlocked FREE SHIPPING!" 
+                    : `Add ₹${(1000 - subtotal).toLocaleString('en-IN')} more to get FREE SHIPPING!`}
+                </p>
+                <div className="w-full bg-[#E7E5E4] h-2 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-emerald-600 h-full transition-all duration-500 ease-out"
+                    style={{ width: `${Math.min(100, (subtotal / 1000) * 100)}%` }}
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Cart Items List */}
             {cart.length === 0 ? (
               <div className="py-20 text-center space-y-4 text-[#78716C]">

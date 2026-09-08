@@ -35,18 +35,23 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
-  category: string;
+  categories: string[];
   collectionSlug?: string;
   price?: number;
   salePrice?: number;
+  stock: number;
   description: string;
   fabric?: string;
+  work?: string;
+  inclusions?: string;
   sizes: string[];
   colors: string[];
   images: string[];
   availability: AvailabilityStatus;
   isNewArrival: boolean;
   isFeatured: boolean;
+  isTrending: boolean;
+  isFreeShippingEligible: boolean;
   tags: string[];
   seoTitle?: string;
   seoDescription?: string;
@@ -57,6 +62,7 @@ export interface Category {
   id: string;
   slug: string;
   name: string;
+  parentSlug?: string;
   description: string;
   image: string;
 }

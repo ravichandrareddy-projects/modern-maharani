@@ -17,7 +17,7 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   const relatedProducts = store.products
-    .filter((p) => p.category === product.category && p.id !== product.id)
+    .filter((p) => p.categories?.some(c => product.categories?.includes(c)) && p.id !== product.id)
     .slice(0, 4);
 
   return (

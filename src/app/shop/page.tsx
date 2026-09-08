@@ -16,6 +16,12 @@ function ShopContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
+  const [selectedFabric, setSelectedFabric] = useState<string>('All');
+  const [selectedWork, setSelectedWork] = useState<string>('All');
+  const [minPrice, setMinPrice] = useState<number | ''>('');
+  const [maxPrice, setMaxPrice] = useState<number | ''>('');
+  const [selectedAvailability, setSelectedAvailability] = useState<string>('All');
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState<string>(initialTag);
   const [selectedSize, setSelectedSize] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
@@ -42,9 +48,21 @@ function ShopContent() {
   // Filter products
   const filteredProducts = products.filter((product) => {
     // Category match
-    if (selectedCategory !== 'All' && product.category.toLowerCase() !== selectedCategory.toLowerCase()) {
+    if (selectedCategory !== 'All' && !(product.categories || []).map(c=>c.toLowerCase()).includes(selectedCategory.toLowerCase())) {
       return false;
     }
+    if (selectedFabric !== 'All' && (!product.fabric || product.fabric.toLowerCase() !== selectedFabric.toLowerCase())) {
+      return false;
+    }
+    if (selectedWork !== 'All' && (!product.work || product.work.toLowerCase() !== selectedWork.toLowerCase())) {
+      return false;
+    }
+    if (selectedAvailability !== 'All' && product.availability !== selectedAvailability) {
+      return false;
+    }
+    const currentPrice = product.salePrice || product.price || 0;
+    if (minPrice !== '' && currentPrice < minPrice) return false;
+    if (maxPrice !== '' && currentPrice > maxPrice) return false;
     // Tag match
     if (selectedTag !== 'All' && !product.tags.includes(selectedTag)) {
       return false;
@@ -66,7 +84,7 @@ function ShopContent() {
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       const nameMatch = product.name.toLowerCase().includes(q);
-      const catMatch = product.category.toLowerCase().includes(q);
+      const catMatch = product.categories?.some(c => c.toLowerCase().includes(q));
       const descMatch = product.description.toLowerCase().includes(q);
       const fabricMatch = product.fabric ? product.fabric.toLowerCase().includes(q) : false;
       if (!nameMatch && !catMatch && !descMatch && !fabricMatch) return false;
@@ -87,6 +105,9 @@ function ShopContent() {
   });
 
   const availableSizes = ['S', 'M', 'L', 'XL', 'XXL'];
+  const fabrics = Array.from(new Set(products.map(p => p.fabric).filter(Boolean)));
+  const works = Array.from(new Set(products.map(p => p.work).filter(Boolean)));
+  const availabilities = ['Available', 'Limited Stock', 'Out of Stock', 'Coming Soon'];
   const tagsList = ['Elegant', 'Minimal', 'Festive', 'Contemporary', 'Statement'];
 
   return (
@@ -100,118 +121,125 @@ function ShopContent() {
         </p>
       </div>
 
-      {/* Filter & Sort Bar */}
-      <div className="bg-white p-4 border border-[#E7E5E4] space-y-4 shadow-sm">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => setSelectedCategory('All')}
-              className={`text-xs uppercase tracking-wider px-3.5 py-1.5 font-medium transition-colors ${
-                selectedCategory === 'All'
-                  ? 'bg-[#7A1C30] text-white'
-                  : 'bg-[#FAF8F5] text-[#1C1917] hover:bg-[#E7E5E4]'
-              }`}
-            >
-              All Outfits ({products.length})
-            </button>
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.name)}
-                className={`text-xs uppercase tracking-wider px-3.5 py-1.5 font-medium transition-colors ${
-                  selectedCategory.toLowerCase() === cat.name.toLowerCase()
-                    ? 'bg-[#7A1C30] text-white'
-                    : 'bg-[#FAF8F5] text-[#1C1917] hover:bg-[#E7E5E4]'
-                }`}
-              >
-                {cat.name}
-              </button>
-            ))}
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Mobile Filter Toggle */}
+        <div className="lg:hidden flex justify-between items-center border-b border-[#E7E5E4] pb-4">
+          <button onClick={() => setIsMobileFilterOpen(true)} className="flex items-center gap-2 border border-[#E7E5E4] px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white">
+            <Filter size={16} /> Filters & Sort
+          </button>
+          <span className="text-xs text-[#78716C]">{sortedProducts.length} Results</span>
+        </div>
+
+        {/* Sidebar Filters */}
+        <aside className={`fixed inset-0 z-50 bg-white p-6 overflow-y-auto transition-transform transform ${isMobileFilterOpen ? 'translate-x-0' : '-translate-x-full'} lg:static lg:translate-x-0 lg:w-64 lg:shrink-0 lg:block lg:bg-transparent lg:p-0 lg:z-auto`}>
+          <div className="flex justify-between items-center lg:hidden mb-6">
+            <h2 className="font-serif text-xl font-bold">Filters</h2>
+            <button onClick={() => setIsMobileFilterOpen(false)}><X size={24} /></button>
           </div>
 
-          {/* Sort & Search */}
-          <div className="flex items-center gap-3">
-            <div className="relative flex items-center">
-              <ArrowUpDown size={14} className="absolute left-3 text-[#78716C]" />
+          <div className="space-y-6">
+            {/* Sort */}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917] flex items-center gap-2"><ArrowUpDown size={14}/> Sort By</h3>
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="pl-8 pr-4 py-1.5 text-xs bg-[#FAF8F5] border border-[#E7E5E4] focus:outline-none focus:border-[#7A1C30] text-[#1C1917]"
+                className="w-full py-2 px-3 text-xs bg-white border border-[#E7E5E4] focus:outline-none focus:border-[#7A1C30]"
               >
-                <option value="latest">Sort: Newest First</option>
+                <option value="latest">Newest First</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
               </select>
             </div>
-          </div>
-        </div>
 
-        {/* Secondary Filter Controls */}
-        <div className="pt-3 border-t border-[#FAF8F5] flex flex-wrap items-center justify-between gap-4 text-xs">
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Style Tag Selector */}
-            <div className="flex items-center gap-1.5">
-              <span className="text-[#78716C] uppercase text-[10px]">Style:</span>
-              <select
-                value={selectedTag}
-                onChange={(e) => setSelectedTag(e.target.value)}
-                className="bg-[#FAF8F5] border border-[#E7E5E4] px-2 py-1 focus:outline-none"
-              >
-                <option value="All">All Styles</option>
-                {tagsList.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+            {/* Categories */}
+            <div className="border-t border-[#E7E5E4] pt-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Category</h3>
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-xs cursor-pointer">
+                  <input type="radio" name="category" checked={selectedCategory === 'All'} onChange={() => setSelectedCategory('All')} className="accent-brand" /> All
+                </label>
+                {categories.map(cat => (
+                  <label key={cat.id} className="flex items-center gap-2 text-xs cursor-pointer">
+                    <input type="radio" name="category" checked={selectedCategory.toLowerCase() === cat.name.toLowerCase()} onChange={() => setSelectedCategory(cat.name)} className="accent-brand" /> {cat.name}
+                  </label>
                 ))}
-              </select>
+              </div>
             </div>
 
-            {/* Size Selector */}
-            <div className="flex items-center gap-1.5">
-              <span className="text-[#78716C] uppercase text-[10px]">Size:</span>
-              <select
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
-                className="bg-[#FAF8F5] border border-[#E7E5E4] px-2 py-1 focus:outline-none"
-              >
-                <option value="All">All Sizes</option>
-                {availableSizes.map((s) => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
+            {/* Fabric */}
+            {fabrics.length > 0 && (
+              <div className="border-t border-[#E7E5E4] pt-4">
+                <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Fabric</h3>
+                <select value={selectedFabric} onChange={(e) => setSelectedFabric(e.target.value)} className="w-full py-2 px-3 text-xs bg-white border border-[#E7E5E4]">
+                  <option value="All">All Fabrics</option>
+                  {fabrics.map(f => <option key={f} value={f}>{f}</option>)}
+                </select>
+              </div>
+            )}
+
+            {/* Work */}
+            {works.length > 0 && (
+              <div className="border-t border-[#E7E5E4] pt-4">
+                <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Craft / Work</h3>
+                <select value={selectedWork} onChange={(e) => setSelectedWork(e.target.value)} className="w-full py-2 px-3 text-xs bg-white border border-[#E7E5E4]">
+                  <option value="All">All Crafts</option>
+                  {works.map(w => <option key={w} value={w}>{w}</option>)}
+                </select>
+              </div>
+            )}
+
+            {/* Price Range */}
+            <div className="border-t border-[#E7E5E4] pt-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Price Range (₹)</h3>
+              <div className="flex items-center gap-2">
+                <input type="number" placeholder="Min" value={minPrice} onChange={(e) => setMinPrice(e.target.value ? Number(e.target.value) : '')} className="w-full py-1.5 px-2 text-xs border border-[#E7E5E4]" />
+                <span className="text-[#78716C]">-</span>
+                <input type="number" placeholder="Max" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value ? Number(e.target.value) : '')} className="w-full py-1.5 px-2 text-xs border border-[#E7E5E4]" />
+              </div>
             </div>
 
-            {/* Wishlist Toggle */}
-            <button
-              onClick={() => setWishlistOnly(!wishlistOnly)}
-              className={`px-3 py-1 font-medium border transition-colors ${
-                wishlistOnly
-                  ? 'bg-[#7A1C30] text-white border-[#7A1C30]'
-                  : 'bg-white text-[#1C1917] border-[#E7E5E4] hover:bg-[#FAF8F5]'
-              }`}
-            >
-              {wishlistOnly ? 'Show All Products' : 'My Saved Wishlist'}
-            </button>
+            {/* Availability */}
+            <div className="border-t border-[#E7E5E4] pt-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Availability</h3>
+              <select value={selectedAvailability} onChange={(e) => setSelectedAvailability(e.target.value)} className="w-full py-2 px-3 text-xs bg-white border border-[#E7E5E4]">
+                <option value="All">All Statuses</option>
+                {availabilities.map(a => <option key={a} value={a}>{a}</option>)}
+              </select>
+            </div>
+            
+            {/* Clear Filters */}
+            <div className="border-t border-[#E7E5E4] pt-4">
+                <button
+                onClick={() => {
+                  setSelectedCategory('All');
+                  setSelectedTag('All');
+                  setSelectedSize('All');
+                  setSearchQuery('');
+                  setWishlistOnly(false);
+                  setSelectedFabric('All');
+                  setSelectedWork('All');
+                  setMinPrice('');
+                  setMaxPrice('');
+                  setSelectedAvailability('All');
+                }}
+                className="w-full text-[#7A1C30] border border-[#7A1C30] hover:bg-[#7A1C30] hover:text-white py-2 text-xs font-bold uppercase tracking-wider transition-colors"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Content Area */}
+        <div className="flex-1">
+          {/* Header row desktop */}
+          <div className="hidden lg:flex justify-between items-center mb-6">
+            <span className="text-sm text-[#78716C]">{sortedProducts.length} Results</span>
+            {searchQuery && <span className="text-xs bg-[#FAF8F5] px-3 py-1 border border-[#E7E5E4]">Search: "{searchQuery}"</span>}
           </div>
 
-          {/* Active Filters Clear Button */}
-          {(selectedCategory !== 'All' || selectedTag !== 'All' || selectedSize !== 'All' || searchQuery || wishlistOnly) && (
-            <button
-              onClick={() => {
-                setSelectedCategory('All');
-                setSelectedTag('All');
-                setSelectedSize('All');
-                setSearchQuery('');
-                setWishlistOnly(false);
-              }}
-              className="text-[#7A1C30] hover:underline flex items-center gap-1 text-xs"
-            >
-              <X size={14} /> Clear Active Filters
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Product Grid */}
+          {/* Product Grid */}
       {loading ? (
         <div className="text-center py-20 text-[#78716C] text-sm">
           Loading Modern Maharani Showroom Catalog...
@@ -240,6 +268,8 @@ function ShopContent() {
           ))}
         </div>
       )}
+        </div>
+      </div>
     </div>
   );
 }

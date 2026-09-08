@@ -13,6 +13,7 @@ export default function AdminCategoriesPage() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
+  const [parentSlug, setParentSlug] = useState('');
 
   useEffect(() => {
     loadStore();
@@ -35,6 +36,7 @@ export default function AdminCategoriesPage() {
     setName('');
     setDescription('');
     setImage('https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop');
+    setParentSlug('');
     setModalOpen(true);
   };
 
@@ -43,6 +45,7 @@ export default function AdminCategoriesPage() {
     setName(cat.name);
     setDescription(cat.description);
     setImage(cat.image);
+    setParentSlug(cat.parentSlug || '');
     setModalOpen(true);
   };
 
@@ -72,7 +75,8 @@ export default function AdminCategoriesPage() {
       slug,
       name,
       description,
-      image
+      image,
+      parentSlug: parentSlug || undefined
     };
 
     let updated = [...storeData.categories];
@@ -136,6 +140,7 @@ export default function AdminCategoriesPage() {
               </div>
               <div className="p-4 space-y-1">
                 <h3 className="font-serif text-lg font-bold text-[#1C1917]">{cat.name}</h3>
+                {cat.parentSlug && <span className="text-[10px] uppercase font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full inline-block mb-1">Sub-category of {cat.parentSlug}</span>}
                 <p className="text-xs text-[#78716C] line-clamp-2">{cat.description}</p>
               </div>
             </div>
@@ -167,6 +172,19 @@ export default function AdminCategoriesPage() {
                   onChange={(e) => setName(e.target.value)}
                   className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4] font-bold text-sm"
                 />
+              </div>
+              <div>
+                <label className="block font-semibold uppercase mb-1">Parent Category</label>
+                <select
+                  value={parentSlug}
+                  onChange={(e) => setParentSlug(e.target.value)}
+                  className="w-full p-2.5 bg-[#FAF8F5] border border-[#E7E5E4]"
+                >
+                  <option value="">None (Root Category)</option>
+                  {storeData.categories.filter(c => c.id !== editingCat?.id && !c.parentSlug).map(c => (
+                    <option key={c.id} value={c.slug}>{c.name}</option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="block font-semibold uppercase mb-1">Description</label>

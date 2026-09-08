@@ -8,6 +8,7 @@ import { useCart } from '@/lib/cartContext';
 import CheckoutModal from '@/components/CheckoutModal';
 import {
   ShoppingBag,
+  MessageCircle,
   MapPin,
   Share2,
   Heart,
@@ -95,7 +96,7 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
         <span>/</span>
         <Link href="/shop" className="hover:text-[#1C1917]">Shop</Link>
         <span>/</span>
-        <Link href={`/shop?category=${encodeURIComponent(product.category)}`} className="hover:text-[#1C1917]">{product.category}</Link>
+        <Link href={`/shop?category=${encodeURIComponent(product.categories?.[0] || 'Uncategorized')}`} className="hover:text-[#1C1917]">{product.categories?.[0] || 'Uncategorized'}</Link>
         <span>/</span>
         <span className="text-[#1C1917] font-medium truncate max-w-[200px]">{product.name}</span>
       </div>
@@ -103,12 +104,30 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
       {/* Main Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Gallery */}
-        <div className="space-y-4">
-          <div className="relative aspect-[3/4] bg-[#FAF8F5] border border-[#E7E5E4] overflow-hidden luxury-card-shadow">
+        <div className="flex flex-col-reverse lg:flex-row gap-4">
+          {/* Vertical Thumbnails Desktop / Swipeable Mobile */}
+          {product.images && product.images.length > 1 && (
+            <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[600px] pb-2 lg:pb-0 w-full lg:w-24 shrink-0 no-scrollbar">
+              {product.images.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedImage(img)}
+                  className={`w-20 lg:w-full aspect-[3/4] border-2 overflow-hidden transition-all shrink-0 ${
+                    selectedImage === img ? 'border-[#7A1C30]' : 'border-[#E7E5E4] opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Main Image with Zoom placeholder */}
+          <div className="relative aspect-[3/4] bg-[#FAF8F5] border border-[#E7E5E4] overflow-hidden luxury-card-shadow flex-1 group cursor-crosshair">
             <img
               src={selectedImage}
               alt={product.name}
-              className="w-full h-full object-cover object-center transition-all duration-500"
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-150 origin-center"
             />
             <div className="absolute top-4 left-4 flex flex-col gap-2">
               <span className="bg-[#7A1C30] text-white text-[10px] uppercase tracking-widest px-3 py-1 font-semibold">
@@ -121,30 +140,13 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
               )}
             </div>
           </div>
-
-          {/* Thumbnails */}
-          {product.images && product.images.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
-              {product.images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedImage(img)}
-                  className={`w-20 aspect-[3/4] border-2 overflow-hidden transition-all shrink-0 ${
-                    selectedImage === img ? 'border-[#7A1C30]' : 'border-[#E7E5E4] opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* Details & Actions */}
         <div className="space-y-8">
           <div className="space-y-3 pb-6 border-b border-[#E7E5E4]">
             <div className="flex items-center justify-between text-xs text-[#78716C] uppercase tracking-widest font-semibold">
-              <span>{product.category}</span>
+              <span>{product.categories?.[0] || 'Uncategorized'}</span>
               {product.fabric && <span className="bg-[#FAF8F5] border border-[#E7E5E4] px-2 py-0.5">{product.fabric}</span>}
             </div>
 
@@ -206,23 +208,48 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
             </p>
           </div>
 
+          {/* Stock Alert */}
+          {product.stock !== undefined && product.stock > 0 && product.stock <= 5 && (
+            <div className="text-red-600 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 animate-pulse">
+              <Clock size={14} /> Hurry! Only {product.stock} pieces left in stock
+            </div>
+          )}
+
           {/* E-COMMERCE SHOPPING CTAS */}
           <div className="space-y-3 pt-4 border-t border-[#E7E5E4]">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {product.stock === 0 ? (
               <button
-                onClick={handleAddToCartAction}
-                className="w-full bg-[#1C1917] hover:bg-[#7A1C30] text-white text-xs uppercase tracking-widest py-4 font-bold transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full bg-[#E7E5E4] text-[#78716C] text-xs uppercase tracking-widest py-4 font-bold cursor-not-allowed flex items-center justify-center gap-2"
+                disabled
               >
-                <ShoppingBag size={18} /> Add to Cart
+                Out of Stock / Notify Me
               </button>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                  onClick={handleAddToCartAction}
+                  className="w-full bg-[#1C1917] hover:bg-[#7A1C30] text-white text-xs uppercase tracking-widest py-4 font-bold transition-all shadow-md flex items-center justify-center gap-2"
+                >
+                  <ShoppingBag size={18} /> Add to Cart
+                </button>
 
-              <button
-                onClick={handleBuyNowAction}
-                className="w-full bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest py-4 font-bold transition-all shadow-md flex items-center justify-center gap-2"
-              >
-                <ArrowRight size={18} /> Buy Now
-              </button>
-            </div>
+                <button
+                  onClick={handleBuyNowAction}
+                  className="w-full bg-[#7A1C30] hover:bg-[#5F1524] text-white text-xs uppercase tracking-widest py-4 font-bold transition-all shadow-md flex items-center justify-center gap-2"
+                >
+                  <ArrowRight size={18} /> Buy Now
+                </button>
+              </div>
+            )}
+            
+            <a
+              href={`https://wa.me/${storeInfo.whatsappNumber}?text=${encodeURIComponent(`Hi Modern Maharani! I'm interested in ordering the "${product.name}" (${window.location.href}). Is it available?`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white text-xs uppercase tracking-widest py-3 font-bold transition-all flex items-center justify-center gap-2 mt-2 shadow-sm"
+            >
+              <MessageCircle size={18} /> Order via WhatsApp
+            </a>
 
             {/* Wishlist & Share */}
             <div className="flex items-center justify-between pt-3 text-xs text-[#78716C]">
@@ -264,8 +291,8 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
         <div className="space-y-6 pt-12 border-t border-[#E7E5E4]">
           <div className="flex items-center justify-between">
             <h2 className="font-serif text-2xl font-bold text-[#1C1917]">You May Also Like</h2>
-            <Link href={`/shop?category=${encodeURIComponent(product.category)}`} className="text-xs uppercase tracking-widest text-[#7A1C30]">
-              View All {product.category}
+            <Link href={`/shop?category=${encodeURIComponent(product.categories?.[0] || 'Uncategorized')}`} className="text-xs uppercase tracking-widest text-[#7A1C30]">
+              View All {product.categories?.[0] || 'Uncategorized'}
             </Link>
           </div>
 
