@@ -213,15 +213,6 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Admin CMS Access */}
-            <Link
-              href="/admin/login"
-              className="hidden sm:flex items-center gap-1 text-[11px] font-semibold text-[#78716C] hover:text-brand transition-colors border border-[#E7E5E4] px-2.5 py-1"
-              title="Admin Panel"
-            >
-              <ShieldCheck size={14} />
-              <span>Admin</span>
-            </Link>
           </div>
         </div>
 
