@@ -160,7 +160,7 @@ export default function Navbar() {
                           return (
                             <div key={cat.slug} className="space-y-3">
                               <Link
-                                href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                                href={`/category/${cat.slug}`}
                                 className="font-serif text-sm font-bold text-[#1C1917] hover:text-brand block pb-1 border-b border-[#E7E5E4]"
                               >
                                 {cat.name}
@@ -169,7 +169,7 @@ export default function Navbar() {
                                 {subCats.map(sub => (
                                   <li key={sub.slug}>
                                     <Link
-                                      href={`/shop?category=${encodeURIComponent(sub.slug)}`}
+                                      href={`/category/${cat.slug}/${sub.slug}`}
                                       className="text-xs text-[#78716C] hover:text-brand block transition-colors truncate"
                                     >
                                       {sub.name}
@@ -178,10 +178,10 @@ export default function Navbar() {
                                 ))}
                                 <li>
                                   <Link
-                                    href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                                    href={`/category/${cat.slug}`}
                                     className="text-[10px] font-bold text-brand uppercase tracking-wider hover:underline block pt-1"
                                   >
-                                    View All →
+                                    View All {cat.name} →
                                   </Link>
                                 </li>
                               </ul>

@@ -30,456 +30,143 @@
   "categories": [
     {
       "id": "cat-dm",
-      "slug": "dress-materials-unstitched",
+      "slug": "dress-materials",
       "name": "Dress Materials (Unstitched)",
-      "description": "Premium unstitched dress materials for bespoke ethnic tailoring.",
+      "description": "Bespoke unstitched dress materials inKota, Raw Silk, Jute, Tussar, and Ajrakh prints.",
       "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-dm-kc",
-      "parentSlug": "dress-materials-unstitched",
-      "slug": "kota-and-cottons",
+      "id": "sub-dm-1",
+      "slug": "kota-cottons",
       "name": "Kota & Cottons",
-      "description": "Lightweight and breathable Kota & Cotton fabrics.",
+      "parentSlug": "dress-materials",
+      "description": "Lightweight Kota Doria and breathable pure cotton unstitched sets.",
       "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-dm-kc-1",
-      "parentSlug": "kota-and-cottons",
-      "slug": "pure-handloom-kota-cotton",
-      "name": "Pure Handloom Kota Cotton (Kutch Work & Mirror Borders)",
-      "description": "Pure Kota Cotton with traditional Kutch embroidery and mirror work borders.",
+      "id": "sub-dm-2",
+      "slug": "silks-blends",
+      "name": "Silks & Handloom Blends",
+      "parentSlug": "dress-materials",
+      "description": "Royal raw silk, jute silk with maggam work, Tussar and shimmering tissue silk.",
       "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-dm-kc-2",
-      "parentSlug": "kota-and-cottons",
-      "slug": "semi-kota-printed-sets",
-      "name": "Semi-Kota Printed Sets",
-      "description": "Vibrant semi-kota printed suit sets with soft drapes.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-kc-3",
-      "parentSlug": "kota-and-cottons",
-      "slug": "fine-cotton-chanderi",
-      "name": "Fine Cotton & Chanderi",
-      "description": "Luxurious Chanderi cotton blends with gold zari accents.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-sb",
-      "parentSlug": "dress-materials-unstitched",
-      "slug": "silks-and-blends",
-      "name": "Silks & Blends",
-      "description": "Royal silk fabrics crafted for celebratory wear.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-sb-1",
-      "parentSlug": "silks-and-blends",
-      "slug": "raw-silk-jamdani",
-      "name": "Raw Silk (Jamdani Style Woven Booties)",
-      "description": "Structure raw silk featuring hand-woven Jamdani booties.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-sb-2",
-      "parentSlug": "silks-and-blends",
-      "slug": "jute-silk-maggam",
-      "name": "Jute Silk (Hand Maggam & Zardozi Work)",
-      "description": "Heavy jute silk sets with hand-crafted Maggam and Zardozi embroidery.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-sb-3",
-      "parentSlug": "silks-and-blends",
-      "slug": "tussar-silk-embroidered",
-      "name": "Tussar Silk (Embroidered & Floral Motifs)",
-      "description": "Rich Tussar silk sets embroidered with elegant floral motifs.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-sb-4",
-      "parentSlug": "silks-and-blends",
-      "slug": "semi-tussar-tissue-silk",
-      "name": "Semi-Tussar & Tissue Silk",
-      "description": "Shimmering tissue silk & semi-tussar unstitched material.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-tc",
-      "parentSlug": "dress-materials-unstitched",
-      "slug": "traditional-prints-crafts",
+      "id": "sub-dm-3",
+      "slug": "traditional-crafts",
       "name": "Traditional Prints & Crafts",
-      "description": "Heritage block prints and hand-painted artisanal prints.",
+      "parentSlug": "dress-materials",
+      "description": "Heritage natural dye Ajrakh block prints, Kalamkari pen-work, and Sanganeri theme prints.",
       "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-dm-tc-1",
-      "parentSlug": "traditional-prints-crafts",
-      "slug": "authentic-ajrakh-block-prints",
-      "name": "Authentic Ajrakh Hand Block Prints",
-      "description": "Pure natural dye Ajrakh hand block printed dress materials.",
+      "id": "cat-re",
+      "slug": "readymade-ethnic",
+      "name": "Readymades & Kurtas",
+      "description": "Pre-stitched 3-piece suit sets, flared Anarkalis, co-ords, and formal office kurtis.",
+      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "id": "sub-re-1",
+      "slug": "three-piece-sets",
+      "name": "3-Piece Stitched Suit Sets",
+      "parentSlug": "readymade-ethnic",
+      "description": "Complete stitched sets featuring Kurta, Pant, and Dupatta.",
+      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "id": "sub-re-2",
+      "slug": "frocks-anarkalis",
+      "name": "Frocks & Flared Anarkalis",
+      "parentSlug": "readymade-ethnic",
+      "description": "Breezy Jaipur cotton tiered frocks and grand festive floor-length Anarkalis.",
       "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-dm-tc-2",
-      "parentSlug": "traditional-prints-crafts",
-      "slug": "kalamkari-silk-sets",
-      "name": "Kalamkari Silk Sets",
-      "description": "Hand-painted motifs on soft silk dress materials.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-tc-3",
-      "parentSlug": "traditional-prints-crafts",
-      "slug": "theme-prints-elephant-tropical",
-      "name": "Theme Prints (Elephant & Tropical Motifs)",
-      "description": "Whimsical theme printed unstitched dress fabrics.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-ic",
-      "parentSlug": "dress-materials-unstitched",
-      "slug": "inclusions-and-cut",
-      "name": "Inclusions & Cut",
-      "description": "Specialized cut specifications and fabric breakdowns.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-ic-1",
-      "parentSlug": "inclusions-and-cut",
-      "slug": "top-fabric-2-5m",
-      "name": "Top Fabric (2.5m)",
-      "description": "Unstitched top fabric cut of 2.5 meters length.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-ic-2",
-      "parentSlug": "inclusions-and-cut",
-      "slug": "bottom-fabric",
-      "name": "Bottom Fabric (Salwar / Straight-Cut Pant)",
-      "description": "Unstitched bottom material suitable for pants or salwar.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-dm-ic-3",
-      "parentSlug": "inclusions-and-cut",
-      "slug": "dupatta-woven-banarasi",
-      "name": "Dupatta (Woven / Banarasi / Chiffon)",
-      "description": "Exclusive woven Banarasi or chiffon match dupattas.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm",
-      "slug": "readymade-ethnic-wear",
-      "name": "Readymade Ethnic Wear & Kurtas",
-      "description": "Tailored ready-to-wear kurtis, suit sets, and fusion ensembles.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-3p",
-      "parentSlug": "readymade-ethnic-wear",
-      "slug": "3-piece-suit-sets",
-      "name": "3-Piece Suit Sets",
-      "description": "Complete 3-piece sets with Kurta, Pant, and Dupatta.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-3p-1",
-      "parentSlug": "3-piece-suit-sets",
-      "slug": "kurta-pant-dupatta-set",
-      "name": "Kurta + Pant + Chiffon/Cotton Dupatta",
-      "description": "Classic ready-to-wear kurta, straight pant, and matching dupatta.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-3p-2",
-      "parentSlug": "3-piece-suit-sets",
-      "slug": "chikankari-threadwork-sets",
-      "name": "Chikankari & Threadwork Sets",
-      "description": "Lucknowi Chikankari embroidered 3-piece suit ensembles.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-fa",
-      "parentSlug": "readymade-ethnic-wear",
-      "slug": "frocks-and-anarkalis",
-      "name": "Frocks & Anarkalis",
-      "description": "Flared Anarkalis and boho Jaipur cotton tiered frocks.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-fa-1",
-      "parentSlug": "frocks-and-anarkalis",
-      "slug": "tiered-jaipur-cotton-frocks",
-      "name": "Tiered Jaipur Cotton Frocks (Boho Block Prints)",
-      "description": "Airy Jaipur cotton tiered frocks in colorful block prints.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-fa-2",
-      "parentSlug": "frocks-and-anarkalis",
-      "slug": "flared-long-festive-anarkalis",
-      "name": "Flared Long Festive Anarkalis",
-      "description": "Floor-length festive Anarkalis with rich embroidery.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-mi",
-      "parentSlug": "readymade-ethnic-wear",
-      "slug": "modern-indo-western",
+      "id": "sub-re-3",
+      "slug": "indo-western",
       "name": "Modern & Indo-Western",
-      "description": "Contemporary co-ord sets and Indo-Western fusion wear.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-mi-1",
-      "parentSlug": "modern-indo-western",
-      "slug": "coord-sets-tunic-palazzo",
-      "name": "Co-ord Sets (Tunic + Palazzo Pants)",
-      "description": "Stylish tunic and palazzo matching co-ord sets.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-mi-2",
-      "parentSlug": "modern-indo-western",
-      "slug": "fusion-tunics-midis",
-      "name": "Fusion Tunics & Midis",
-      "description": "Chic fusion midi dresses and high-low tunics.",
+      "parentSlug": "readymade-ethnic",
+      "description": "Contemporary co-ord sets, tunic-palazzo pairings, and fusion midi tunics.",
       "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-rm-op",
-      "parentSlug": "readymade-ethnic-wear",
-      "slug": "occasion-partywear",
+      "id": "sub-re-4",
+      "slug": "partywear",
       "name": "Occasion & Partywear",
-      "description": "Heavy partywear lehengas, skirts, and embroidered capes.",
+      "parentSlug": "readymade-ethnic",
+      "description": "Velvet crop top lehengas with organza cape shrugs for weddings and galas.",
       "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-rm-op-1",
-      "parentSlug": "occasion-partywear",
-      "slug": "crop-top-skirt-sets",
-      "name": "Crop Top & Skirt Sets",
-      "description": "Modern embroidered crop top paired with flared skirts.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-op-2",
-      "parentSlug": "occasion-partywear",
-      "slug": "embellished-velvet-georgette-lehengas",
-      "name": "Embellished Velvet / Georgette Lehengas with Capes",
-      "description": "Statement partywear lehengas styled with embroidered capes.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-dw",
-      "parentSlug": "readymade-ethnic-wear",
-      "slug": "daily-workwear-kurtis",
+      "id": "sub-re-5",
+      "slug": "daily-kurtis",
       "name": "Daily & Workwear Kurtis",
-      "description": "Comfortable and sharp daily office kurtis.",
+      "parentSlug": "readymade-ethnic",
+      "description": "Comfortable slub rayon office kurtis and A-line casual everyday wear.",
       "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-dw-1",
-      "parentSlug": "daily-workwear-kurtis",
-      "slug": "straight-cut-office-kurtis",
-      "name": "Straight-Cut Office Kurtis (Rayon & Cotton)",
-      "description": "Breathable rayon and cotton straight kurtis for office wear.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-dw-2",
-      "parentSlug": "daily-workwear-kurtis",
-      "slug": "aline-highlow-tunics",
-      "name": "A-Line & High-Low Tunics",
-      "description": "Flattering A-line tunics and casual high-low cuts.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-rm-dw-3",
-      "parentSlug": "daily-workwear-kurtis",
-      "slug": "minimal-embroidered-neckline",
-      "name": "Minimal Embroidered Neckline Designs",
-      "description": "Elegant solid kurtis with subtle embroidered collars and necklines.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
     },
     {
       "id": "cat-sr",
       "slug": "sarees",
       "name": "Sarees",
-      "name_tel": "చీరలు",
-      "description": "Exquisite handloom, festive silk, and casual printed drapes.",
+      "description": "Handloom Kota Doria, Muslin Jamdani, Gadwal Silk Pattu, and Kalamkari georgettes.",
       "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-sr-hl",
-      "parentSlug": "sarees",
-      "slug": "handloom-lightweight-drapes",
+      "id": "sub-sr-1",
+      "slug": "handloom-sarees",
       "name": "Handloom & Lightweight Drapes",
-      "description": "Airy Kota Doria and soft Muslin Jamdani handloom sarees.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-hl-1",
-      "parentSlug": "handloom-lightweight-drapes",
-      "slug": "pure-handloom-kota-doria",
-      "name": "Pure Handloom Kota Doria (Zari Border & Bootas)",
-      "description": "Traditional Kota Doria saree with woven gold zari borders.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-hl-2",
-      "parentSlug": "handloom-lightweight-drapes",
-      "slug": "muslin-jamdani-weave-sarees",
-      "name": "Muslin Jamdani Weave Sarees",
-      "description": "Ultra-fine muslin drapes woven with floral Jamdani pallus.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-sf",
       "parentSlug": "sarees",
-      "slug": "silk-festive-sarees",
+      "description": "Pure Kota Doria with zari borders and Muslin Jamdani woven drapes.",
+      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "id": "sub-sr-2",
+      "slug": "silk-sarees",
       "name": "Silk & Festive Sarees",
-      "description": "Heritage Gadwal Pattu and dual-tone woven silk sarees.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-sf-1",
-      "parentSlug": "silk-festive-sarees",
-      "slug": "gadwal-silk-pattu",
-      "name": "Gadwal Silk Pattu (Kuttu Borders & Temple Motifs)",
-      "description": "Authentic Gadwal Pattu saree with traditional temple borders.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-sf-2",
-      "parentSlug": "silk-festive-sarees",
-      "slug": "dual-tone-soft-silks",
-      "name": "Dual-Tone Soft Silks (Silver & Gold Zari Weave)",
-      "description": "Soft silk sarees with mesmerizing dual-tone shot effect.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-cp",
       "parentSlug": "sarees",
-      "slug": "casual-printed-sarees",
+      "description": "Authentic Gadwal Pattu with temple borders and dual-tone soft silks.",
+      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "id": "sub-sr-3",
+      "slug": "casual-sarees",
       "name": "Casual & Printed Sarees",
-      "description": "Georgette, chiffon, and linen daily-wear printed sarees.",
+      "parentSlug": "sarees",
+      "description": "Flowing Kalamkari chiffon drapes and daily-wear organic linen-cotton sarees.",
       "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-sr-cp-1",
-      "parentSlug": "casual-printed-sarees",
-      "slug": "kalamkari-printed-georgette",
-      "name": "Kalamkari Printed Georgette / Chiffon",
-      "description": "Flowing georgette and chiffon sarees with Kalamkari prints.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-sr-cp-2",
-      "parentSlug": "casual-printed-sarees",
-      "slug": "daily-wear-cotton-linen",
-      "name": "Daily-Wear Cotton & Linen Drapes",
-      "description": "Soft linen and organic cotton sarees for all-day elegance.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd",
-      "slug": "budget-deals",
-      "name": "Budget Deals & Value Store",
-      "description": "Exclusive value offers, Under ₹899 / Under ₹1,199 stores & bulk deals.",
+      "id": "cat-bs",
+      "slug": "budget-store",
+      "name": "Budget Store",
+      "description": "Wholesale value tiers under ₹899 and ₹1,199 with free shipping perks.",
       "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-bd-pb",
-      "parentSlug": "budget-deals",
-      "slug": "price-brackets",
-      "name": "Price Brackets",
-      "description": "Curated budget stores under fixed price tiers.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pb-899",
-      "parentSlug": "price-brackets",
-      "slug": "under-899-store",
+      "id": "sub-bs-1",
+      "slug": "under-899",
       "name": "Under ₹899 Store",
-      "description": "Affordable ethnic ensembles priced strictly under ₹899.",
+      "parentSlug": "budget-store",
+      "description": "Wholesale value sets and daily kurti multi-packs under ₹899.",
       "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-bd-pb-899-1",
-      "parentSlug": "under-899-store",
-      "slug": "budget-raw-silk-3piece",
-      "name": "Budget Raw Silk 3-Piece Sets",
-      "description": "3-piece unstitched & stitched raw silk sets under ₹899.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pb-899-2",
-      "parentSlug": "under-899-store",
-      "slug": "daily-cotton-kurti-multipacks",
-      "name": "Daily Cotton Kurti Multi-Packs / Stacks",
-      "description": "Daily office cotton kurtis in value packs under ₹899.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pb-1199",
-      "parentSlug": "price-brackets",
-      "slug": "under-1199-store",
+      "id": "sub-bs-2",
+      "slug": "under-1199",
       "name": "Under ₹1,199 Store",
-      "description": "Premium ethnic wear and suit sets under ₹1,199.",
+      "parentSlug": "budget-store",
+      "description": "Premium cotton printed suit sets and budget semi-kota mirror work sets.",
       "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "id": "cat-bd-pb-1199-1",
-      "parentSlug": "under-1199-store",
-      "slug": "premium-cotton-printed-suits",
-      "name": "Premium Cotton Printed Suits (Elephant / Tropical)",
-      "description": "Theme printed cotton suit sets under ₹1,199.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pb-1199-2",
-      "parentSlug": "under-1199-store",
-      "slug": "budget-semi-kota-mirror-work",
-      "name": "Budget Semi-Kota Mirror Work Sets",
-      "description": "Semi-Kota sets with intricate mirror embellishments.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pf",
-      "parentSlug": "budget-deals",
-      "slug": "store-perks-filters",
-      "name": "Store Perks & Filters",
-      "description": "Free shipping, ready to dispatch, and wholesale bulk lots.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pf-1",
-      "parentSlug": "store-perks-filters",
-      "slug": "free-shipping-eligible",
-      "name": "Free Shipping Eligible (Orders Above ₹1,000)",
-      "description": "Products qualifying for free delivery to your doorstep.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pf-2",
-      "parentSlug": "store-perks-filters",
-      "slug": "fast-moving-ready-to-dispatch",
-      "name": "Fast Moving / Ready to Dispatch",
-      "description": "In-stock bestsellers ready for immediate KPHB showroom dispatch.",
+      "id": "sub-bs-3",
+      "slug": "store-perks",
+      "name": "Special Perks & Wholesale",
+      "parentSlug": "budget-store",
+      "description": "Free shipping eligible items, ready to dispatch, and wholesale bulk lots.",
       "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      "id": "cat-bd-pf-3",
-      "parentSlug": "store-perks-filters",
-      "slug": "wholesale-bulk-lots",
-      "name": "Wholesale Bulk Lots",
-      "description": "Wholesale lot discounts for boutique owners and resellers.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
     }
   ],
   "collections": [
@@ -517,32 +204,25 @@
   "products": [
     {
       "id": "prod-dm-01",
-      "slug": "kutch-mirror-handloom-kota-suit",
-      "name": "Pure Handloom Kota Cotton with Kutch Work & Mirror Border",
+      "slug": "pure-handloom-kota-cotton-kutch-mirror",
+      "name": "Pure Handloom Kota Cotton (Kutch Work & Mirror Borders)",
       "categories": [
-        "dress-materials-unstitched",
-        "kota-and-cottons",
-        "pure-handloom-kota-cotton",
-        "inclusions-and-cut",
-        "top-fabric-2-5m"
+        "dress-materials",
+        "kota-cottons",
+        "pure-handloom-kota-cotton"
       ],
       "price": 1890,
-      "salePrice": 1490,
+      "salePrice": 1890,
       "stock": 12,
-      "sizeStock": {
-        "Unstitched": 12
-      },
-      "description": "Exquisite handloom Kota Cotton unstitched dress material featuring intricate Kutch embroidery and genuine mirror work borders. Perfect for summer festivities.",
-      "fabric": "Pure Handloom Kota Cotton",
-      "work": "Kutch Threadwork & Mirror Embroidery",
-      "inclusions": "Top Fabric (2.5m) + Plain Cotton Bottom (2.5m) + Kota Doria Zari Dupatta (2.4m)",
+      "description": "Pure Kota Doria cotton fabric with handcrafted Kutchi geometric threadwork along the neck yoke and real micro-mirror borders. Includes lightweight breathable dupatta.",
+      "fabric": "Kota Cotton",
+      "work": "Kutch Embroidery",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
       "sizes": [
         "Unstitched"
       ],
       "colors": [
-        "Mustard Gold",
-        "Maroon Red",
-        "Royal Navy"
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
@@ -554,83 +234,33 @@
       "isTrending": true,
       "isFreeShippingEligible": true,
       "tags": [
-        "Kota Cotton",
-        "Kutch Work",
-        "Handloom",
-        "Unstitched"
+        "Pure Handloom",
+        "Mirror Work",
+        "Kutch Craft"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T18:00:00Z"
     },
     {
       "id": "prod-dm-02",
-      "slug": "raw-silk-jamdani-booties-suit-set",
-      "name": "Raw Silk Suit with Jamdani Style Woven Booties",
+      "slug": "semi-kota-block-printed-suit-set",
+      "name": "Semi-Kota Block Printed Suit Set",
       "categories": [
-        "dress-materials-unstitched",
-        "silks-and-blends",
-        "raw-silk-jamdani",
-        "under-1199-store",
-        "price-brackets"
+        "dress-materials",
+        "kota-cottons",
+        "semi-kota-printed-sets"
       ],
-      "price": 1499,
-      "salePrice": 1150,
-      "stock": 8,
-      "sizeStock": {
-        "Unstitched": 8
-      },
-      "description": "Structured raw silk material with delicate Jamdani woven booties across the shirt length. Comes with a rich Banarasi silk dupatta.",
-      "fabric": "Raw Silk & Banarasi Silk Dupatta",
-      "work": "Jamdani Woven Booties",
-      "inclusions": "Top Fabric (2.5m) + Shantoon Bottom (2.5m) + Banarasi Woven Dupatta",
-      "sizes": [
-        "Unstitched"
-      ],
-      "colors": [
-        "Deep Emerald Green",
-        "Rani Pink"
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
-      ],
-      "availability": "Available",
-      "isNewArrival": true,
-      "isFeatured": true,
-      "isTrending": false,
-      "isFreeShippingEligible": true,
-      "tags": [
-        "Raw Silk",
-        "Jamdani",
-        "Banarasi Dupatta"
-      ],
-      "createdAt": "2026-09-09"
-    },
-    {
-      "id": "prod-dm-03",
-      "slug": "authentic-ajrakh-hand-block-print-set",
-      "name": "Authentic Ajrakh Hand Block Print Cotton Dress Material",
-      "categories": [
-        "dress-materials-unstitched",
-        "traditional-prints-crafts",
-        "authentic-ajrakh-block-prints",
-        "under-899-store"
-      ],
-      "price": 999,
-      "salePrice": 799,
+      "price": 1290,
+      "salePrice": 1290,
       "stock": 15,
-      "sizeStock": {
-        "Unstitched": 15
-      },
-      "description": "Handcrafted using traditional natural dyes, this Ajrakh block printed cotton dress material highlights timeless indigo and madder red motifs.",
-      "fabric": "100% Pure Natural Dye Cotton",
-      "work": "Ajrakh Wooden Block Printing",
-      "inclusions": "Top Fabric (2.5m) + Matching Printed Bottom (2.5m) + Mulmul Dupatta (2.4m)",
+      "description": "Semi-Kota blended fabric adorned with traditional floral block prints, paired with a printed matching cotton-blend dupatta.",
+      "fabric": "Semi-Kota",
+      "work": "Hand Block Print",
+      "inclusions": "Top: 2.5m, Bottom: 2.0m, Dupatta: 2.25m",
       "sizes": [
         "Unstitched"
       ],
       "colors": [
-        "Indigo Blue",
-        "Madder Red"
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
@@ -638,52 +268,36 @@
       ],
       "availability": "Available",
       "isNewArrival": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "isTrending": true,
-      "isFreeShippingEligible": false,
+      "isFreeShippingEligible": true,
       "tags": [
-        "Ajrakh",
-        "Natural Dye",
-        "Under 899",
-        "Block Print"
+        "Block Print",
+        "Fast Moving"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T17:55:00Z"
     },
     {
-      "id": "prod-rm-01",
-      "slug": "lucknowi-chikankari-3piece-suit-set",
-      "name": "Lucknowi Chikankari & Threadwork 3-Piece Suit Set",
+      "id": "prod-dm-03",
+      "slug": "fine-chanderi-cotton-silk-suit-material",
+      "name": "Fine Chanderi Cotton Silk Suit Material",
       "categories": [
-        "readymade-ethnic-wear",
-        "3-piece-suit-sets",
-        "chikankari-threadwork-sets",
-        "kurta-pant-dupatta-set"
+        "dress-materials",
+        "kota-cottons",
+        "fine-cotton-chanderi"
       ],
-      "price": 3490,
-      "salePrice": 2890,
-      "stock": 18,
-      "sizeStock": {
-        "S": 3,
-        "M": 5,
-        "L": 5,
-        "XL": 3,
-        "XXL": 2
-      },
-      "description": "Fully stitched ethnic ensemble featuring fine Lucknowi Bakhiya Chikankari hand embroidery with delicate pearl and sequins work.",
-      "fabric": "Premium Georgette with Cotton Inner",
-      "work": "Lucknowi Chikankari & Sequins",
-      "inclusions": "Stitched Kurta + Straight Pant + Organza Embroidered Dupatta",
+      "price": 2190,
+      "salePrice": 2190,
+      "stock": 8,
+      "description": "Lightweight mercerized Chanderi weave top with fine zari patti borders, plain Shantoon bottom, and gold woven organza dupatta.",
+      "fabric": "Chanderi Silk",
+      "work": "Zari Patti",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
       "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
+        "Unstitched"
       ],
       "colors": [
-        "Pastel Mint Green",
-        "Soft Peach",
-        "Ivory White"
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
@@ -695,45 +309,69 @@
       "isTrending": true,
       "isFreeShippingEligible": true,
       "tags": [
-        "Chikankari",
-        "Readymade",
-        "3 Piece Set",
-        "Partywear"
+        "Chanderi Weave",
+        "Zari Patti"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T17:50:00Z"
     },
     {
-      "id": "prod-rm-02",
-      "slug": "tiered-jaipur-cotton-boho-frock",
-      "name": "Tiered Jaipur Cotton Boho Block Print Frock",
+      "id": "prod-dm-04",
+      "slug": "raw-silk-suit-jamdani-woven-booties",
+      "name": "Raw Silk Suit with Jamdani Woven Booties",
       "categories": [
-        "readymade-ethnic-wear",
-        "frocks-and-anarkalis",
-        "tiered-jaipur-cotton-frocks",
-        "under-1199-store"
+        "dress-materials",
+        "silks-blends",
+        "raw-silk-jamdani"
       ],
-      "price": 1590,
-      "salePrice": 1190,
-      "stock": 20,
-      "sizeStock": {
-        "S": 4,
-        "M": 6,
-        "L": 6,
-        "XL": 4
-      },
-      "description": "Breezy tiered cotton flared frock dress styled with bohemian wooden buttons and hand block prints from Sanganer Jaipur.",
-      "fabric": "100% Breathable Jaipur Cotton",
-      "work": "Hand Block Print & Gota Border Accent",
-      "inclusions": "Ready-to-wear Flared Frock Dress",
+      "price": 2790,
+      "salePrice": 2790,
+      "stock": 10,
+      "description": "100% natural Raw Silk top featuring authentic Jacquard/Jamdani extra-weft thread booties (not printed), matching raw silk bottom, and rich woven dupatta.",
+      "fabric": "Raw Silk",
+      "work": "Extra-Weft Jamdani",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
       "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
+        "Unstitched"
       ],
       "colors": [
-        "Indigo Floral",
-        "Terracotta Red"
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Pure Raw Silk",
+        "Jamdani Woven"
+      ],
+      "createdAt": "2026-09-09T17:45:00Z"
+    },
+    {
+      "id": "prod-dm-05",
+      "slug": "jute-silk-suit-hand-maggam-zardozi-yoke",
+      "name": "Jute Silk Suit with Hand Maggam & Zardozi Yoke",
+      "categories": [
+        "dress-materials",
+        "silks-blends",
+        "jute-silk-maggam"
+      ],
+      "price": 3290,
+      "salePrice": 3290,
+      "stock": 6,
+      "description": "Textured raw Jute Silk featuring antique gold zari embroidery, cutwork beads, micro-pearl Maggam craft on the neckline, accompanied by sheer organza dupatta.",
+      "fabric": "Jute Silk",
+      "work": "Maggam & Zardozi",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
@@ -741,42 +379,216 @@
       ],
       "availability": "Available",
       "isNewArrival": true,
-      "isFeatured": false,
+      "isFeatured": true,
       "isTrending": true,
       "isFreeShippingEligible": true,
       "tags": [
-        "Jaipur Cotton",
-        "Frock",
-        "Boho",
-        "Under 1199"
+        "Hand Maggam",
+        "Zardozi Craft"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T17:40:00Z"
     },
     {
-      "id": "prod-rm-03",
-      "slug": "straight-cut-office-rayon-kurti",
-      "name": "Straight-Cut Office Rayon Kurti with Minimal Collar",
+      "id": "prod-dm-06",
+      "slug": "pure-tussar-silk-floral-thread-kantha",
+      "name": "Pure Tussar Silk with Floral Thread Kantha Motifs",
       "categories": [
-        "readymade-ethnic-wear",
-        "daily-workwear-kurtis",
-        "straight-cut-office-kurtis",
-        "under-899-store",
-        "daily-cotton-kurti-multipacks"
+        "dress-materials",
+        "silks-blends",
+        "tussar-silk-embroidered"
       ],
-      "price": 899,
-      "salePrice": 599,
-      "stock": 25,
-      "sizeStock": {
-        "S": 5,
-        "M": 8,
-        "L": 7,
-        "XL": 3,
-        "XXL": 2
-      },
-      "description": "Ultra-soft daily workwear straight kurti crafted with comfortable breathable rayon fabric and subtle silver foil accents.",
-      "fabric": "High-Grade Soft Rayon",
-      "work": "Minimal Neckline Thread & Foil Print",
-      "inclusions": "Single Stitched Straight Kurti",
+      "price": 3490,
+      "salePrice": 3490,
+      "stock": 7,
+      "description": "Earthy textured wild Tussar silk top panel decorated with multi-colored thread embroidery, paired with solid silk bottom and matching embroidered Tussar dupatta.",
+      "fabric": "Wild Tussar Silk",
+      "work": "Kantha Embroidery",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Pure Tussar",
+        "Kantha Work"
+      ],
+      "createdAt": "2026-09-09T17:35:00Z"
+    },
+    {
+      "id": "prod-dm-07",
+      "slug": "tissue-semi-tussar-festive-suit-set",
+      "name": "Tissue & Semi-Tussar Festive Suit Set",
+      "categories": [
+        "dress-materials",
+        "silks-blends",
+        "semi-tussar-tissue-silk"
+      ],
+      "price": 2490,
+      "salePrice": 2490,
+      "stock": 9,
+      "description": "Metallic dual-tone sheen tissue weave with subtle gold zari borders and a printed tissue silk dupatta.",
+      "fabric": "Tissue Silk",
+      "work": "Gold Zari Weave",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Tissue Silk",
+        "Shimmer Luster"
+      ],
+      "createdAt": "2026-09-09T17:30:00Z"
+    },
+    {
+      "id": "prod-dm-08",
+      "slug": "authentic-ajrakh-natural-dye-block-print-set",
+      "name": "Authentic Ajrakh Natural Dye Block Print Set",
+      "categories": [
+        "dress-materials",
+        "traditional-crafts",
+        "authentic-ajrakh-block-prints"
+      ],
+      "price": 1890,
+      "salePrice": 1890,
+      "stock": 14,
+      "description": "Hand-carved wooden block prints using indigo and madder red vegetable dyes on modal silk/chanderi with a large 2.5m Ajrakh dupatta.",
+      "fabric": "Modal Silk",
+      "work": "Ajrakh Wooden Block Print",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.5m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Ajrakh Handloom",
+        "Vegetable Dye"
+      ],
+      "createdAt": "2026-09-09T17:25:00Z"
+    },
+    {
+      "id": "prod-dm-09",
+      "slug": "kalamkari-silk-suit-set",
+      "name": "Kalamkari Silk Suit Set",
+      "categories": [
+        "dress-materials",
+        "traditional-crafts",
+        "kalamkari-silk-sets"
+      ],
+      "price": 1990,
+      "salePrice": 1990,
+      "stock": 11,
+      "description": "Traditional pen-work and screen-printed mythological and tree-of-life floral motifs on soft silk fabric.",
+      "fabric": "Soft Silk",
+      "work": "Kalamkari Artwork",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Kalamkari Craft",
+        "Heritage Art"
+      ],
+      "createdAt": "2026-09-09T17:20:00Z"
+    },
+    {
+      "id": "prod-dm-10",
+      "slug": "elephant-tropical-motif-sanganeri-print-suit",
+      "name": "Elephant & Tropical Motif Sanganeri Print Suit",
+      "categories": [
+        "dress-materials",
+        "traditional-crafts",
+        "theme-prints-elephant-tropical"
+      ],
+      "price": 1199,
+      "salePrice": 1199,
+      "stock": 18,
+      "description": "High-twist premium cotton featuring heritage elephant and coconut palm tree border designs with a dual-shade printed dupatta.",
+      "fabric": "Premium Cotton",
+      "work": "Sanganeri Theme Print",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.25m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Theme Print",
+        "Under ₹1199"
+      ],
+      "createdAt": "2026-09-09T17:15:00Z"
+    },
+    {
+      "id": "prod-re-11",
+      "slug": "chikankari-embroidered-straight-kurta-pant-set",
+      "name": "Chikankari Embroidered Straight Kurta-Pant Set",
+      "categories": [
+        "readymade-ethnic",
+        "three-piece-sets",
+        "chikankari-threadwork-sets"
+      ],
+      "price": 2890,
+      "salePrice": 2890,
+      "stock": 16,
+      "description": "Pre-stitched straight-fit cotton kurta with Lucknowi chikankari floral shadow-work, matching tapered cigarette pants, and soft chiffon dupatta.",
+      "fabric": "Georgette",
+      "work": "Lucknowi Chikankari",
+      "inclusions": "",
       "sizes": [
         "S",
         "M",
@@ -785,52 +597,366 @@
         "XXL"
       ],
       "colors": [
-        "Teal Blue",
-        "Mustard Yellow",
-        "Black"
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Lucknowi Chikankari",
+        "Stitched 3-Piece"
+      ],
+      "createdAt": "2026-09-09T17:10:00Z"
+    },
+    {
+      "id": "prod-re-12",
+      "slug": "festive-threadwork-anarkali-3piece-ensemble",
+      "name": "Festive Threadwork Anarkali 3-Piece Ensemble",
+      "categories": [
+        "readymade-ethnic",
+        "three-piece-sets",
+        "kurta-pant-dupatta-set"
+      ],
+      "price": 3690,
+      "salePrice": 3690,
+      "stock": 12,
+      "description": "Georgette gathered flared kurta with intricate resham embroidery, churidar bottom, and border-finished dupatta.",
+      "fabric": "Georgette",
+      "work": "Resham Threadwork",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Festive Anarkali",
+        "Resham Work"
+      ],
+      "createdAt": "2026-09-09T17:05:00Z"
+    },
+    {
+      "id": "prod-re-13",
+      "slug": "tiered-jaipur-cotton-vacation-frock",
+      "name": "Tiered Jaipur Cotton Vacation Frock",
+      "categories": [
+        "readymade-ethnic",
+        "frocks-anarkalis",
+        "tiered-jaipur-cotton-frocks"
+      ],
+      "price": 1190,
+      "salePrice": 1190,
+      "stock": 20,
+      "description": "Multi-tiered relaxed-fit maxi dress with bohemian block prints and tasseled tie-ups at neck. 100% breathable cambric cotton.",
+      "fabric": "Cambric Cotton",
+      "work": "Jaipur Block Print",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Boho Frock",
+        "Under ₹1199"
+      ],
+      "createdAt": "2026-09-09T17:00:00Z"
+    },
+    {
+      "id": "prod-re-14",
+      "slug": "floor-length-festive-anarkali-gown",
+      "name": "Floor-Length Festive Anarkali Gown",
+      "categories": [
+        "readymade-ethnic",
+        "frocks-anarkalis",
+        "flared-long-festive-anarkalis"
+      ],
+      "price": 3990,
+      "salePrice": 3990,
+      "stock": 5,
+      "description": "Heavy Kalidar flare floor-length gown featuring foil print borders and a padded bustier with side zip closure.",
+      "fabric": "Art Silk",
+      "work": "Kalidar Flare",
+      "inclusions": "",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Grand Flare",
+        "Festive Gown"
+      ],
+      "createdAt": "2026-09-09T16:55:00Z"
+    },
+    {
+      "id": "prod-re-15",
+      "slug": "linen-blend-tunic-wide-leg-palazzo-coord-set",
+      "name": "Linen-Blend Tunic & Wide-Leg Palazzo Co-ord Set",
+      "categories": [
+        "readymade-ethnic",
+        "indo-western",
+        "coord-sets-tunic-palazzo"
+      ],
+      "price": 1990,
+      "salePrice": 1990,
+      "stock": 14,
+      "description": "Relaxed monochromatic co-ord silhouette featuring notched collar, 3/4 sleeves, and ethnic wooden button accents.",
+      "fabric": "Linen Blend",
+      "work": "Ethnic Wooden Buttons",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Co-ord Set",
+        "Linen Indo-Western"
+      ],
+      "createdAt": "2026-09-09T16:50:00Z"
+    },
+    {
+      "id": "prod-re-16",
+      "slug": "asymmetrical-fusion-high-low-midi-tunic",
+      "name": "Asymmetrical Fusion High-Low Midi Tunic",
+      "categories": [
+        "readymade-ethnic",
+        "indo-western",
+        "fusion-tunics-midis"
+      ],
+      "price": 1490,
+      "salePrice": 1490,
+      "stock": 18,
+      "description": "Slit-front modern Indo-Western kurti styled specifically for pairing with jeans or trousers.",
+      "fabric": "Rayon Cotton",
+      "work": "High-Low Cut",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
       ],
       "availability": "Available",
-      "isNewArrival": false,
+      "isNewArrival": true,
       "isFeatured": true,
-      "isTrending": false,
-      "isFreeShippingEligible": false,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
       "tags": [
-        "Workwear",
-        "Office Kurti",
-        "Under 899",
-        "Rayon"
+        "High-Low Cut",
+        "Midi Tunic"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T16:45:00Z"
     },
     {
-      "id": "prod-sr-01",
-      "slug": "gadwal-pattu-temple-border-saree",
-      "name": "Gadwal Silk Pattu Saree with Kuttu Borders & Temple Motifs",
+      "id": "prod-re-17",
+      "slug": "velvet-crop-top-flared-skirt-lehenga-organza-shrug",
+      "name": "Velvet Crop Top & Flared Skirt Lehenga Set with Organza Shrug",
+      "categories": [
+        "readymade-ethnic",
+        "partywear",
+        "embellished-velvet-georgette-lehengas"
+      ],
+      "price": 4990,
+      "salePrice": 4990,
+      "stock": 4,
+      "description": "Heavy sequin work velvet blouse, digital floral printed georgette skirt with built-in can-can lining, and a sheer cape cover-up.",
+      "fabric": "Micro Velvet",
+      "work": "Sequin Work",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Velvet Lehenga",
+        "Organza Shrug"
+      ],
+      "createdAt": "2026-09-09T16:40:00Z"
+    },
+    {
+      "id": "prod-re-18",
+      "slug": "straight-cut-formal-office-kurti-rayon-slub",
+      "name": "Straight-Cut Formal Office Kurti (Rayon Slub)",
+      "categories": [
+        "readymade-ethnic",
+        "daily-kurtis",
+        "straight-cut-office-kurtis"
+      ],
+      "price": 799,
+      "salePrice": 799,
+      "stock": 25,
+      "description": "Minimalist mandarin collar, subtle geometric patti work, dual side pockets, and functional side slits.",
+      "fabric": "Rayon Slub",
+      "work": "Mandarin Collar",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "3XL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": false,
+      "tags": [
+        "Under ₹899",
+        "Office Wear"
+      ],
+      "createdAt": "2026-09-09T16:35:00Z"
+    },
+    {
+      "id": "prod-re-19",
+      "slug": "aline-casual-everyday-cotton-kurti",
+      "name": "A-Line Casual Everyday Cotton Kurti",
+      "categories": [
+        "readymade-ethnic",
+        "daily-kurtis",
+        "aline-highlow-tunics"
+      ],
+      "price": 699,
+      "salePrice": 699,
+      "stock": 30,
+      "description": "Lightweight everyday comfort A-line fit with contrast piping along the neckline.",
+      "fabric": "100% Cotton",
+      "work": "Neckline Piping",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": false,
+      "tags": [
+        "Under ₹899",
+        "Daily Wear"
+      ],
+      "createdAt": "2026-09-09T16:30:00Z"
+    },
+    {
+      "id": "prod-sr-20",
+      "slug": "pure-handloom-kota-doria-saree-zari-border",
+      "name": "Pure Handloom Kota Doria Saree with Zari Border",
       "categories": [
         "sarees",
-        "silk-festive-sarees",
-        "gadwal-silk-pattu"
+        "handloom-sarees",
+        "pure-handloom-kota-doria"
       ],
-      "price": 8990,
-      "salePrice": 7490,
-      "stock": 5,
-      "sizeStock": {
-        "Unstitched": 5
-      },
-      "description": "Authentic Telengana Gadwal Silk Pattu Saree features contrasting interlocked Kuttu tissue borders and intricate pure gold zari temple weaving.",
-      "fabric": "Pure Gadwal Silk Pattu with Zari Border",
-      "work": "Traditional Handloom Kuttu Weave",
-      "inclusions": "6.3m Saree with Unstitched Contrast Blouse Piece",
+      "price": 2890,
+      "salePrice": 2890,
+      "stock": 11,
+      "description": "6.3m drape including unstitched blouse piece. Signature square checkered khat weave with woven gold tissue border.",
+      "fabric": "Kota Doria",
+      "work": "Khat Weave",
+      "inclusions": "",
       "sizes": [
         "Unstitched"
       ],
       "colors": [
-        "Magenta with Peacock Green Border",
-        "Yellow with Red Border"
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
@@ -842,56 +968,346 @@
       "isTrending": true,
       "isFreeShippingEligible": true,
       "tags": [
-        "Gadwal Pattu",
-        "Silk Saree",
-        "Temple Border",
-        "Festive"
+        "Pure Handloom",
+        "Kota Doria"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T16:25:00Z"
     },
     {
-      "id": "prod-sr-02",
-      "slug": "kalamkari-printed-lightweight-georgette-saree",
-      "name": "Kalamkari Printed Georgette Saree with Zari Piping",
+      "id": "prod-sr-21",
+      "slug": "muslin-jamdani-floral-weave-saree",
+      "name": "Muslin Jamdani Floral Weave Saree",
       "categories": [
         "sarees",
-        "casual-printed-sarees",
-        "kalamkari-printed-georgette",
-        "under-1199-store"
+        "handloom-sarees",
+        "muslin-jamdani-weave-sarees"
       ],
-      "price": 1390,
-      "salePrice": 1090,
-      "stock": 14,
-      "sizeStock": {
-        "Unstitched": 14
-      },
-      "description": "Flowing lightweight georgette saree printed with mythological Kalamkari storytelling artwork and finished with a thin gold zari piping.",
-      "fabric": "Poly Georgette with Soft Texture",
-      "work": "Digital Kalamkari Artwork Print",
-      "inclusions": "5.5m Saree + 0.8m Running Printed Blouse Piece",
+      "price": 3490,
+      "salePrice": 3490,
+      "stock": 8,
+      "description": "Featherweight transparent muslin weave with distinct supplementary weft floral patterns woven across the body and pallu.",
+      "fabric": "Pure Muslin",
+      "work": "Supplementary Weft Jamdani",
+      "inclusions": "",
       "sizes": [
         "Unstitched"
       ],
       "colors": [
-        "Rust Orange & Cream",
-        "Bottle Green"
+        "Classic"
       ],
       "images": [
         "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
       ],
       "availability": "Available",
-      "isNewArrival": false,
-      "isFeatured": false,
+      "isNewArrival": true,
+      "isFeatured": true,
       "isTrending": true,
       "isFreeShippingEligible": true,
       "tags": [
-        "Kalamkari",
-        "Georgette",
-        "Printed Saree",
-        "Under 1199"
+        "Muslin Jamdani",
+        "Featherweight"
       ],
-      "createdAt": "2026-09-09"
+      "createdAt": "2026-09-09T16:20:00Z"
+    },
+    {
+      "id": "prod-sr-22",
+      "slug": "gadwal-pattu-saree-kuttu-temple-borders",
+      "name": "Gadwal Pattu Saree with Kuttu Temple Borders",
+      "categories": [
+        "sarees",
+        "silk-sarees",
+        "gadwal-silk-pattu"
+      ],
+      "price": 8990,
+      "salePrice": 8990,
+      "stock": 5,
+      "description": "Contrast color silk body with hand-interlocked (Kuttu) golden zari borders and grand temple motifs woven on the pallu.",
+      "fabric": "Pure Gadwal Pattu Silk",
+      "work": "Interlocked Kuttu Weave",
+      "inclusions": "",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Gadwal Pattu",
+        "Kuttu Border"
+      ],
+      "createdAt": "2026-09-09T16:15:00Z"
+    },
+    {
+      "id": "prod-sr-23",
+      "slug": "dual-tone-soft-silk-saree-antique-silver-weave",
+      "name": "Dual-Tone Soft Silk Saree with Antique Silver Weave",
+      "categories": [
+        "sarees",
+        "silk-sarees",
+        "dual-tone-soft-silks"
+      ],
+      "price": 4290,
+      "salePrice": 4290,
+      "stock": 9,
+      "description": "Lightweight art silk with buttery soft drape, dual-shade cross-color luster, and all-over silver brocade weave.",
+      "fabric": "Soft Art Silk",
+      "work": "Brocade Weave",
+      "inclusions": "",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Dual-Tone Luster",
+        "Silver Zari"
+      ],
+      "createdAt": "2026-09-09T16:10:00Z"
+    },
+    {
+      "id": "prod-sr-24",
+      "slug": "kalamkari-printed-flowing-chiffon-saree",
+      "name": "Kalamkari Printed Flowing Chiffon Saree",
+      "categories": [
+        "sarees",
+        "casual-sarees",
+        "kalamkari-printed-georgette"
+      ],
+      "price": 1099,
+      "salePrice": 1099,
+      "stock": 15,
+      "description": "Weightless chiffon fabric printed with heritage floral pen-style artwork and a contrasting satin border.",
+      "fabric": "Poly Chiffon",
+      "work": "Kalamkari Artwork Print",
+      "inclusions": "",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Under ₹1199",
+        "Kalamkari Chiffon"
+      ],
+      "createdAt": "2026-09-09T16:05:00Z"
+    },
+    {
+      "id": "prod-sr-25",
+      "slug": "daily-wear-organic-linen-cotton-saree",
+      "name": "Daily-Wear Organic Linen-Cotton Saree",
+      "categories": [
+        "sarees",
+        "casual-sarees",
+        "daily-wear-cotton-linen"
+      ],
+      "price": 1390,
+      "salePrice": 1390,
+      "stock": 12,
+      "description": "Breathable textured drape with yarn-dyed stripes and hand-knotted pom-pom tassels on the pallu.",
+      "fabric": "Organic Linen",
+      "work": "Yarn-Dyed Stripes",
+      "inclusions": "",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Organic Linen",
+        "Hand-Knotted Tassels"
+      ],
+      "createdAt": "2026-09-09T16:00:00Z"
+    },
+    {
+      "id": "prod-bs-26",
+      "slug": "budget-raw-silk-3piece-material-set",
+      "name": "Budget Raw Silk 3-Piece Material Set",
+      "categories": [
+        "budget-store",
+        "under-899",
+        "budget-raw-silk-3piece"
+      ],
+      "price": 899,
+      "salePrice": 899,
+      "stock": 25,
+      "description": "Affordable woven booties raw silk top, plain matching bottom, and silk blend dupatta. Exceptional wholesale value.",
+      "fabric": "Raw Silk Blend",
+      "work": "Woven Booties",
+      "inclusions": "Top: 2.25m, Bottom: 2.0m, Dupatta: 2.1m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": false,
+      "tags": [
+        "Under ₹899",
+        "Wholesale Value"
+      ],
+      "createdAt": "2026-09-09T15:55:00Z"
+    },
+    {
+      "id": "prod-bs-27",
+      "slug": "everyday-cotton-kurti-trio-pack",
+      "name": "Everyday Cotton Kurti Trio Pack",
+      "categories": [
+        "budget-store",
+        "under-899",
+        "daily-cotton-kurti-multipacks"
+      ],
+      "price": 849,
+      "salePrice": 849,
+      "stock": 30,
+      "description": "Value bundle of 3 printed daily-wear straight cotton office kurtis in complementary colors.",
+      "fabric": "100% Soft Cotton",
+      "work": "Screen Print",
+      "inclusions": "",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": false,
+      "tags": [
+        "Under ₹899",
+        "Trio Pack"
+      ],
+      "createdAt": "2026-09-09T15:50:00Z"
+    },
+    {
+      "id": "prod-bs-28",
+      "slug": "premium-cotton-elephant-themed-suit-set",
+      "name": "Premium Cotton Elephant-Themed Suit Set",
+      "categories": [
+        "budget-store",
+        "under-1199",
+        "premium-cotton-printed-suits"
+      ],
+      "price": 1099,
+      "salePrice": 1099,
+      "stock": 18,
+      "description": "Includes free shipping badge, heavy floral/elephant border print, and contrasting printed dupatta.",
+      "fabric": "High-Twist Cotton",
+      "work": "Elephant Theme Print",
+      "inclusions": "Top: 2.5m, Bottom: 2.5m, Dupatta: 2.25m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": true,
+      "tags": [
+        "Under ₹1199",
+        "Free Shipping"
+      ],
+      "createdAt": "2026-09-09T15:45:00Z"
+    },
+    {
+      "id": "prod-bs-29",
+      "slug": "semi-kota-mirror-work-suit-set",
+      "name": "Semi-Kota Mirror Work Suit Set",
+      "categories": [
+        "budget-store",
+        "under-1199",
+        "budget-semi-kota-mirror-work"
+      ],
+      "price": 999,
+      "salePrice": 999,
+      "stock": 22,
+      "description": "Budget-friendly festive suit featuring machine mirror work yoke embellishment on semi-kota fabric.",
+      "fabric": "Semi-Kota Blend",
+      "work": "Machine Mirror Work",
+      "inclusions": "Top: 2.5m, Bottom: 2.0m, Dupatta: 2.25m",
+      "sizes": [
+        "Unstitched"
+      ],
+      "colors": [
+        "Classic"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      ],
+      "availability": "Available",
+      "isNewArrival": true,
+      "isFeatured": true,
+      "isTrending": true,
+      "isFreeShippingEligible": false,
+      "tags": [
+        "Under ₹1199",
+        "Mirror Yoke"
+      ],
+      "createdAt": "2026-09-09T15:40:00Z"
     }
   ],
   "banners": [
