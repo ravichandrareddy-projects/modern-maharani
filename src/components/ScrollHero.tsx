@@ -50,8 +50,8 @@ export default function ScrollHero({ heroImage, siteSettings }: ScrollHeroProps)
             opacity: bgOpacity
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
 
         {/* --- Content Layers --- */}
         
@@ -60,65 +60,55 @@ export default function ScrollHero({ heroImage, siteSettings }: ScrollHeroProps)
           className="absolute inset-0 flex flex-col items-center justify-center px-4 pointer-events-none"
           style={{ opacity: opacity1, y: y1 }}
         >
-          <div className="inline-flex items-center gap-3 bg-white/10 text-amber-200 text-[10px] sm:text-xs uppercase tracking-[0.3em] px-6 py-2.5 rounded-full backdrop-blur-xl border border-white/20 mb-8 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-            <Sparkles size={14} className="animate-pulse" />
-            Exclusive Festive Edit 2026
-            <Sparkles size={14} className="animate-pulse" />
-          </div>
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-extrabold tracking-tight text-white leading-tight drop-shadow-2xl text-center max-w-6xl">
-            {siteSettings.heroHeadline || "Style That Feels Like You."}
+          <h1 className="font-serif text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-medium tracking-tight text-white leading-[0.9] text-center max-w-7xl drop-shadow-2xl">
+            Style That<br />Feels Like You.
           </h1>
         </motion.div>
 
         {/* Phase 2: Story */}
         <motion.div 
-          className="absolute inset-0 flex flex-col items-center justify-center px-4 max-w-5xl mx-auto pointer-events-none"
+          className="absolute inset-0 flex flex-col items-center justify-center px-6 max-w-5xl mx-auto pointer-events-none"
           style={{ opacity: opacity2, y: y2 }}
         >
-          <div className="bg-[#1C1917]/40 backdrop-blur-md border border-white/10 p-8 sm:p-14 lg:p-20 rounded-3xl shadow-2xl text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand/30 via-transparent to-amber-900/30 mix-blend-overlay pointer-events-none" />
-            
-            <h2 className="relative font-serif text-3xl sm:text-5xl md:text-6xl text-amber-100 font-bold mb-8 leading-tight">
-              Where Heritage Meets <br className="hidden sm:block" />Modern Elegance
-            </h2>
-            <p className="relative text-lg sm:text-2xl md:text-3xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-              {siteSettings.heroSupportingText || "Experience the pinnacle of contemporary women's fashion. Every stitch tells a story of rich Indian craftsmanship, reimagined in stunning modern silhouettes for the modern Maharani."}
-            </p>
-          </div>
+          <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-normal leading-tight text-center drop-shadow-xl">
+            Where rich Indian heritage<br />meets stunning modern silhouettes.
+          </h2>
+          <p className="mt-8 text-lg sm:text-2xl text-white/70 font-light tracking-wide text-center">
+            Crafted for the Modern Maharani.
+          </p>
         </motion.div>
 
-        {/* Phase 3: CTA (pointer-events-auto so buttons are clickable) */}
+        {/* Phase 3: CTA */}
         <motion.div 
           className="absolute inset-0 flex flex-col items-center justify-center px-4"
           // @ts-ignore
           style={{ opacity: opacity3, y: y3, pointerEvents: useTransform(opacity3, (val) => val > 0.5 ? 'auto' : 'none') }}
         >
-          <h2 className="font-serif text-5xl sm:text-7xl font-bold tracking-tight text-white mb-12 drop-shadow-2xl text-center">
-            Ready to Explore?
+          <h2 className="font-serif text-5xl sm:text-8xl font-medium tracking-tight text-white mb-16 text-center drop-shadow-2xl">
+            The Festive Edit.
           </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-md mx-auto sm:max-w-none">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-md mx-auto sm:max-w-none">
             <Link
               href="/shop"
-              className="group w-full sm:w-auto bg-gradient-to-r from-[#7A1C30] to-[#5F1524] hover:from-[#9a213b] hover:to-[#7A1C30] text-white text-xs sm:text-sm uppercase tracking-widest px-12 py-5 font-bold rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(122,28,48,0.5)] flex items-center justify-center gap-3 border border-white/20 hover:scale-105"
+              className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 text-xs sm:text-sm uppercase tracking-[0.2em] px-12 py-5 font-bold transition-all duration-300 flex items-center justify-center gap-3"
             >
-              <ShoppingBag size={20} className="group-hover:-translate-y-1 transition-transform" /> {siteSettings.heroPrimaryCtaText || "Explore Collection"}
+              <ShoppingBag size={18} /> Shop Collection
             </Link>
             <Link
               href="/visit-us"
-              className="group w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm uppercase tracking-widest px-12 py-5 font-bold rounded-full transition-all duration-300 backdrop-blur-xl shadow-xl flex items-center justify-center gap-3 border border-white/30 hover:scale-105"
+              className="w-full sm:w-auto border border-white/50 text-white hover:bg-white hover:text-black text-xs sm:text-sm uppercase tracking-[0.2em] px-12 py-5 font-bold transition-all duration-300 flex items-center justify-center gap-3"
             >
-              <MapPin size={20} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
+              <MapPin size={18} /> Visit Showroom
             </Link>
           </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Minimal Scroll Indicator */}
         <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none"
           style={{ opacity: indicatorOpacity }}
         >
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-light">Scroll to explore</span>
-          <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent" />
+          <div className="w-[1px] h-24 bg-gradient-to-b from-white/50 to-transparent" />
         </motion.div>
 
       </div>
