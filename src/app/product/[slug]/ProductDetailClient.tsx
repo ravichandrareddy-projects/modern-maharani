@@ -200,12 +200,28 @@ export default function ProductDetailClient({ product, relatedProducts, storeInf
             </div>
           )}
 
-          {/* Description */}
-          <div className="space-y-2">
+          {/* Description & Inclusions */}
+          <div className="space-y-3">
             <h4 className="text-xs uppercase tracking-wider text-[#1C1917] font-semibold">About This Outfit:</h4>
             <p className="text-sm text-[#78716C] font-light leading-relaxed">
               {product.description}
             </p>
+            {(product.inclusions || product.work) && (
+              <div className="p-3 bg-[#FAF8F5] border border-[#E7E5E4] space-y-1.5 text-xs">
+                {product.work && (
+                  <div>
+                    <span className="font-bold text-[#1C1917] uppercase tracking-wider text-[10px] block">Craft & Embroidery:</span>
+                    <span className="text-[#78716C]">{product.work}</span>
+                  </div>
+                )}
+                {product.inclusions && (
+                  <div>
+                    <span className="font-bold text-[#1C1917] uppercase tracking-wider text-[10px] block">Fabric Inclusions & Cut:</span>
+                    <span className="text-[#78716C]">{product.inclusions}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Stock Alert */}

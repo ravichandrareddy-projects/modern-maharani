@@ -45,6 +45,7 @@ export interface Product {
   work?: string;
   inclusions?: string;
   sizes: string[];
+  sizeStock?: Record<string, number>;
   colors: string[];
   images: string[];
   availability: AvailabilityStatus;

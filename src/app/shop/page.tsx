@@ -48,8 +48,12 @@ function ShopContent() {
   // Filter products
   const filteredProducts = products.filter((product) => {
     // Category match
-    if (selectedCategory !== 'All' && !(product.categories || []).map(c=>c.toLowerCase()).includes(selectedCategory.toLowerCase())) {
-      return false;
+    if (selectedCategory !== 'All') {
+      const target = selectedCategory.toLowerCase();
+      const matchesCategory = (product.categories || []).some(
+        (c) => c.toLowerCase() === target || c.toLowerCase().includes(target) || target.includes(c.toLowerCase())
+      );
+      if (!matchesCategory) return false;
     }
     if (selectedFabric !== 'All' && (!product.fabric || product.fabric.toLowerCase() !== selectedFabric.toLowerCase())) {
       return false;
@@ -104,7 +108,7 @@ function ShopContent() {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
-  const availableSizes = ['S', 'M', 'L', 'XL', 'XXL'];
+  const availableSizes = ['S', 'M', 'L', 'XL', 'XXL', '3XL', 'Unstitched'];
   const fabrics = Array.from(new Set(products.map(p => p.fabric).filter(Boolean)));
   const works = Array.from(new Set(products.map(p => p.work).filter(Boolean)));
   const availabilities = ['Available', 'Limited Stock', 'Out of Stock', 'Coming Soon'];

@@ -427,6 +427,30 @@ export default function AdminProductsPage() {
                 </div>
               </div>
 
+              {/* Size Selector */}
+              <div>
+                <label className="block font-semibold uppercase text-[#1C1917] mb-1">Available Sizes</label>
+                <div className="flex flex-wrap gap-3 p-3 bg-[#FAF8F5] border border-[#E7E5E4]">
+                  {['S', 'M', 'L', 'XL', 'XXL', '3XL', 'Unstitched'].map((sz) => (
+                    <label key={sz} className="flex items-center gap-1.5 cursor-pointer bg-white px-3 py-1.5 border border-[#E7E5E4]">
+                      <input
+                        type="checkbox"
+                        checked={sizes.includes(sz)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setSizes([...sizes, sz]);
+                          } else {
+                            setSizes(sizes.filter((s) => s !== sz));
+                          }
+                        }}
+                        className="accent-brand"
+                      />
+                      <span className="font-bold text-xs text-[#1C1917]">{sz}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <label className="block font-semibold uppercase text-[#1C1917] mb-1">Availability Status</label>
                 <select
