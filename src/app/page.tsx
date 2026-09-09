@@ -27,42 +27,54 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-16 pb-16">
-      {/* 1. FULL-SCREEN LUXURY HERO SECTION */}
-      <section className="relative min-h-[92vh] lg:min-h-[95vh] flex items-center justify-center bg-[#1C1917] text-white overflow-hidden">
-        {/* Background Image with Crisp Overlay */}
+      {/* 1. ULTRA-LUXURY GLASSMORPHIC HERO SECTION */}
+      <section className="relative min-h-[92vh] lg:min-h-[100vh] flex items-center justify-center bg-black text-white overflow-hidden">
+        {/* Dynamic Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-60 scale-105 transition-transform duration-1000"
-          style={{ backgroundImage: `url('${heroImage}')` }}
+          className="absolute inset-0 bg-cover bg-center opacity-70 scale-105"
+          style={{ 
+            backgroundImage: `url('/images/hero_banner_luxury.jpg')`,
+            transition: 'transform 20s ease-out'
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-[#1C1917]/50 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-black/40 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
 
-        {/* Hero Glassmorphic Card Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8 py-20 sm:py-28 lg:py-36">
-          <div className="inline-flex items-center gap-2 bg-brand/90 text-white text-[11px] sm:text-xs uppercase tracking-[0.25em] px-5 py-2 backdrop-blur-md shadow-lg border border-white/20">
-            <Sparkles size={14} className="text-amber-300 animate-pulse" /> KPHB Phase 1 • Kukatpally • Hyderabad
+        {/* Hero Glassmorphic Content Container */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full flex flex-col items-center justify-center space-y-8 sm:space-y-10 py-20">
+          
+          <div className="inline-flex items-center gap-3 bg-white/10 text-amber-200 text-[10px] sm:text-xs uppercase tracking-[0.3em] px-6 py-2.5 rounded-full backdrop-blur-xl border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+            <Sparkles size={14} className="animate-pulse" />
+            Exclusive Festive Edit 2026 • KPHB Hyderabad
+            <Sparkles size={14} className="animate-pulse" />
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight drop-shadow-2xl">
-            {siteSettings.heroHeadline || "Style That Feels Like You."}
-          </h1>
+          <div className="bg-[#1C1917]/40 backdrop-blur-md border border-white/10 p-8 sm:p-14 lg:p-16 rounded-3xl shadow-2xl text-center max-w-5xl mx-auto relative overflow-hidden">
+            {/* Subtle glow effect behind text */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 via-transparent to-amber-900/20 mix-blend-overlay pointer-events-none" />
+            
+            <h1 className="relative font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-extrabold tracking-tight text-white leading-tight drop-shadow-2xl mb-6">
+              {siteSettings.heroHeadline || "Style That Feels Like You."}
+            </h1>
+            
+            <p className="relative text-lg sm:text-xl md:text-3xl text-white/90 font-light max-w-3xl mx-auto leading-relaxed drop-shadow-lg mb-10">
+              {siteSettings.heroSupportingText || "Experience the pinnacle of contemporary women's fashion. Where rich Indian heritage meets stunning modern silhouettes."}
+            </p>
 
-          <p className="text-base sm:text-xl md:text-2xl text-[#FAF8F5] font-light max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-            {siteSettings.heroSupportingText || "Explore contemporary women's fashion at Modern Maharani, KPHB."}
-          </p>
-
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none">
-            <Link
-              href="/shop"
-              className="w-full sm:w-auto bg-brand hover:opacity-95 text-white text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold transition-all shadow-2xl flex items-center justify-center gap-2 border border-white/20"
-            >
-              <ShoppingBag size={18} /> {siteSettings.heroPrimaryCtaText || "Shop Collection"}
-            </Link>
-            <Link
-              href="/visit-us"
-              className="w-full sm:w-auto bg-white/90 hover:bg-white text-[#1C1917] text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold transition-all backdrop-blur-md shadow-2xl flex items-center justify-center gap-2"
-            >
-              <MapPin size={18} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
-            </Link>
+            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-5 max-w-md mx-auto sm:max-w-none">
+              <Link
+                href="/shop"
+                className="group w-full sm:w-auto bg-gradient-to-r from-[#7A1C30] to-[#5F1524] hover:from-[#9a213b] hover:to-[#7A1C30] text-white text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(122,28,48,0.4)] flex items-center justify-center gap-2 border border-white/20 hover:scale-105"
+              >
+                <ShoppingBag size={18} className="group-hover:-translate-y-1 transition-transform" /> {siteSettings.heroPrimaryCtaText || "Explore Collection"}
+              </Link>
+              <Link
+                href="/visit-us"
+                className="group w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm uppercase tracking-widest px-10 py-4 font-bold rounded-full transition-all duration-300 backdrop-blur-xl shadow-xl flex items-center justify-center gap-2 border border-white/30 hover:scale-105"
+              >
+                <MapPin size={18} /> {siteSettings.heroSecondaryCtaText || "Visit Showroom"}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -109,26 +121,7 @@ export default async function HomePage() {
                     {cat.name}
                   </Link>
                   <p className="text-[11px] text-[#E7E5E4] font-light line-clamp-2">{cat.description}</p>
-                  
-                  {/* Subcategory Pills */}
-                  {childCats.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
-                      {childCats.slice(0, 3).map(sub => (
-                        <Link
-                          key={sub.id}
-                          href={`/shop?category=${encodeURIComponent(sub.slug)}`}
-                          className="text-[9px] bg-white/20 hover:bg-brand text-white px-2 py-0.5 backdrop-blur-sm transition-colors rounded-none"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                      {childCats.length > 3 && (
-                        <span className="text-[9px] text-amber-300 font-semibold align-middle px-1">+{childCats.length - 3} more</span>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="pt-2">
+                  <div className="pt-4">
                     <Link
                       href={`/shop?category=${encodeURIComponent(cat.slug)}`}
                       className="text-xs uppercase tracking-widest font-bold text-white group-hover:text-amber-300 flex items-center gap-1 transition-colors"

@@ -6,7 +6,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "dress-materials",
     "label": "Dress Materials (Unstitched)",
     "description": "Bespoke unstitched dress materials inKota, Raw Silk, Jute, Tussar, and Ajrakh prints.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/cat_dress_materials.jpg",
     "featuredCard": {
       "title": "Handloom Kota & Silk Edit",
       "description": "Explore Kutch embroidery, Jamdani booties, and Ajrakh block prints.",
@@ -35,14 +35,14 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "traditional-crafts",
     "label": "Traditional Prints & Crafts",
     "description": "Heritage natural dye Ajrakh block prints, Kalamkari pen-work, and Sanganeri theme prints.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/cat_dress_materials.jpg"
   },
   {
     "id": "cat-re",
     "slug": "readymade-ethnic",
     "label": "Readymades & Kurtas",
     "description": "Pre-stitched 3-piece suit sets, flared Anarkalis, co-ords, and formal office kurtis.",
-    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/cat_readymades.jpg",
     "featuredCard": {
       "title": "Lucknowi Chikankari & Anarkalis",
       "description": "Tailored ready-to-wear silhouettes crafted for modern elegance.",
@@ -55,7 +55,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "three-piece-sets",
     "label": "3-Piece Stitched Suit Sets",
     "description": "Complete stitched sets featuring Kurta, Pant, and Dupatta.",
-    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/cat_readymades.jpg"
   },
   {
     "id": "sub-re-2",
@@ -71,7 +71,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "indo-western",
     "label": "Modern & Indo-Western",
     "description": "Contemporary co-ord sets, tunic-palazzo pairings, and fusion midi tunics.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/cat_dress_materials.jpg"
   },
   {
     "id": "sub-re-4",
@@ -94,11 +94,11 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "sarees",
     "label": "Sarees",
     "description": "Handloom Kota Doria, Muslin Jamdani, Gadwal Silk Pattu, and Kalamkari georgettes.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/cat_dress_materials.jpg",
     "featuredCard": {
       "title": "Gadwal Pattu & Jamdani Weaves",
       "description": "Traditional Kuttu borders and featherweight drapes for grand occasions.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_dress_materials.jpg"
     }
   },
   {
@@ -107,7 +107,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "handloom-sarees",
     "label": "Handloom & Lightweight Drapes",
     "description": "Pure Kota Doria with zari borders and Muslin Jamdani woven drapes.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/cat_dress_materials.jpg"
   },
   {
     "id": "sub-sr-2",
@@ -130,11 +130,11 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "budget-store",
     "label": "Budget Store",
     "description": "Wholesale value tiers under ₹899 and ₹1,199 with free shipping perks.",
-    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+    "image": "/images/cat_readymades.jpg",
     "featuredCard": {
       "title": "Under ₹899 & ₹1,199 Value Bundles",
       "description": "Unbeatable prices on daily office suits, kurtis, and semi-kota sets.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_readymades.jpg"
     }
   },
   {
@@ -159,7 +159,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "store-perks",
     "label": "Special Perks & Wholesale",
     "description": "Free shipping eligible items, ready to dispatch, and wholesale bulk lots.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/cat_dress_materials.jpg"
   }
 ];
 

@@ -33,7 +33,7 @@
       "slug": "dress-materials",
       "name": "Dress Materials (Unstitched)",
       "description": "Bespoke unstitched dress materials inKota, Raw Silk, Jute, Tussar, and Ajrakh prints.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_dress_materials.jpg"
     },
     {
       "id": "sub-dm-1",
@@ -64,7 +64,7 @@
       "slug": "readymade-ethnic",
       "name": "Readymades & Kurtas",
       "description": "Pre-stitched 3-piece suit sets, flared Anarkalis, co-ords, and formal office kurtis.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_readymades.jpg"
     },
     {
       "id": "sub-re-1",
@@ -111,7 +111,7 @@
       "slug": "sarees",
       "name": "Sarees",
       "description": "Handloom Kota Doria, Muslin Jamdani, Gadwal Silk Pattu, and Kalamkari georgettes.",
-      "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_sarees.jpg"
     },
     {
       "id": "sub-sr-1",
@@ -142,7 +142,7 @@
       "slug": "budget-store",
       "name": "Budget Store",
       "description": "Wholesale value tiers under ₹899 and ₹1,199 with free shipping perks.",
-      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/cat_budget.jpg"
     },
     {
       "id": "sub-bs-1",
