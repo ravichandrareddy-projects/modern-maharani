@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Heart, ShoppingBag, Eye, Sparkles } from 'lucide-react';
 import { Product } from '@/lib/types';
 import { useCart } from '@/lib/cartContext';
@@ -11,16 +12,20 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const router = useRouter();
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
-  const [currentImg, setCurrentImg] = useState(product.images[0] || '/images/hero_banner.jpg');
+  const mainImage = product.images?.[0] || '/images/hero_banner.jpg';
+  const hoverImage = product.images?.[1] || mainImage;
+  const [currentImg, setCurrentImg] = useState(mainImage);
 
   useEffect(() => {
+    setCurrentImg(product.images?.[0] || '/images/hero_banner.jpg');
     try {
       const saved = JSON.parse(localStorage.getItem('mm_wishlist') || '[]');
       setIsWishlisted(saved.includes(product.id));
     } catch (e) {}
-  }, [product.id]);
+  }, [product.id, product.images]);
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -57,6 +62,10 @@ export default function ProductCard({ product }: ProductCardProps) {
     });
   };
 
+  const handleCardClick = () => {
+    router.push(`/product/${product.slug}`);
+  };
+
   // Availability Badge Color mapping
   const getAvailabilityBadge = () => {
     switch (product.availability) {
@@ -75,8 +84,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group bg-white border border-[#E7E5E4] luxury-card-shadow flex flex-col justify-between h-full relative transition-all duration-300 hover:border-brand hover:shadow-xl cursor-pointer">
-      <Link href={`/product/${product.slug}`} className="block flex-1 flex flex-col justify-between">
+    <div 
+      onClick={handleCardClick}
+      className="group bg-white border border-[#E7E5E4] luxury-card-shadow flex flex-col justify-between h-full relative transition-all duration-300 hover:border-brand hover:shadow-xl cursor-pointer"
+    >
+      <div className="flex-1 flex flex-col justify-between">
         <div>
           {/* Image Container */}
           <div className="relative aspect-[3/4] bg-[#FAF8F5] overflow-hidden image-zoom-container">
@@ -85,9 +97,9 @@ export default function ProductCard({ product }: ProductCardProps) {
               alt={product.name}
               className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
               onMouseEnter={() => {
-                if (product.images[1]) setCurrentImg(product.images[1]);
+                if (hoverImage) setCurrentImg(hoverImage);
               }}
-              onMouseLeave={() => setCurrentImg(product.images[0] || '/images/hero_banner.jpg')}
+              onMouseLeave={() => setCurrentImg(mainImage)}
             />
 
             {/* Badges Container */}
@@ -139,9 +151,13 @@ export default function ProductCard({ product }: ProductCardProps) {
               {product.fabric && <span className="bg-[#FAF8F5] border border-[#E7E5E4] px-1.5 py-0.5 text-[10px] text-[#1C1917]">{product.fabric}</span>}
             </div>
 
-            <h3 className="font-serif text-base font-bold text-[#1C1917] group-hover:text-[#7A1C30] transition-colors line-clamp-1">
+            <Link 
+              href={`/product/${product.slug}`} 
+              onClick={(e) => e.stopPropagation()}
+              className="font-serif text-base font-bold text-[#1C1917] group-hover:text-[#7A1C30] transition-colors line-clamp-1 block"
+            >
               {product.name}
-            </h3>
+            </Link>
 
             {/* Pricing */}
             <div className="flex items-baseline space-x-2 pt-1">
@@ -183,9 +199,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Primary Card Action CTA */}
         <div className="px-4 pb-4 pt-1 flex items-center justify-between border-t border-[#F5F5F4]">
-          <span className="text-[10px] text-[#7A1C30] font-bold uppercase tracking-wider group-hover:underline">
+          <Link
+            href={`/product/${product.slug}`}
+            onClick={(e) => e.stopPropagation()}
+            className="text-[10px] text-[#7A1C30] font-bold uppercase tracking-wider group-hover:underline"
+          >
             View Details →
-          </span>
+          </Link>
           <button
             onClick={handleAddToCart}
             className="bg-[#7A1C30] hover:bg-[#5F1524] text-white text-[10px] uppercase tracking-wider px-3 py-1.5 font-bold flex items-center gap-1 transition-colors"
@@ -193,7 +213,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <ShoppingBag size={12} /> Add
           </button>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

@@ -27,8 +27,8 @@ interface ClientProps {
 
 export default function ProductDetailClient({ product, relatedProducts, storeInfo }: ClientProps) {
   const { addToCart, setIsCartOpen } = useCart();
-  const [selectedImage, setSelectedImage] = useState(product.images[0] || '/images/hero_banner.jpg');
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0] || 'Standard');
+  const [selectedImage, setSelectedImage] = useState(product.images?.[0] || '/images/hero_banner.jpg');
+  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0] || 'Standard');
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
