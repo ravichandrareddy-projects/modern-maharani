@@ -17,11 +17,18 @@
     --border-light: #E7E5E4;
   }
 
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16.5px;
+    }
+  }
+
   body {
     background-color: var(--bg-ivory);
     color: var(--text-charcoal);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 

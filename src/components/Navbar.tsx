@@ -16,6 +16,7 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [allProducts, setAllProducts] = useState<any[]>([]);
   const [allCategories, setAllCategories] = useState<{name: string, slug: string, parentSlug?: string}[]>([]);
   const [categories, setCategories] = useState<{name: string, slug: string, parentSlug?: string}[]>([]);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -39,9 +40,14 @@ export default function Navbar() {
     window.addEventListener('storage', updateWishlist);
 
     fetch('/api/data').then(res => res.json()).then(data => {
-      if (data && data.categories) {
-        setAllCategories(data.categories);
-        setCategories(data.categories.filter((c: any) => !c.parentSlug));
+      if (data) {
+        if (data.categories) {
+          setAllCategories(data.categories);
+          setCategories(data.categories.filter((c: any) => !c.parentSlug));
+        }
+        if (data.products) {
+          setAllProducts(data.products);
+        }
       }
     }).catch(console.error);
 
@@ -50,6 +56,26 @@ export default function Navbar() {
       window.removeEventListener('storage', updateWishlist);
     };
   }, []);
+
+  // Compute Live Search Matches
+  const searchQ = searchQuery.toLowerCase().trim();
+  const matchingCategories = searchQ
+    ? allCategories.filter(
+        (c) => c.name.toLowerCase().includes(searchQ) || c.slug.toLowerCase().includes(searchQ)
+      ).slice(0, 5)
+    : [];
+
+  const matchingProducts = searchQ
+    ? allProducts
+        .filter(
+          (p) =>
+            p.name.toLowerCase().includes(searchQ) ||
+            (p.fabric && p.fabric.toLowerCase().includes(searchQ)) ||
+            (p.work && p.work.toLowerCase().includes(searchQ)) ||
+            (p.categories && p.categories.some((c: string) => c.toLowerCase().includes(searchQ)))
+        )
+        .slice(0, 6)
+    : [];
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -216,33 +242,103 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Expandable Search Drawer */}
+        {/* Live Predictive Search Overlay */}
         {searchOpen && (
-          <div className="bg-white border-b border-[#E7E5E4] py-3 px-4 shadow-inner transition-all animate-fadeIn">
-            <form onSubmit={handleSearchSubmit} className="max-w-3xl mx-auto flex items-center gap-2">
-              <Search size={18} className="text-[#78716C]" />
-              <input
-                type="text"
-                placeholder="Search Kurtis, Dresses, Occasion wear, fabric..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-xs bg-transparent border-none focus:outline-none text-[#1C1917]"
-                autoFocus
-              />
-              <button
-                type="submit"
-                className="bg-[#1C1917] text-white text-xs uppercase tracking-wider px-4 py-1.5 font-medium hover:bg-brand transition-colors"
-              >
-                Search
-              </button>
-              <button
-                type="button"
-                onClick={() => setSearchOpen(false)}
-                className="text-[#78716C] hover:text-[#1C1917] p-1"
-              >
-                <X size={18} />
-              </button>
-            </form>
+          <div className="bg-white border-b border-[#E7E5E4] py-4 px-4 shadow-xl transition-all animate-fadeIn relative z-50">
+            <div className="max-w-3xl mx-auto space-y-4">
+              <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 border-b border-[#E7E5E4] pb-2">
+                <Search size={18} className="text-brand shrink-0" />
+                <input
+                  type="text"
+                  placeholder="Type any character to search categories & outfits..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full text-sm font-medium bg-transparent border-none focus:outline-none text-[#1C1917]"
+                  autoFocus
+                />
+                <button
+                  type="submit"
+                  className="bg-[#1C1917] text-white text-xs uppercase tracking-wider px-4 py-1.5 font-bold hover:bg-brand transition-colors shrink-0"
+                >
+                  Search
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSearchOpen(false)}
+                  className="text-[#78716C] hover:text-[#1C1917] p-1 shrink-0"
+                >
+                  <X size={20} />
+                </button>
+              </form>
+
+              {/* Instant Predictive Results Dropdown */}
+              {searchQ.length > 0 && (
+                <div className="space-y-4 pt-2 max-h-[60vh] overflow-y-auto">
+                  {/* Category Suggestions */}
+                  {matchingCategories.length > 0 && (
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#78716C] block">
+                        Matching Categories ({matchingCategories.length})
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {matchingCategories.map((cat) => (
+                          <Link
+                            key={cat.slug}
+                            href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                            onClick={() => setSearchOpen(false)}
+                            className="bg-[#FAF8F5] hover:bg-brand hover:text-white text-[#1C1917] text-xs font-semibold px-3 py-1.5 border border-[#E7E5E4] transition-colors flex items-center gap-1.5"
+                          >
+                            <span>📁</span> {cat.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Outfit Suggestions */}
+                  {matchingProducts.length > 0 && (
+                    <div className="space-y-2 pt-2 border-t border-[#E7E5E4]">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#78716C] block">
+                        Matching Outfits ({matchingProducts.length})
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {matchingProducts.map((prod) => (
+                          <Link
+                            key={prod.id}
+                            href={`/product/${prod.slug}`}
+                            onClick={() => setSearchOpen(false)}
+                            className="flex items-center gap-3 p-2 border border-[#E7E5E4] hover:border-brand bg-white hover:bg-[#FAF8F5] transition-all group"
+                          >
+                            <img
+                              src={prod.images?.[0] || '/images/hero_banner.jpg'}
+                              alt={prod.name}
+                              className="w-12 h-14 object-cover border border-[#E7E5E4] shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-brand truncate">
+                                {prod.name}
+                              </h4>
+                              <p className="text-[10px] text-[#78716C] truncate">
+                                {prod.categories?.[0]} • {prod.fabric || 'Ethnic'}
+                              </p>
+                              <span className="text-xs font-bold text-brand block mt-0.5">
+                                ₹{(prod.salePrice || prod.price || 0).toLocaleString('en-IN')}
+                              </span>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {matchingCategories.length === 0 && matchingProducts.length === 0 && (
+                    <div className="text-center py-6 text-xs text-[#78716C]">
+                      No categories or outfits found matching "{searchQuery}".
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </header>

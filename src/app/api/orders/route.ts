@@ -36,6 +36,32 @@ export async function POST(request: Request) {
     if (!store.orders) store.orders = [];
     store.orders.unshift(newOrder);
 
+    // Deduct stock automatically for each ordered item
+    if (newOrder.items && newOrder.items.length > 0 && store.products) {
+      newOrder.items.forEach((item) => {
+        const prodIndex = store.products.findIndex(
+          (p) => p.id === item.productId || p.slug === item.productSlug
+        );
+        if (prodIndex !== -1) {
+          const currentStock = store.products[prodIndex].stock || 0;
+          const qty = item.quantity || 1;
+          const newStock = Math.max(0, currentStock - qty);
+          store.products[prodIndex].stock = newStock;
+
+          if (store.products[prodIndex].sizeStock && item.selectedSize) {
+            const szStock = store.products[prodIndex].sizeStock[item.selectedSize] || 0;
+            store.products[prodIndex].sizeStock[item.selectedSize] = Math.max(0, szStock - qty);
+          }
+
+          if (newStock === 0) {
+            store.products[prodIndex].availability = 'Out of Stock';
+          } else if (newStock <= 3) {
+            store.products[prodIndex].availability = 'Limited Stock';
+          }
+        }
+      });
+    }
+
     // Update analytics
     store.analytics.ordersCount = store.orders.length;
     store.analytics.totalRevenue = (store.analytics.totalRevenue || 0) + newOrder.totalAmount;
