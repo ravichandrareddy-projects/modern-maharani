@@ -156,18 +156,52 @@ function ShopContent() {
               </select>
             </div>
 
-            {/* Categories */}
+            {/* Hierarchical Categories Sidebar */}
             <div className="border-t border-[#E7E5E4] pt-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Category</h3>
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-xs cursor-pointer">
-                  <input type="radio" name="category" checked={selectedCategory === 'All'} onChange={() => setSelectedCategory('All')} className="accent-brand" /> All
+              <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#1C1917]">Catalog Categories</h3>
+              <div className="space-y-3">
+                <label className="flex items-center gap-2 text-xs font-bold cursor-pointer text-[#1C1917]">
+                  <input type="radio" name="category" checked={selectedCategory === 'All'} onChange={() => setSelectedCategory('All')} className="accent-brand" /> All Items
                 </label>
-                {categories.map(cat => (
-                  <label key={cat.id} className="flex items-center gap-2 text-xs cursor-pointer">
-                    <input type="radio" name="category" checked={selectedCategory.toLowerCase() === cat.name.toLowerCase()} onChange={() => setSelectedCategory(cat.name)} className="accent-brand" /> {cat.name}
-                  </label>
-                ))}
+                
+                {categories.filter(c => !c.parentSlug).map(rootCat => {
+                  const subCats = categories.filter(c => c.parentSlug === rootCat.slug);
+                  const isParentSelected = selectedCategory.toLowerCase() === rootCat.slug.toLowerCase() || selectedCategory.toLowerCase() === rootCat.name.toLowerCase();
+                  return (
+                    <div key={rootCat.id} className="space-y-1">
+                      <label className="flex items-center gap-2 text-xs font-bold cursor-pointer text-brand hover:underline">
+                        <input
+                          type="radio"
+                          name="category"
+                          checked={isParentSelected}
+                          onChange={() => setSelectedCategory(rootCat.slug)}
+                          className="accent-brand"
+                        />
+                        {rootCat.name}
+                      </label>
+
+                      {subCats.length > 0 && (
+                        <div className="pl-4 space-y-1 border-l-2 border-[#E7E5E4] ml-1">
+                          {subCats.map(sub => {
+                            const isSubSelected = selectedCategory.toLowerCase() === sub.slug.toLowerCase() || selectedCategory.toLowerCase() === sub.name.toLowerCase();
+                            return (
+                              <label key={sub.id} className="flex items-center gap-2 text-[11px] cursor-pointer text-[#78716C] hover:text-[#1C1917]">
+                                <input
+                                  type="radio"
+                                  name="category"
+                                  checked={isSubSelected}
+                                  onChange={() => setSelectedCategory(sub.slug)}
+                                  className="accent-brand"
+                                />
+                                {sub.name}
+                              </label>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 

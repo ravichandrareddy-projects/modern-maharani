@@ -91,27 +91,55 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/shop?category=${encodeURIComponent(cat.name)}`}
-              className="group relative aspect-[3/4] bg-[#1C1917] overflow-hidden luxury-card-shadow block"
-            >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 space-y-2 text-white">
-                <h3 className="font-serif text-2xl font-bold tracking-wide">{cat.name}</h3>
-                <p className="text-xs text-[#E7E5E4] font-light line-clamp-2">{cat.description}</p>
-                <div className="pt-2 text-xs uppercase tracking-widest font-bold text-white group-hover:text-amber-300 flex items-center gap-1 transition-colors">
-                  Explore {cat.name} <ArrowRight size={13} />
+          {categories.filter(c => !c.parentSlug).map((cat) => {
+            const childCats = categories.filter(c => c.parentSlug === cat.slug);
+            return (
+              <div
+                key={cat.id}
+                className="group relative aspect-[3/4] bg-[#1C1917] overflow-hidden luxury-card-shadow flex flex-col justify-end"
+              >
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="relative z-10 p-5 space-y-2 text-white">
+                  <Link href={`/shop?category=${encodeURIComponent(cat.slug)}`} className="font-serif text-xl sm:text-2xl font-bold tracking-wide hover:text-amber-300 transition-colors block">
+                    {cat.name}
+                  </Link>
+                  <p className="text-[11px] text-[#E7E5E4] font-light line-clamp-2">{cat.description}</p>
+                  
+                  {/* Subcategory Pills */}
+                  {childCats.length > 0 && (
+                    <div className="flex flex-wrap gap-1 pt-1">
+                      {childCats.slice(0, 3).map(sub => (
+                        <Link
+                          key={sub.id}
+                          href={`/shop?category=${encodeURIComponent(sub.slug)}`}
+                          className="text-[9px] bg-white/20 hover:bg-brand text-white px-2 py-0.5 backdrop-blur-sm transition-colors rounded-none"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                      {childCats.length > 3 && (
+                        <span className="text-[9px] text-amber-300 font-semibold align-middle px-1">+{childCats.length - 3} more</span>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="pt-2">
+                    <Link
+                      href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                      className="text-xs uppercase tracking-widest font-bold text-white group-hover:text-amber-300 flex items-center gap-1 transition-colors"
+                    >
+                      Explore Collection <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

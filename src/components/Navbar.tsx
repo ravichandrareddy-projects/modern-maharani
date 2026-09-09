@@ -16,7 +16,8 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [wishlistCount, setWishlistCount] = useState(0);
-  const [categories, setCategories] = useState<{name: string, slug: string}[]>([]);
+  const [allCategories, setAllCategories] = useState<{name: string, slug: string, parentSlug?: string}[]>([]);
+  const [categories, setCategories] = useState<{name: string, slug: string, parentSlug?: string}[]>([]);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
 
@@ -39,6 +40,7 @@ export default function Navbar() {
 
     fetch('/api/data').then(res => res.json()).then(data => {
       if (data && data.categories) {
+        setAllCategories(data.categories);
         setCategories(data.categories.filter((c: any) => !c.parentSlug));
       }
     }).catch(console.error);
@@ -125,20 +127,45 @@ export default function Navbar() {
                   
                   {/* Mega Menu Dropdown */}
                   {hasDropdown && activeDropdown === link.name && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px] z-50">
-                      <div className="bg-white border border-[#E7E5E4] shadow-xl p-6 grid grid-cols-2 gap-6">
-                        {link.name === 'Shop' && categories.map(cat => (
-                          <div key={cat.slug}>
-                            <Link href={`/shop?category=${cat.slug}`} className="font-serif text-lg font-bold text-[#1C1917] hover:text-brand block mb-2">{cat.name}</Link>
-                            <ul className="space-y-1">
-                                <li><Link href={`/shop?category=${cat.slug}`} className="text-xs text-[#78716C] hover:text-brand block">View All {cat.name}</Link></li>
-                            </ul>
-                          </div>
-                        ))}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[920px] z-50">
+                      <div className="bg-white border border-[#E7E5E4] shadow-2xl p-6 grid grid-cols-4 gap-6">
+                        {link.name === 'Shop' && categories.map(cat => {
+                          const subCats = allCategories.filter(c => c.parentSlug === cat.slug);
+                          return (
+                            <div key={cat.slug} className="space-y-3">
+                              <Link
+                                href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                                className="font-serif text-sm font-bold text-[#1C1917] hover:text-brand block pb-1 border-b border-[#E7E5E4]"
+                              >
+                                {cat.name}
+                              </Link>
+                              <ul className="space-y-1.5">
+                                {subCats.map(sub => (
+                                  <li key={sub.slug}>
+                                    <Link
+                                      href={`/shop?category=${encodeURIComponent(sub.slug)}`}
+                                      className="text-xs text-[#78716C] hover:text-brand block transition-colors truncate"
+                                    >
+                                      {sub.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                                <li>
+                                  <Link
+                                    href={`/shop?category=${encodeURIComponent(cat.slug)}`}
+                                    className="text-[10px] font-bold text-brand uppercase tracking-wider hover:underline block pt-1"
+                                  >
+                                    View All →
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          );
+                        })}
                         {link.name === 'Collections' && (
-                          <div className="col-span-2">
-                             <p className="text-xs text-[#78716C]">Explore curated seasonal collections.</p>
-                             <Link href="/collections" className="text-brand text-xs font-bold uppercase mt-2 inline-block">View All Collections</Link>
+                          <div className="col-span-4 space-y-2">
+                             <p className="text-xs text-[#78716C]">Explore curated seasonal collections and showroom edits.</p>
+                             <Link href="/collections" className="text-brand text-xs font-bold uppercase inline-block">View All Collections →</Link>
                           </div>
                         )}
                       </div>
