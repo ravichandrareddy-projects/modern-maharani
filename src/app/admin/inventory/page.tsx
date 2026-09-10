@@ -25,7 +25,7 @@ export default function AdminInventoryPage() {
   const [fabric, setFabric] = useState('Pure Kota Doria');
   const [work, setWork] = useState('Kutch Embroidery');
   const [inclusions, setInclusions] = useState('Top: 2.5m, Bottom: 2.0m, Dupatta: 2.4m');
-  const [images, setImages] = useState<string[]>(['https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop']);
+  const [images, setImages] = useState<string[]>(['/images/inventory/Kurti_hanging_on_wooden_hanger_202609082126.jpeg']);
   const [availability, setAvailability] = useState<AvailabilityStatus>('Available');
   const [saving, setSaving] = useState(false);
 
@@ -74,7 +74,7 @@ export default function AdminInventoryPage() {
     setFabric('Pure Kota Doria Cotton');
     setWork('Kutch Embroidery & Mirror Borders');
     setInclusions('Top: 2.5m, Bottom: 2.0m, Dupatta: 2.4m');
-    setImages(['https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop']);
+    setImages(['/images/inventory/Kurti_on_hanger_on_wall_202609082126.jpeg']);
     setAvailability('Available');
     setModalOpen(true);
   };
@@ -112,7 +112,7 @@ export default function AdminInventoryPage() {
     setFabric(p.fabric || '');
     setWork(p.work || '');
     setInclusions(p.inclusions || '');
-    setImages(p.images || ['https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop']);
+    setImages(p.images || ['/images/inventory/Kurti_on_wooden_hanger_202609082126.jpeg']);
     setAvailability(p.availability || 'Available');
     setModalOpen(true);
   };
@@ -142,7 +142,7 @@ export default function AdminInventoryPage() {
       colors: editingProduct?.colors || ['Multicolor'],
       isTrending: editingProduct?.isTrending || false,
       isFreeShippingEligible: isFreeShipping,
-      images: images.length > 0 ? images : ['https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop'],
+      images: images.length > 0 ? images : ['/images/inventory/Kurti_on_wooden_hanger_202609082126_2.jpeg'],
       availability,
       isNewArrival: true,
       isFeatured: false,
@@ -254,7 +254,7 @@ export default function AdminInventoryPage() {
                   <td className="p-4">
                     <div className="flex items-center gap-3">
                       <img
-                        src={prod.images?.[0] || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop'}
+                        src={prod.images?.[0] || '/images/inventory/Mannequin_displaying_silk_saree_…_202609082126.jpeg'}
                         alt={prod.name}
                         className="w-12 h-14 object-cover border border-[#E7E5E4]"
                       />

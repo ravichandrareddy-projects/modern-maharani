@@ -72,7 +72,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "dress-materials-unstitched",
       name: "Dress Materials (Unstitched)",
       description: "Premium unstitched dress materials for customized styling.",
-      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Co-ord_set_side-view_photo_202609082126.jpeg"
     },
     {
       id: "cat-dm-1",
@@ -80,7 +80,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "handloom-kota-cottons",
       name: "Handloom Kota & Cottons",
       description: "Breathable and authentic handloom kota and cottons.",
-      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg"
     },
     {
       id: "cat-dm-2",
@@ -88,7 +88,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "raw-silk-jute-silk",
       name: "Raw Silk & Jute Silk",
       description: "Elegant raw silk and jute silk unstitched materials.",
-      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg"
     },
     {
       id: "cat-dm-3",
@@ -96,7 +96,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "jamdani-weaves",
       name: "Jamdani Weaves",
       description: "Traditional Jamdani weaves with intricate motifs.",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg"
     },
     {
       id: "cat-dm-4",
@@ -104,7 +104,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "ajrakh-kalamkari-prints",
       name: "Ajrakh & Kalamkari Prints",
       description: "Richly detailed Ajrakh and Kalamkari printed fabrics.",
-      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     },
     
     // Root: Readymade Wear
@@ -113,7 +113,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "readymade-wear",
       name: "Readymade Wear",
       description: "Ready-to-wear contemporary fashion and ethnic silhouettes.",
-      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_salwar_suit_material_flat…_202609082126.jpeg"
     },
     {
       id: "cat-rw-1",
@@ -121,7 +121,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "3-piece-kurti-sets",
       name: "3-Piece Kurti Sets",
       description: "Complete 3-piece kurti, pant, and dupatta sets.",
-      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Cotton_suit_set_with_dupatta_202609082126.jpeg"
     },
     {
       id: "cat-rw-2",
@@ -129,7 +129,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "partywear-long-frocks",
       name: "Partywear & Long Frocks",
       description: "Elegant long frocks and partywear for special occasions.",
-      image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Crop_top_and_flared_skirt_202609082126.jpeg"
     },
     {
       id: "cat-rw-3",
@@ -137,7 +137,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "daily-kurtis",
       name: "Daily Kurtis",
       description: "Comfortable and stylish kurtis for everyday wear.",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg"
     },
     {
       id: "cat-rw-4",
@@ -145,7 +145,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "coord-sets-western",
       name: "Co-ord Sets & Western",
       description: "Modern co-ord sets and western wear.",
-      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Embroidered_silk_fabric_flat_lay_202609082126.jpeg"
     },
 
     // Root: Sarees
@@ -154,7 +154,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "sarees",
       name: "Sarees",
       description: "Graceful and elegant sarees for every occasion.",
-      image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Embroidered_silk_fabric_set_display_202609082126.jpeg"
     },
     {
       id: "cat-s-1",
@@ -162,7 +162,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "handloom-cotton-sarees",
       name: "Handloom & Cotton Sarees",
       description: "Breathable and authentic handloom cotton sarees.",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Emerald_green_salwar_suit_set_202609082126.jpeg"
     },
     {
       id: "cat-s-2",
@@ -170,7 +170,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "pattu-silk-sarees",
       name: "Pattu & Silk Sarees",
       description: "Luxurious pure pattu and silk sarees.",
-      image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Ethnic_co-ord_set_displayed_202609082126.jpeg"
     },
 
     // Root: Offers & Budget Store
@@ -179,7 +179,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "offers-budget-store",
       name: "Offers & Budget Store",
       description: "Amazing deals under ₹899 / ₹1199 and more.",
-      image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop"
+      image: "/images/inventory/Folded_Jamdani_saree_with_flowers_202609082126.jpeg"
     }
   ],
   collections: [
@@ -188,7 +188,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "festive-edit-2026",
       title: "Festive Edit",
       description: "Vibrant hues, intricate embellishments, and graceful drapes for upcoming celebrations.",
-      heroImage: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop",
+      heroImage: "/images/inventory/Folded_cotton_dress_material_dis…_202609082126.jpeg",
       isFeatured: true,
       isPublished: true,
       startDate: "2026-01-01"
@@ -198,7 +198,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "everyday-elegance",
       title: "Everyday Edit",
       description: "Breathable fabrics, tailored silhouettes, and understated elegance for daily wear.",
-      heroImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
+      heroImage: "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg",
       isFeatured: true,
       isPublished: true,
       startDate: "2026-02-01"
@@ -208,7 +208,7 @@ const INITIAL_STORE_DATA: StoreData = {
       slug: "occasion-edit",
       title: "Occasion Edit",
       description: "Sophisticated ensembles designed to make every evening memorable.",
-      heroImage: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1200&auto=format&fit=crop",
+      heroImage: "/images/inventory/Gadwal_silk_saree_displayed_202609082126.jpeg",
       isFeatured: true,
       isPublished: true,
       startDate: "2026-02-15"
@@ -232,7 +232,7 @@ const INITIAL_STORE_DATA: StoreData = {
       colors: ["Wine", "Burgundy"],
       images: [
         "/images/hero_banner.jpg",
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Gadwal_silk_saree_drape_shot_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: true,
@@ -257,8 +257,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["M", "L", "XL"],
       colors: ["Rose Pink", "Soft Blush"],
       images: [
-        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Gadwal_silk_saree_drape_shot_202609082126_2.jpeg",
+        "/images/inventory/Gadwal_silk_saree_temple_motifs_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: true,
@@ -284,8 +284,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["S", "M", "L", "XL"],
       colors: ["Champagne", "Soft Gold"],
       images: [
-        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Green_and_brown_cotton_suit_202609082126.jpeg",
+        "/images/inventory/Green_cotton_suit_flat-lay_202609082126.jpeg"
       ],
       availability: "Limited Stock",
       isNewArrival: true,
@@ -310,8 +310,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["M", "L", "XL"],
       colors: ["Emerald Green"],
       images: [
-        "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Green_handloom_saree_on_mannequin_202609082126.jpeg",
+        "/images/inventory/Green_silk_salwar_suit_embroidery_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: false,
@@ -336,8 +336,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["S", "M", "L"],
       colors: ["Mustard Yellow", "Warm Ochre"],
       images: [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Jamdani_saree_arrangement_displayed_202609082126.jpeg",
+        "/images/inventory/Jamdani_saree_floral_pattern_macro_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: true,
@@ -362,8 +362,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["M", "L", "XL", "XXL"],
       colors: ["Powder Blue"],
       images: [
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Jamdani_saree_on_studio_floor_202609082126.jpeg",
+        "/images/inventory/Kalamkari_printed_saree_draped_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: true,
@@ -388,8 +388,8 @@ const INITIAL_STORE_DATA: StoreData = {
       sizes: ["S", "M", "L", "XL"],
       colors: ["Ivory White", "Rose Gold"],
       images: [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+        "/images/inventory/Kalamkari_printed_saree_fabric_202609082126.jpeg",
+        "/images/inventory/Kalamkari_printed_saree_on_form_202609082126.jpeg"
       ],
       availability: "Available",
       isNewArrival: true,

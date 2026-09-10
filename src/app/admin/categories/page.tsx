@@ -35,7 +35,7 @@ export default function AdminCategoriesPage() {
     setEditingCat(null);
     setName('');
     setDescription('');
-    setImage('https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop');
+    setImage('/images/inventory/Kalamkari_saree_on_tailor_form_202609082126.jpeg');
     setParentSlug('');
     setModalOpen(true);
   };

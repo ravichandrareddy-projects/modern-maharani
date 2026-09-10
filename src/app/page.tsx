@@ -19,11 +19,11 @@ export default async function HomePage() {
   const approvedReviews = reviews.filter((r) => r.approved);
 
   const discoveryTags = [
-    { name: 'Elegant', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop' },
-    { name: 'Minimal', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop' },
-    { name: 'Festive', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=600&auto=format&fit=crop' },
-    { name: 'Contemporary', image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=600&auto=format&fit=crop' },
-    { name: 'Statement', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop' },
+    { name: 'Elegant', image: '/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg' },
+    { name: 'Minimal', image: '/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg' },
+    { name: 'Festive', image: '/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg' },
+    { name: 'Contemporary', image: '/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg' },
+    { name: 'Statement', image: '/images/inventory/Co-ord_set_back_view_202609082126.jpeg' },
   ];
 
   return (

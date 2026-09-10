@@ -10,7 +10,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "featuredCard": {
       "title": "Handloom Kota & Silk Edit",
       "description": "Explore Kutch embroidery, Jamdani booties, and Ajrakh block prints.",
-      "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg"
     }
   },
   {
@@ -19,7 +19,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "kota-cottons",
     "label": "Kota & Cottons",
     "description": "Lightweight Kota Doria and breathable pure cotton unstitched sets.",
-    "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg"
   },
   {
     "id": "sub-dm-2",
@@ -27,7 +27,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "silks-blends",
     "label": "Silks & Handloom Blends",
     "description": "Royal raw silk, jute silk with maggam work, Tussar and shimmering tissue silk.",
-    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg"
   },
   {
     "id": "sub-dm-3",
@@ -35,7 +35,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "traditional-crafts",
     "label": "Traditional Prints & Crafts",
     "description": "Heritage natural dye Ajrakh block prints, Kalamkari pen-work, and Sanganeri theme prints.",
-    "image": "/images/cat_dress_materials.jpg"
+    "image": "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg"
   },
   {
     "id": "cat-re",
@@ -46,7 +46,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "featuredCard": {
       "title": "Lucknowi Chikankari & Anarkalis",
       "description": "Tailored ready-to-wear silhouettes crafted for modern elegance.",
-      "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "image": "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
     }
   },
   {
@@ -55,7 +55,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "three-piece-sets",
     "label": "3-Piece Stitched Suit Sets",
     "description": "Complete stitched sets featuring Kurta, Pant, and Dupatta.",
-    "image": "/images/cat_readymades.jpg"
+    "image": "/images/inventory/Cotton_suit_set_with_dupatta_202609082126.jpeg"
   },
   {
     "id": "sub-re-2",
@@ -63,7 +63,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "frocks-anarkalis",
     "label": "Frocks & Flared Anarkalis",
     "description": "Breezy Jaipur cotton tiered frocks and grand festive floor-length Anarkalis.",
-    "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Crop_top_and_flared_skirt_202609082126.jpeg"
   },
   {
     "id": "sub-re-3",
@@ -71,7 +71,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "indo-western",
     "label": "Modern & Indo-Western",
     "description": "Contemporary co-ord sets, tunic-palazzo pairings, and fusion midi tunics.",
-    "image": "/images/cat_dress_materials.jpg"
+    "image": "/images/inventory/Co-ord_set_back_view_202609082126.jpeg"
   },
   {
     "id": "sub-re-4",
@@ -79,7 +79,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "partywear",
     "label": "Occasion & Partywear",
     "description": "Velvet crop top lehengas with organza cape shrugs for weddings and galas.",
-    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Crop_top_and_flared_skirt_202609082126.jpeg"
   },
   {
     "id": "sub-re-5",
@@ -87,14 +87,14 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "daily-kurtis",
     "label": "Daily & Workwear Kurtis",
     "description": "Comfortable slub rayon office kurtis and A-line casual everyday wear.",
-    "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Kurti_hanging_on_wooden_hanger_202609082126.jpeg"
   },
   {
     "id": "cat-sr",
     "slug": "sarees",
     "label": "Sarees",
     "description": "Handloom Kota Doria, Muslin Jamdani, Gadwal Silk Pattu, and Kalamkari georgettes.",
-    "image": "/images/cat_dress_materials.jpg",
+    "image": "/images/cat_sarees.jpg",
     "featuredCard": {
       "title": "Gadwal Pattu & Jamdani Weaves",
       "description": "Traditional Kuttu borders and featherweight drapes for grand occasions.",
@@ -107,7 +107,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "handloom-sarees",
     "label": "Handloom & Lightweight Drapes",
     "description": "Pure Kota Doria with zari borders and Muslin Jamdani woven drapes.",
-    "image": "/images/cat_dress_materials.jpg"
+    "image": "/images/inventory/Folded_Jamdani_saree_with_flowers_202609082126.jpeg"
   },
   {
     "id": "sub-sr-2",
@@ -115,7 +115,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "silk-sarees",
     "label": "Silk & Festive Sarees",
     "description": "Authentic Gadwal Pattu with temple borders and dual-tone soft silks.",
-    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
   },
   {
     "id": "sub-sr-3",
@@ -123,14 +123,14 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "casual-sarees",
     "label": "Casual & Printed Sarees",
     "description": "Flowing Kalamkari chiffon drapes and daily-wear organic linen-cotton sarees.",
-    "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Kalamkari_printed_saree_draped_202609082126.jpeg"
   },
   {
     "id": "cat-bs",
     "slug": "budget-store",
     "label": "Budget Store",
     "description": "Wholesale value tiers under ₹899 and ₹1,199 with free shipping perks.",
-    "image": "/images/cat_readymades.jpg",
+    "image": "/images/cat_budget.jpg",
     "featuredCard": {
       "title": "Under ₹899 & ₹1,199 Value Bundles",
       "description": "Unbeatable prices on daily office suits, kurtis, and semi-kota sets.",
@@ -143,7 +143,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "under-899",
     "label": "Under ₹899 Store",
     "description": "Wholesale value sets and daily kurti multi-packs under ₹899.",
-    "image": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Green_and_brown_cotton_suit_202609082126.jpeg"
   },
   {
     "id": "sub-bs-2",
@@ -151,7 +151,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "under-1199",
     "label": "Under ₹1,199 Store",
     "description": "Premium cotton printed suit sets and budget semi-kota mirror work sets.",
-    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+    "image": "/images/inventory/Maroon_and_mustard_dress_material_202609082126.jpeg"
   },
   {
     "id": "sub-bs-3",
@@ -159,7 +159,7 @@ export const TAXONOMY_CATEGORIES: TaxonomyCategory[] = [
     "slug": "store-perks",
     "label": "Special Perks & Wholesale",
     "description": "Free shipping eligible items, ready to dispatch, and wholesale bulk lots.",
-    "image": "/images/cat_dress_materials.jpg"
+    "image": "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
   }
 ];
 
@@ -192,8 +192,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -232,8 +234,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.25m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -272,8 +276,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -311,8 +317,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Folded_Jamdani_saree_with_flowers_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_arrangement_displayed_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_floral_pattern_macro_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_on_studio_floor_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -351,8 +359,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_flat_lay_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_set_display_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -390,8 +400,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_flat_lay_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_set_display_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -429,8 +441,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg",
+      "/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg",
+      "/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -469,8 +483,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.5m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg",
+      "/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg",
+      "/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -508,8 +524,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.4m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Kalamkari_printed_saree_draped_202609082126.jpeg",
+      "/images/inventory/Kalamkari_printed_saree_fabric_202609082126.jpeg",
+      "/images/inventory/Kalamkari_printed_saree_on_form_202609082126.jpeg",
+      "/images/inventory/Kalamkari_saree_on_tailor_form_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -546,8 +564,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.25m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg",
+      "/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg",
+      "/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -585,8 +605,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Shadow Work"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg",
+      "/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg",
+      "/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -623,8 +645,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Kalidar Flare"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Woman_twirling_in_Anarkali_dress_202609082126.jpeg",
+      "/images/inventory/Woman_wearing_Anarkali_dress_202609082126.jpeg",
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -659,8 +683,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Jaipur Block Print"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -696,8 +722,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Gota Patti"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Woman_twirling_in_Anarkali_dress_202609082126.jpeg",
+      "/images/inventory/Woman_wearing_Anarkali_dress_202609082126.jpeg",
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -733,8 +761,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Ethnic Wooden Buttons"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Co-ord_set_back_view_202609082126.jpeg",
+      "/images/inventory/Co-ord_set_side-view_photo_202609082126.jpeg",
+      "/images/inventory/Ethnic_co-ord_set_displayed_202609082126.jpeg",
+      "/images/inventory/Modern_ethnic_co-ord_set_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -769,8 +799,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "High-Low Cut"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg",
+      "/images/inventory/Ajrakh_hand_block-print_textile_202609082126.jpeg",
+      "/images/inventory/Ajrakh_print_dress_material_disp…_202609082126.jpeg",
+      "/images/inventory/Arranging_Ajrakh_dress_material_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -807,8 +839,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Can-Can Lining"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Velvet_blouse_and_skirt_set_202609082126.jpeg",
+      "/images/inventory/Velvet_crop_top_skirt_set_202609082126.jpeg",
+      "/images/inventory/Velvet_crop_top_with_sequins_202609082126.jpeg",
+      "/images/inventory/Ajrakh_dress_material_flat-lay_a…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -846,8 +880,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Dual Side Pockets"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Kurti_hanging_on_wooden_hanger_202609082126.jpeg",
+      "/images/inventory/Kurti_on_hanger_on_wall_202609082126.jpeg",
+      "/images/inventory/Kurti_on_wooden_hanger_202609082126.jpeg",
+      "/images/inventory/Kurti_on_wooden_hanger_202609082126_2.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": false,
@@ -883,8 +919,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Neckline Piping"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": false,
@@ -918,8 +956,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Zari Tissue Border"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -951,8 +991,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Supplementary Weft Jamdani"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Folded_Jamdani_saree_with_flowers_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_arrangement_displayed_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_floral_pattern_macro_202609082126.jpeg",
+      "/images/inventory/Jamdani_saree_on_studio_floor_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -985,8 +1027,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Temple Zari"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_displayed_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_drape_shot_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_drape_shot_202609082126_2.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -1019,8 +1063,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Silver Zari"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_flat_lay_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_set_display_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -1053,8 +1099,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Satin Border"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Kalamkari_printed_saree_draped_202609082126.jpeg",
+      "/images/inventory/Kalamkari_printed_saree_fabric_202609082126.jpeg",
+      "/images/inventory/Kalamkari_printed_saree_on_form_202609082126.jpeg",
+      "/images/inventory/Kalamkari_saree_on_tailor_form_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -1088,8 +1136,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Pom-Pom Tassels"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -1126,8 +1176,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.1m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Embroidered_beige_tussar_silk_fa…_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_flat_lay_202609082126.jpeg",
+      "/images/inventory/Embroidered_silk_fabric_set_display_202609082126.jpeg",
+      "/images/inventory/Gadwal_silk_saree_back_view_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": false,
@@ -1162,8 +1214,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "Screen Print"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": false,
@@ -1200,8 +1254,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.25m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": true,
@@ -1238,8 +1294,10 @@ export const SEEDED_PRODUCTS: CatalogProduct[] = [
       "dupatta": "2.25m"
     },
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
+      "/images/inventory/Cotton_dress_material_set_displayed_202609082126.jpeg",
+      "/images/inventory/Cotton_fabric_with_elephant_print_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_fabric_202609082126.jpeg",
+      "/images/inventory/Cotton_salwar_suit_material_disp…_202609082126.jpeg"
     ],
     "availability": "Available",
     "isFreeShippingEligible": false,

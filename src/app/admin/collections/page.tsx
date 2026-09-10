@@ -36,7 +36,7 @@ export default function AdminCollectionsPage() {
     setEditingCol(null);
     setTitle('');
     setDescription('');
-    setHeroImage('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=1200&auto=format&fit=crop');
+    setHeroImage('/images/inventory/Kota_cotton_dress_material_set_202609082126.jpeg');
     setIsFeatured(true);
     setIsPublished(true);
     setModalOpen(true);
