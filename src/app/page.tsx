@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { getStoreData } from '@/lib/db';
 import ProductCard from '@/components/ProductCard';
-import ScrollHero from '@/components/ScrollHero';
+import HeroSection from '@/components/HeroSection';
 import { MapPin, Phone, MessageCircle, Clock, ArrowRight, Star, Sparkles, CheckCircle2, ShoppingBag } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -28,8 +28,8 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-16 pb-16">
-      {/* 1. SCROLL-DRIVEN HERO SECTION */}
-      <ScrollHero heroImage={heroImage} siteSettings={siteSettings} />
+      {/* 1. ANIMATED HERO SECTION */}
+      <HeroSection heroImage={heroImage} siteSettings={siteSettings} />
 
       {/* 2. QUICK BRAND INTRO */}
       <section className="max-w-4xl mx-auto px-4 text-center space-y-4 pt-4">
